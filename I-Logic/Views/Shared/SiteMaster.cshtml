@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/interface.js")" type="text/javascript"></script>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" type="text/css" />
+
+</head>
+
+<body>
+    <div style="width:1024px;margin:auto;">
+        <header class="main">
+            <div class="tubber">
+              
+            </div>
+        </header>
+            <div style="margin-top:100px;" role="main" class="main">
+                @RenderBody()
+            </div>
+
+        <footer id="footer" class="main">
+            <div id="open_twitter_form"></div>
+            <div id ="twitter_form">
+            </div>
+             <div style="float:left;width: 882px;height: 110px;z-index:7" class="dock" id="dock">
+                <div class="dock-container">
+                <a class="dock-item" href="/Site/Index"><img src="~/Content/images/home.png" alt="home" /><span>Почетна</span></a> 
+                <a class="dock-item" href="Proizvodi.aspx"><img src="~/Content/images/proizvodi.png" alt="portfolio" /><span>Производи</span></a> 
+                <a class="dock-item" href="Novosti.aspx"><img src="~/Content/images/novosti.png" alt="music" /><span>Новости</span></a> 
+                <a class="dock-item" href="zaNas.aspx"><img src="~/Content/images/aboutUs.png" alt="music" /><span>За нас</span></a> 
+                <a class="dock-item" href="Kontakt.aspx"><img src="~/Content/images/email.png" alt="contact" /><span>Контакт</span></a> 
+                </div>
+            </div>
+            <div id="mail_form"></div>
+             <div class="utility"><div class="copyright"> All rights reserved &copy; I-Logic</div></div>
+        </footer>
+        
+    </div>
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(
+		function meni() {
+		    $('#dock').Fisheye(
+				{
+				    maxWidth: 15,
+				    items: 'a',
+				    itemsText: 'span',
+				    container: '.dock-container',
+				    itemWidth: 60,
+				    proximity: 30,
+				    halign: 'center'
+				}
+			)
+		}
+	);
+        var hiddenContent = $('#open_twitter_form');
+        $("#twitter_form").click(function(event){
+ 
+            // Cancel the default event (this isn't a real link).
+            event.preventDefault();
+ 
+            // Check to see if the content is visible.
+            if (hiddenContent.is( ":visible" )){
+ 
+                // Hide it slowly.
+                if (hiddenContent.css("height") == "500px") {
+                    hiddenContent.slideUp(2000);
+                }
+ 
+            } else {
+ 
+                // Show it slowly.
+                if (hiddenContent.css("height")=="500px") {
+                    hiddenContent.slideDown(2000);
+                }
+ 
+            }
+ 
+            
+        });
+ 
+
+            //if ($('#open_twitter_form').css('display') == 'none' || $('#open_twitter_form').css("height") == "0px") {
+            //    $('#open_twitter_form').slideDown(2000, function () {
+            //        $('#open_twitter_form').css("height", "500px");
+            //    });
+
+            //}
+            //else {
+
+            //    $('#open_twitter_form').remove();
+            //    $("#footer").append("<div id='open_twitter_form'></div>");
+            //    $('#open_twitter_form').slideUp(2000, function () {
+            //        //$('#open_twitter_form').css("height", "0px");
+            //       // $('#open_twitter_form').css('display', "none");
+            //    });
+            //}
+        
+    </script>
+</body>
+</html>
