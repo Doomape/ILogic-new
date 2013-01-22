@@ -152,11 +152,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
     <Content Include="Content\images\aboutUs.png" />
+    <Content Include="Content\images\asp-net_intro.jpg" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\novosti.png" />
     <Content Include="Content\images\proizvodi.png" />
+    <Content Include="Content\images\visual.bmp" />
+    <Content Include="Content\images\vusial_white.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -258,6 +262,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\SiteMaster.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\Site\Products.cshtml" />
+    <Content Include="Views\Site\Index_aspNet.cshtml" />
+    <Content Include="Views\Site\Index_php.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

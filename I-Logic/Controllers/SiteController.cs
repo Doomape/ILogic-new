@@ -16,7 +16,18 @@ namespace I_Logic.Controllers
         {
             return View();
         }
-
+        public ActionResult Products()
+        {
+            return View();
+        }
+        public ActionResult Index_aspNet()
+        {
+            return View();
+        }
+        public ActionResult Index_php()
+        {
+            return View();
+        }
         public JsonResult GetData()
         {
             Dictionary<string, string> res = new Dictionary<string, string>();

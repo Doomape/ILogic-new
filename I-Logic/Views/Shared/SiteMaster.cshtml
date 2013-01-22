@@ -11,46 +11,45 @@
     <script src="@Url.Content("~/Scripts/interface.js")" type="text/javascript"></script>
     <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" type="text/css" />
 
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
 </head>
 
 <body>
-    <div style="width:1024px;margin:auto;">
-        <header class="main">
-            <div class="tubber">
-              
-            </div>
-        </header>
-            <div style="margin-top:100px;" role="main" class="main">
-                @RenderBody()
-            </div>
-
-        <footer id="footer" class="main">
+    <div id = "wrapper">
+        <div id = "top-row">
+           <div onclick="redirectAsp()" class="mouse_hover" style="float:left;position:relative;width:340px;height:100px;border-right: 1px solid black; text-align: center;"><img src="/Content/images/171545_VS_Purp526_rgbtran.png" /></div>
+             <div onclick="redirectElectronic()" class="mouse_hover" style="float:left;position:relative;width:340px;height:100px;border-right: 1px solid black;"></div>
+             <div onclick="redirectPhp()" class="mouse_hover" style="float:left;position:relative;width:341px;height:100px;"></div>
+        </div>
+        <div id = "content-row">
+           @RenderBody()
+        </div>
+        <div id="bottom-row">
             <div id="open_twitter_form"></div>
-            <div id ="twitter_form">
-            </div>
-             <div style="float:left;width: 882px;height: 110px;z-index:7" class="dock" id="dock">
+            <div id ="twitter_form"></div>
+            <div class="dock" id="dock">
                 <div class="dock-container">
-                <a class="dock-item" href="/Site/Index"><img src="~/Content/images/home.png" alt="home" /><span>Почетна</span></a> 
-                <a class="dock-item" href="Proizvodi.aspx"><img src="~/Content/images/proizvodi.png" alt="portfolio" /><span>Производи</span></a> 
-                <a class="dock-item" href="Novosti.aspx"><img src="~/Content/images/novosti.png" alt="music" /><span>Новости</span></a> 
-                <a class="dock-item" href="zaNas.aspx"><img src="~/Content/images/aboutUs.png" alt="music" /><span>За нас</span></a> 
-                <a class="dock-item" href="Kontakt.aspx"><img src="~/Content/images/email.png" alt="contact" /><span>Контакт</span></a> 
+                    <a class="dock-item" href="/Site/Index"><img src="~/Content/images/home.png" alt="home" /><span>Почетна</span></a> 
+                    <a class="dock-item" href="/Site/Products"><img src="~/Content/images/proizvodi.png" alt="portfolio" /><span>Производи</span></a> 
+    @*                <a class="dock-item" href="Novosti.aspx"><img src="~/Content/images/novosti.png" alt="music" /><span>Новости</span></a>  *@
+                    <a class="dock-item" href="zaNas.aspx"><img src="~/Content/images/aboutUs.png" alt="music" /><span>За нас</span></a> 
+                    <a class="dock-item" href="Kontakt.aspx"><img src="~/Content/images/email.png" alt="contact" /><span>Контакт</span></a>
                 </div>
             </div>
             <div id="mail_form"></div>
-             <div class="utility"><div class="copyright"> All rights reserved &copy; I-Logic</div></div>
-        </footer>
-        
+        </div>
     </div>
 
 
 
-
-
-
-
-
     <script type="text/javascript">
+
+        var con = document.getElementById("content-row").offsetHeight;
+        var top = document.getElementById("top-row").offsetHeight
+        var body = document.body.offsetHeight;
+        if ((con + top) < body) { document.getElementById("bottom-row").style.position = "fixed"; }
+
         $(document).ready(
 		function meni() {
 		    $('#dock').Fisheye(
@@ -92,7 +91,19 @@
             
         });
  
+        function redirectAsp()
+        {
+            window.location.href = "/Site/Index_aspNet";
+        }   
 
+        function redirectElectronic()
+        {
+            window.location.href = "/Site/Index";
+        } 
+        function redirectPhp()
+        {
+            window.location.href = "/Site/Index_php";
+        } 
             //if ($('#open_twitter_form').css('display') == 'none' || $('#open_twitter_form').css("height") == "0px") {
             //    $('#open_twitter_form').slideDown(2000, function () {
             //        $('#open_twitter_form').css("height", "500px");
@@ -107,8 +118,8 @@
             //        //$('#open_twitter_form').css("height", "0px");
             //       // $('#open_twitter_form').css('display', "none");
             //    });
-            //}
-        
+        //}
+       
     </script>
 </body>
 </html>
