@@ -2,12 +2,30 @@
     ViewBag.Title = "Index_aspNet";
     Layout = "~/Views/Shared/SiteMaster.cshtml";
 }
+<style>
+    p:first-letter {
+        color: red;
+    }
 
+</style>
 <div id="aspNet" style="background-color:rgb(45,45,48);width:100%">
-    <div id="console" style="background-image:url('/Content/images/visual.bmp');height: 322px;width: 589px;border: 6px solid rgb(0,122,204);">
-   <div id="holder" style="margin-top: 50px;margin-left: 29px;color: white;"></div>
-    <div id="holder_two" style="margin-left: 29px;color: white;"></div>
+    <div id="consoleSpace" style="float:left;width:600px;height:100%">
+        <div id="console" style="background-image:url('/Content/images/visual.bmp');height: 322px;width: 589px;border: 6px solid rgb(0,122,204);float:left;">
+            <p id="line_one" style="margin-top: 50px;margin-left: 29px;color: white;"></p>
+            <p id="line_two" style="margin-left: 29px;color: white;"></p>
+            <p id="line_three" style="margin-left: 29px;color: white;"></p>
+            <p id="line_four" style="margin-left: 29px;color: white;"></p>
+            <p id="line_five" style="margin-left: 29px;color: white;"></p>
+            <p id="line_six" style="margin-left: 29px;color: white;"></p>
+            <p id="line_seven" style="margin-left: 29px;color: white;"></p>
+          </div>
         </div>
+    <div id="idDiv" style="float:left">
+        <img src="/Content/images/MicrosoftSQL_Server.png" />
+        <div id="coverMouse" width:200px;height:200px;float: left;margin-left: -120px;margin-top: 7px;background-color: white;width: 150px;height: 150px;opacity: 0.3;color: black;display: none;">
+            <p>ON MOUSEEEEEEEEEE</p>
+        </div>
+    </div>
 </div>
 
 
@@ -27,7 +45,13 @@
           $("#aspNet").css("height", height);
           $('#bottom-row').css('background', 'rgb(30,30,30)');
           $('#top-row').css('background', 'rgb(30,30,30)');
-     
+          document.body.style.background = "#282828";
+          $("#idDiv").mouseover(function () {
+              $("#coverMouse").show();
+          }).mouseout(function () {
+              $("#coverMouse").hide();
+          });
+
       (function ($) {
           $.fn.writeText = function (content) {
               var contentArray = content.split(""),
@@ -41,15 +65,21 @@
           };
 
       })(jQuery);
-      $("#holder").writeText("<html>");
 
-      var word_two = "</html>";
+      var tag_lines_time = [["#line_one", "<html>", 1],["#line_two", "<body>", 2], ["#line_three", "<p>", 3], ["#line_four", "</p>", 4], ["#line_five", "</html>", 5]];
 
-      var timer = setInterval(function () {
-          $("#holder_two").writeText(word_two);
-          clearInterval(timer);
+      function addOnTimer(t_id,t_line,i)
+      {
+          var timer = setInterval(function () {
+              $(t_id).writeText(t_line);
+              clearInterval(timer);
 
-      }, 1000);
+          }, i*1000);
+      }
+      for (i = 0; i < tag_lines_time.length; i++) {
+          addOnTimer(tag_lines_time[i][0], tag_lines_time[i][1], tag_lines_time[i][2]);
+      }
+     
       $("#console").draggable();
       $("#console").draggable({ containment: "parent" });
       })

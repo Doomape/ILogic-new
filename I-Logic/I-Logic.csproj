@@ -157,6 +157,7 @@
     <Content Include="Content\images\asp-net_intro.jpg" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
+    <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\novosti.png" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\visual.bmp" />
