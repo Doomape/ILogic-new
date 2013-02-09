@@ -266,6 +266,7 @@
     <Content Include="Views\Site\Products.cshtml" />
     <Content Include="Views\Site\Index_aspNet.cshtml" />
     <Content Include="Views\Site\Index_php.cshtml" />
+    <Content Include="Views\Site\PartialConsoleWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

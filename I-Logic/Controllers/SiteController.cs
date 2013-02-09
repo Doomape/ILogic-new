@@ -28,6 +28,10 @@ namespace I_Logic.Controllers
         {
             return View();
         }
+        public ActionResult PartialConsoleWindow()
+        {
+            return View("PartialConsoleWindow");
+        }
         public JsonResult GetData()
         {
             Dictionary<string, string> res = new Dictionary<string, string>();

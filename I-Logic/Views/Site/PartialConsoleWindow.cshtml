@@ -1,0 +1,47 @@
+﻿<style>
+    #console
+    {
+        background:#1e1e1e;
+    }
+</style>
+
+<div id="console" @*style="background-image:url('/Content/images/visual.bmp');height: 322px;width: 589px;border: 6px solid rgb(0,122,204);float:left;"*@>
+    <p id="line_one" style="margin-top: 50px;margin-left: 29px;color: white;"></p>
+    <p id="line_two" style="margin-left: 29px;color: white;"></p>
+    <p id="line_three" style="margin-left: 29px;color: white;"></p>
+    <p id="line_four" style="margin-left: 29px;color: white;"></p>
+    <p id="line_five" style="margin-left: 29px;color: white;"></p>
+    <p id="line_six" style="margin-left: 29px;color: white;"></p>
+    <p id="line_seven" style="margin-left: 29px;color: white;"></p>
+</div>
+
+
+<script>
+      (function ($) {
+          $.fn.writeText = function (content) {
+              var contentArray = content.split(""),
+                  current = 0,
+                  elem = this;
+              setInterval(function () {
+                  if (current < contentArray.length) {
+                      elem.text(elem.text() + contentArray[current++]);
+                  }
+              }, 70);
+          };
+
+      })(jQuery);
+
+      var tag_lines_time = [["#line_one", "<html>", 1],["#line_two", "<body>", 2], ["#line_three", "<p>", 3], ["#line_four", "</p>", 4], ["#line_five", "</html>", 5]];
+
+      function addOnTimer(t_id,t_line,i)
+      {
+          var timer = setInterval(function () {
+              $(t_id).writeText(t_line);
+              clearInterval(timer);
+
+          }, i*1000);
+      }
+      for (i = 0; i < tag_lines_time.length; i++) {
+          addOnTimer(tag_lines_time[i][0], tag_lines_time[i][1], tag_lines_time[i][2]);
+      }
+</script>
