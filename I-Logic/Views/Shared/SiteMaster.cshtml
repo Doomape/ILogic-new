@@ -201,15 +201,14 @@
         //    });
         //}
         var email = false;
-        $('#image_button').click(function ()
-        {
+        $('#image_button').click(function () {
             var comp_name = document.forms["form_mail"]["company_name"].value;
             var name_lastname = document.forms["form_mail"]["name_lastname"].value;
             var phone = document.forms["form_mail"]["phone_number"].value;
             var emaila = document.forms["form_mail"]["e_mail"].value;
             var message = document.forms["form_mail"]["message"].value;
-          
-           
+
+
             validate_email();
             $.ajax({
                 type: "POST",
@@ -219,11 +218,11 @@
                 dataType: "json",
                 success: function (msg) {
                     if (msg.msg == "Ok") {
-                        $("#maila_form").css("display","none");
-                         hiddenContent1.delay(2000).slideUp(2000);
+                        $("#maila_form").css("display", "none");
+                        hiddenContent1.delay(2000).slideUp(2000);
                     }
                     if (msg.msg == "NOk") {
-                      
+
                     }
                 }
             });
@@ -248,7 +247,7 @@
         });
 
         function validate_email() {
-           
+
             var reg = /^([A-Za-z0-9_\-\.])+\@@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
             var address = document.forms["form_mail"]["e_mail"].value;
             if (reg.test(address) == false) {
@@ -257,6 +256,8 @@
             else {
                 email = true;
             }
+        }
+        function fg() {
         }
     </script>
 </body>
