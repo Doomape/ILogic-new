@@ -11,6 +11,7 @@
     <script src="@Url.Content("~/Scripts/interface.js")" type="text/javascript"></script>
     <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" type="text/css" />
     <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />>
     <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
     <style>
         #image_button:hover {
@@ -105,7 +106,7 @@
     <script type="text/javascript">
 
         var con = document.getElementById("content-row").offsetHeight;
-        var top = document.getElementById("top-row").offsetHeight
+        var top = document.getElementById("top-row").offsetHeight;
         var body = document.body.offsetHeight;
         if ((con + top) < body) { document.getElementById("bottom-row").style.position = "fixed"; }
 

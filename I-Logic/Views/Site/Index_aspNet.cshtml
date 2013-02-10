@@ -6,23 +6,67 @@
     p:first-letter {
         color: red;
     }
-
+   .ui-dialog.ui-widget-content { background: #007acc; }
+   .ui-corner-all { border-radius:0px 0px}
+   .ui-dialog-titlebar { background: #2d2d30;border: 0px;padding-bottom:20px !important}
+   .ui-dialog-title {color: gray;font-size: 12px;margin-left: 35px !important;padding-top: 4px;}
+   .ui-dialog-content.ui-widget-content
+   {
+       border-left: 13px solid #333333;
+       border-right: 13px solid #333333;
+       border-bottom: 13px solid #333333;
+   }
+   .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close
+   {
+       position: absolute;
+       top: 20px;
+       right: 15px;
+       background: transparent !important;
+       border: 0 !important;
+   }
+   .visual_logo 
+   {
+       width:20px;height:20px;background:url('/Content/images/visual_icon.png');display:block;position:absolute;
+   }
+   .visual_buttons
+   {
+       margin-left:30px;position:absolute;left:225px;top:25px;
+   }
+   .buttons
+   {
+       float:left;display:block;width:15px;height:15px;cursor:pointer;
+   }
+   #edit_cons_text
+   {
+      position: absolute;
+      top: 23px;
+      right: 224px;
+      color: white;
+      font-size: 9px;
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+      background: url('/Content/images/edit.png');
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      text-indent: 16px;
+      padding-top: 3px;
+      display:none;
+   }
+    input:focus 
+    { 
+        outline:none;
+        border-color:#007acc;
+        box-shadow:0 0 10px #007acc;
+    }
 </style>
 <div id="aspNet" style="background-color:rgb(45,45,48);width:100%">
     <div id="consoleSpace" style="float:left;width:600px;height:100%">
-        <div id="console" style="background-image:url('/Content/images/visual.bmp');height: 322px;width: 589px;border: 6px solid rgb(0,122,204);float:left;">
-            <p id="line_one" style="margin-top: 50px;margin-left: 29px;color: white;"></p>
-            <p id="line_two" style="margin-left: 29px;color: white;"></p>
-            <p id="line_three" style="margin-left: 29px;color: white;"></p>
-            <p id="line_four" style="margin-left: 29px;color: white;"></p>
-            <p id="line_five" style="margin-left: 29px;color: white;"></p>
-            <p id="line_six" style="margin-left: 29px;color: white;"></p>
-            <p id="line_seven" style="margin-left: 29px;color: white;"></p>
-          </div>
-        </div>
+        <div id="console" title="Create Album" style="overflow: hidden;min-height: 173px !important"></div>
+    </div>
     <div id="idDiv" style="float:left">
         <img src="/Content/images/MicrosoftSQL_Server.png" />
-        <div id="coverMouse" width:200px;height:200px;float: left;margin-left: -120px;margin-top: 7px;background-color: white;width: 150px;height: 150px;opacity: 0.3;color: black;display: none;">
+        <div id="coverMouse" style="width:200px;height:200px;float: left;margin-left: -120px;margin-top: 7px;background-color: white;width: 150px;height: 150px;opacity: 0.3;color: black;display: none;">
             <p>ON MOUSEEEEEEEEEE</p>
         </div>
     </div>
@@ -32,7 +76,7 @@
 
   <script type="text/javascript">
 
-    
+
       $(window).resize(function () {
           var height = parseInt($(document).height() - 230);
           $("#aspNet").css("height", height);
@@ -41,7 +85,7 @@
 
 
       $(document).ready(function () {
-          var height=parseInt($(document).height()-230);
+          var height = parseInt($(document).height() - 230);
           $("#aspNet").css("height", height);
           $('#bottom-row').css('background', 'rgb(30,30,30)');
           $('#top-row').css('background', 'rgb(30,30,30)');
@@ -51,40 +95,63 @@
           }).mouseout(function () {
               $("#coverMouse").hide();
           });
+      });
 
-      (function ($) {
-          $.fn.writeText = function (content) {
-              var contentArray = content.split(""),
-                  current = 0,
-                  elem = this;
-              setInterval(function () {
-                  if (current < contentArray.length) {
-                      elem.text(elem.text() + contentArray[current++]);
-                  }
-              }, 70);
-          };
+      $(function () {
+          var dialog = $('#console').dialog({
+              autoOpen: true,
+              width: 540,
+              resizable: false,
+              title: 'Microsoft Visual Studio',
+              modal: false,
+              open: function (event, ui) {
+                  //Load the CreateAlbumPartial action which will return 
+                  // the partial view _CreateAlbumPartial
+                  $(this).load("@Url.Action("PartialConsoleWindow")");
+              },
+              //buttons: {
+              //    "Close": function () {
+              //        $(this).dialog("close");
+              //    }
+              //}
+          });
+          $(".ui-dialog-titlebar").prepend("<div class='visual_logo'></div>");
+          $(".ui-dialog-titlebar").prepend("<div class='visual_buttons'>" +
+            "<div class='buttons' onclick='debug();' style='background:url(/Content/images/debug.png) no-repeat'></div>" +
+            "<div class='buttons' style='background:url(/Content/images/pause.png) no-repeat'></div>" +
+            "<div class='buttons' onclick='stop();' style='background:url(/Content/images/stop.png) no-repeat'></div>" +
+          "</div>");
+          $(".ui-dialog-titlebar").prepend("<div id='edit_cons_text'>Edit</div>")
 
-      })(jQuery);
+          dialog.parent().find('a').find('span').attr('class', 'ui-icon ui-icon-minus');
+          dialog.parent().draggable({
+              containment: '#consoleSpace',
+              opacity: 0.70
+          });
 
-      var tag_lines_time = [["#line_one", "<html>", 1],["#line_two", "<body>", 2], ["#line_three", "<p>", 3], ["#line_four", "</p>", 4], ["#line_five", "</html>", 5]];
+          var target = $("#consoleSpace");
+          $("#console").dialog("widget").position({
+              my: 'left bottom',
+              at: 'left middle',
+              of: target
+          });
 
-      function addOnTimer(t_id,t_line,i)
-      {
-          var timer = setInterval(function () {
-              $(t_id).writeText(t_line);
-              clearInterval(timer);
+          $('#consoleSpace').append(dialog.parent());
+          //$('#my-button').click(function () {
+          //    $('#dialog').dialog('open');
+          //});
 
-          }, i*1000);
-      }
-      for (i = 0; i < tag_lines_time.length; i++) {
-          addOnTimer(tag_lines_time[i][0], tag_lines_time[i][1], tag_lines_time[i][2]);
-      }
-     
-      $("#console").draggable();
-      $("#console").draggable({ containment: "parent" });
-      })
+          $("#edit_cons_text").on("click", function () {
+              if ($('#changeable_text').css("display") == "none")
+                  $('#changeable_text').animate({ width: 100 }, 1000);
+              else {
+                  $('#changeable_text').animate({ width: 0 }, 1000).hide(0, function () {
+                      $("#changeable_text").css("width", "0px");
+                  });
+              }
+          });
+      });
 
- //$(".dva").writeText(textAsp);
 
- //$(".tekst").writeText(textAsp);
-       </script>
+
+</script>

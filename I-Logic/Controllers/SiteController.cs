@@ -30,6 +30,7 @@ namespace I_Logic.Controllers
         {
             return View();
         }
+
         public static void SendMail(string subject, string body)
         {
 
@@ -61,6 +62,12 @@ namespace I_Logic.Controllers
 
             }
         }
+
+        public ActionResult PartialConsoleWindow()
+        {
+            return View("PartialConsoleWindow");
+        }
+
         [HttpPost]
         public JsonResult SendForm(string company, string name_lastname, string phone, string email, string message, bool boolEmail)
         {
