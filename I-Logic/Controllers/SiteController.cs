@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 
 namespace I_Logic.Controllers
 {
@@ -28,12 +30,55 @@ namespace I_Logic.Controllers
         {
             return View();
         }
-        public JsonResult GetData()
+        public static void SendMail(string subject, string body)
+        {
+
+            var fromAddress = new MailAddress("ilogicmk@gmail.com", "Koki");
+            string fromPassword = "trotinet";
+
+            try
+            {
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
+                };
+
+                System.Web.UI.WebControls.MailDefinition md = new System.Web.UI.WebControls.MailDefinition();
+                md.From = "ilogicmk@gmail.com";
+                md.IsBodyHtml = false;
+                md.Subject = subject;
+                System.Collections.Specialized.ListDictionary replacements = new System.Collections.Specialized.ListDictionary();
+                MailMessage msg = md.CreateMailMessage("ilogicmk@gmail.com", replacements, body, new System.Web.UI.Control());
+                smtp.Send(msg);
+            }
+            catch
+            {
+
+            }
+        }
+        [HttpPost]
+        public JsonResult SendForm(string company, string name_lastname, string phone, string email, string message, bool boolEmail)
         {
             Dictionary<string, string> res = new Dictionary<string, string>();
-            var proekti = (from x in db.PROEKTIs where x.Ime == "babba" select x.Ime).FirstOrDefault();
-            res.Add("ime_proekti", proekti);
-            return Json(res, JsonRequestBehavior.AllowGet);
+            // string firmaC = firma+ime+tel+email+poraka;
+            if ((company != "" && name_lastname != "" || company == "" && name_lastname != "" || company != "" && name_lastname == "") && (phone != "" || phone == "") && (email != "") && (message != "") && (boolEmail == true))
+            {
+                string porakadoBelina = "Фирма: " + company + "\n" + "Име и презиме: " + name_lastname + "\n" + "Телефонски број: " + phone + "\n" + "Електронска пошта: " + email + "\n" + "Порака:" + "\n" + message;
+                SendMail("Нова порака", porakadoBelina);
+                res.Add("msg", "Ok");
+                return Json(res,JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                res.Add("msg", "NOk");
+                return Json(res, JsonRequestBehavior.AllowGet);
+            }
+
         }
 
     }

@@ -155,10 +155,13 @@
     <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
     <Content Include="Content\images\aboutUs.png" />
     <Content Include="Content\images\asp-net_intro.jpg" />
+    <Content Include="Content\images\divider.png" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
+    <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\novosti.png" />
     <Content Include="Content\images\proizvodi.png" />
+    <Content Include="Content\images\send-button-md.png" />
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\vusial_white.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -247,6 +250,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validationEngine-fr.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
