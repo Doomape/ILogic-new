@@ -19,8 +19,10 @@
    .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close
    {
        position: absolute;
-        top: 20px;
-        right: 15px;
+       top: 20px;
+       right: 15px;
+       background: transparent !important;
+       border: 0 !important;
    }
    .visual_logo 
    {
@@ -34,6 +36,29 @@
    {
        float:left;display:block;width:15px;height:15px;cursor:pointer;
    }
+   #edit_cons_text
+   {
+      position: absolute;
+      top: 23px;
+      right: 224px;
+      color: white;
+      font-size: 9px;
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+      background: url('/Content/images/edit.png');
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      text-indent: 16px;
+      padding-top: 3px;
+      display:none;
+   }
+    input:focus 
+    { 
+        outline:none;
+        border-color:#007acc;
+        box-shadow:0 0 10px #007acc;
+    }
 </style>
 <div id="aspNet" style="background-color:rgb(45,45,48);width:100%">
     <div id="consoleSpace" style="float:left;width:600px;height:100%">
@@ -92,10 +117,11 @@
         });
           $(".ui-dialog-titlebar").prepend("<div class='visual_logo'></div>");
           $(".ui-dialog-titlebar").prepend("<div class='visual_buttons'>"+
-            "<div class='buttons' onclick='javascript:alert(1);' style='background:url(/Content/images/debug.png) no-repeat'></div>" +
+            "<div class='buttons' onclick='debug();' style='background:url(/Content/images/debug.png) no-repeat'></div>" +
             "<div class='buttons' style='background:url(/Content/images/pause.png) no-repeat'></div>" +
-            "<div class='buttons' style='background:url(/Content/images/stop.png) no-repeat'></div>" +
+            "<div class='buttons' onclick='stop();' style='background:url(/Content/images/stop.png) no-repeat'></div>" +
           "</div>");
+          $(".ui-dialog-titlebar").prepend("<div id='edit_cons_text'>Edit</div>")
 
           dialog.parent().find('a').find('span').attr('class', 'ui-icon ui-icon-minus');
           dialog.parent().draggable({
@@ -114,6 +140,16 @@
           //$('#my-button').click(function () {
           //    $('#dialog').dialog('open');
           //});
+
+          $("#edit_cons_text").on("click", function () {
+              if ($('#changeable_text').css("display") == "none")
+                  $('#changeable_text').animate({ width: 100 }, 1000);
+              else {
+                  $('#changeable_text').animate({ width: 0 }, 1000).hide(0, function () {
+                      $("#changeable_text").css("width", "0px");
+                  });
+              }
+          });
       });
 
       
