@@ -52,7 +52,7 @@ table {
 
 #bottom-row {color:#ddd;background:white;width: 1024px;position:fixed;bottom:0px;border-top: 2px solid gray;box-shadow: 2px 0px 10px gray;}
 
-#content-row {margin: 84px 0 0 0;background-color: white;box-shadow: 1px 1px 10px gray;} 
+#content-row {margin: 100px 0 0 0;background-color: white;box-shadow: 1px 1px 10px gray;} 
  
 html, body { height: 100%; overflow-y: auto; background-color: rgba(128, 128, 128, 0.07);}
 
