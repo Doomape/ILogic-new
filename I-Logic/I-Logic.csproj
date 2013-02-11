@@ -156,10 +156,12 @@
     <Content Include="Content\images\aboutUs.png" />
     <Content Include="Content\images\asp-net_intro.jpg" />
     <Content Include="Content\images\divider.png" />
+    <Content Include="Content\images\electronic.png" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\novosti.png" />
+    <Content Include="Content\images\phpLogo.png" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\send-button-md.png" />
     <Content Include="Content\images\visual.bmp" />
