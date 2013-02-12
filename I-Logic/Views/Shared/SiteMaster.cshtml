@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<!--[if !IE 7]>
+	<style type="text/css">
+		#wrap {display:table;height:100%}
+	</style>
+<![endif]-->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/interface.js")" type="text/javascript"></script>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")" type="text/css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <style>
+        #image_button:hover {
+            box-shadow:1px 1px 10px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="top-row">
+            <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 340px; height: 100px; border-right: 1px solid black; text-align: center;">
+                <img src="/Content/images/171545_VS_Purp526_rgbtran.png" />
+            </div>
+            <div onclick="redirectElectronic()" class="mouse_hover" style="float: left; position: relative; width: 340px; height: 100px; border-right: 1px solid black;">
+              <img src="/Content/images/electronic.png" />
+            </div>
+            <div onclick="redirectPhp()" class="mouse_hover" style="float: left; position: relative; width: 341px; height: 100px;">
+                 <img src="/Content/images/phpLogo.png" />
+            </div>
+        </div>
+        <div id="content-row">
+            @RenderBody()
+        </div>
+        <div id="bottom-row">
+            <div id="open_twitter_form">
+                <div class="twitter">
+                    <script type="text/javascript">
+                        new TWTR.Widget({
+                            version: 2,
+                            type: 'profile',
+                            rpp: 2,
+                            interval: 30000,
+                            width: 'auto',
+                            height: 290,
+                            theme: { shell: { background: 'rgb(42, 63, 77)', color: '#ffffff' }, tweets: { background: 'transparent', color: '#ffffff', links: 'rgb(26, 146, 184)' } },
+                            features: { scrollbar: false, loop: false, live: true, behavior: 'all' }
+                        }).render().setUser('ilogicmk').start();
+                    </script>
+                </div>
+            </div>
+            <div id="twitter_form"></div>
+            <div class="dock" id="dock">
+                <div class="dock-container">
+                    <a class="dock-item" href="/Site/Index">
+                        <img src="~/Content/images/home.png" alt="home" /><span>Home</span></a>
+                    <a class="dock-item" href="/Site/Products">
+                        <img src="~/Content/images/proizvodi.png" alt="portfolio" /><span>Products</span></a>
+                    @*                <a class="dock-item" href="Novosti.aspx"><img src="~/Content/images/novosti.png" alt="music" /><span>Новости</span></a>  *@
+                    <a class="dock-item" href="zaNas.aspx">
+                        <img src="~/Content/images/projects.png" alt="music" /><span>Projects</span></a>
+                    <a class="dock-item" href="Kontakt.aspx">
+                        <img src="~/Content/images/about_us.png" alt="about_us" /><span>About us</span></a>
+                </div>
+            </div>
+            <div id="open_mail_form">
+                    <div id="maila_form" style="margin: auto;margin: auto;width: 380px;height: 379px;background-color: rgb(42, 63, 77);margin-top: 10px;box-shadow: 1px 1px 60px gray">
+                       <div style="float:left;margin-top: 20px;position: absolute;margin-left: 50px;color: white;">
+                        <form id="form_mail" style="float:left;width: 276px;">
+                        <div>
+                            <h4 style="margin: 0">Company</h4>
+                            <input  style="float:left;width: 260px;border-radius: 5px;"  type="text" name="company_name" value=""/>
+                            <p id="err1" style="float:left;display: inline; color: Red;display:none">*</p>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0">Name and Last name</h4>
+                            <input style="float:left;width: 260px;border-radius: 5px;" type="text" name="name_lastname" value=""/>
+                            <p id="err2" style="float:left;display: inline; color: Red;display:none">*</p>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0">Phone number</h4>
+                            <input style="float:left;width: 260px;border-radius: 5px;" type="text" name="phone_number" value=""/>
+                            <p style="float:left;display: inline; color: Red; display:none">*</p>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0">E-mail</h4>
+                            <input style="float:left; width: 260px;border-radius: 5px;"  type="text" name="e_mail" value=""/>
+                            <p id="err3" style="float:left;display: inline; color: Red;display:none ">*</p>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0">Message</h4>
+                            <textarea name="message" style="float:left;resize:none;width: 260px;border-radius: 5px; height: 110px;"></textarea>
+                            <p id="err4" style="float:left;display: inline; color: Red;display:none">*</p>
+                        </div>
+                        <div id="image_button" style="margin-right: 10px;cursor:pointer; background-image:url('/Content/images/send-button-md.png');width:90px;height:40px;margin-top:5px;float: right;">
+                          </div>
+                       </form>
+                      </div>
+                    </div>
+            </div>
+            <div id="mail_form"></div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        var con = document.getElementById("content-row").offsetHeight;
+        var top = document.getElementById("top-row").offsetHeight;
+        var body = document.body.offsetHeight;
+        if ((con + top) < body) { document.getElementById("bottom-row").style.position = "fixed"; }
+
+        $(document).ready(
+		function meni() {
+		    $('#dock').Fisheye(
+				{
+				    maxWidth: 15,
+				    items: 'a',
+				    itemsText: 'span',
+				    container: '.dock-container',
+				    itemWidth: 60,
+				    proximity: 30,
+				    halign: 'center'
+				}
+			)
+		}
+	);
+        var hiddenContent = $('#open_twitter_form');
+        $("#twitter_form").click(function (event) {
+
+            // Cancel the default event (this isn't a real link).
+            event.preventDefault();
+
+            // Check to see if the content is visible.
+            if (hiddenContent.is(":visible")) {
+
+                // Hide it slowly.
+                if (hiddenContent.css("height") == "400px") {
+                    hiddenContent.slideUp(2000);
+                }
+
+            } else {
+
+                // Show it slowly.
+                if (hiddenContent.css("height") == "400px") {
+                    hiddenContent.slideDown(2000);
+                }
+
+            }
+
+
+        });
+        var hiddenContent1 = $('#open_mail_form');
+        $("#mail_form").click(function (event) {
+            $("#maila_form").css("display", "block");
+            // Cancel the default event (this isn't a real link).
+            event.preventDefault();
+
+            // Check to see if the content is visible.
+            if (hiddenContent1.is(":visible")) {
+
+                // Hide it slowly.
+                if (hiddenContent1.css("height") == "400px") {
+                    hiddenContent1.slideUp(2000);
+                }
+
+            } else {
+
+                // Show it slowly.
+                if (hiddenContent1.css("height") == "400px") {
+                    hiddenContent1.slideDown(2000);
+                }
+
+            }
+
+
+        });
+        function redirectAsp() {
+            window.location.href = "/Site/Index_aspNet";
+        }
+
+        function redirectElectronic() {
+            window.location.href = "/Site/Index";
+        }
+        function redirectPhp() {
+            window.location.href = "/Site/Index_php";
+        }
+        //if ($('#open_twitter_form').css('display') == 'none' || $('#open_twitter_form').css("height") == "0px") {
+        //    $('#open_twitter_form').slideDown(2000, function () {
+        //        $('#open_twitter_form').css("height", "500px");
+        //    });
+
+        //}
+        //else {
+
+        //    $('#open_twitter_form').remove();
+        //    $("#footer").append("<div id='open_twitter_form'></div>");
+        //    $('#open_twitter_form').slideUp(2000, function () {
+        //        //$('#open_twitter_form').css("height", "0px");
+        //       // $('#open_twitter_form').css('display', "none");
+        //    });
+        //}
+        var email = false;
+        $('#image_button').click(function () {
+            var comp_name = document.forms["form_mail"]["company_name"].value;
+            var name_lastname = document.forms["form_mail"]["name_lastname"].value;
+            var phone = document.forms["form_mail"]["phone_number"].value;
+            var emaila = document.forms["form_mail"]["e_mail"].value;
+            var message = document.forms["form_mail"]["message"].value;
+
+
+            validate_email();
+            $.ajax({
+                type: "POST",
+                url: "SendForm",
+                data: "{'company': '" + comp_name + "','name_lastname': '" + name_lastname + "','phone': '" + phone + "','email': '" + emaila + "','message': '" + message + "','boolEmail': '" + email + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.msg == "Ok") {
+                        $("#maila_form").css("display", "none");
+                        hiddenContent1.delay(2000).slideUp(2000);
+                    }
+                    if (msg.msg == "NOk") {
+
+                    }
+                }
+            });
+
+            var email_bool = false;
+
+            if (comp_name == "" && name_lastname == "") {
+                $('#err1').fadeIn(1000);
+                $('#err2').fadeIn(1000);
+                $('#err1').fadeOut(1000);
+                $('#err2').fadeOut(1000);
+            }
+            if (emaila != "" && email == false || emaila == "") {
+                $('#err3').fadeIn(1000);
+                $('#err3').fadeOut(1000);
+            }
+
+            if (message == "") {
+                $('#err4').fadeIn(1000);
+                $('#err4').fadeOut(1000);
+            }
+        });
+
+        function validate_email() {
+
+            var reg = /^([A-Za-z0-9_\-\.])+\@@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var address = document.forms["form_mail"]["e_mail"].value;
+            if (reg.test(address) == false) {
+                email = false;
+            }
+            else {
+                email = true;
+            }
+        }
+        function fg() {
+        }
+    </script>
+</body>
+</html>
