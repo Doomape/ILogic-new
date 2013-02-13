@@ -12,7 +12,7 @@
 
     .ui-dialog.ui-widget-content {
         background: #007acc;
-        z-index: 0;
+        z-index: 1;
     }
 
     .ui-corner-all {
@@ -96,7 +96,7 @@
     <div id="consoleSpace" style="float: left; width: 600px; height: 100%">
         <div id="console" title="Create Album" style="overflow: hidden; min-height: 173px !important"></div>
     </div>
-    <div id="logoImages" style="float: left; width: 424px;">
+    <div id="logoImages" style="float: left; width: 424px;overflow-y:auto;overflow-x:hidden;">
         <table style="margin-top:50px;width:420px;">
             <tr>
                 <td id="idDiv" style="width:200px;height:150px">
@@ -173,8 +173,9 @@
 
 
     $(document).ready(function () {
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(document).height() - 230); 
         $("#aspNet").css("height", height);
+        $("#logoImages").css("height", height);
         $('#bottom-row').css('background', 'rgb(30,30,30)');
         $('#top-row').css('background', 'rgb(30,30,30)');
         document.body.style.background = "#282828";
