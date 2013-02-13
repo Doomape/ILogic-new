@@ -16,7 +16,7 @@ namespace Ilogic.Controllers
         // GET: /Site/
        
         
-        public ActionResult Index()
+        public ActionResult Electronics()
         {
             return View();
         }
