@@ -96,33 +96,63 @@
     <div id="consoleSpace" style="float: left; width: 600px; height: 100%">
         <div id="console" title="Create Album" style="overflow: hidden; min-height: 173px !important"></div>
     </div>
-    <div id="logoImages" style="float: left; width: 424px">
-        <table>
+    <div id="logoImages" style="float: left; width: 424px;">
+        <table style="margin-top:50px;width:420px;">
             <tr>
                 <td id="idDiv" style="width:200px;height:150px">
                     <div class="view view-img">
-                        <img src="/Content/images/sqlserver2.png" />
-                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                        <img style="margin:auto" src="/Content/images/sqlserver2.png" />
+                         <div class="mask">
+                            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         </div>
                     </div>
                 </td>
                 <td style="width:200px;height:150px">
-                    <img src="/Content/images/accessLogo.png" />
-                    <div id="" style="margin-left: -120px; margin-top: 7px; background-color: white; width: 150px; height: 150px; opacity: 0.3; color: black; display: none;">
-                        <p>ON MOUSEEEEEEEEEE</p>
+                     <div class="view view-img">
+                        <img style="margin:auto;margin-left:6px" src="/Content/images/accessLogo.png" />
+                        <div class="mask">
+                         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                          </div>
                     </div>
                 </td>
-                </tr>
+            </tr>
             <tr>
                   <td style="width:200px;height:150px">
-                    <img src="/Content/images/oracle.jpg" />
-                    <div id="" style="margin-left: -120px; margin-top: 7px; background-color: white; width: 150px; height: 150px; opacity: 0.3; color: black; display: none;">
-                        <p>ON MOUSEEEEEEEEEE</p>
+                       <div class="view view-img">
+                        <img style="margin:auto;margin-top: 30px;" src="/Content/images/oracle.jpg" />
+                          <div class="mask">
+                             <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         
+                        </div>
                     </div>
                 </td>
                 <td style="width:200px;height:150px">
-                    <img src="/Content/images/jquery.png" />
-                    <div id="" style="margin-left: -120px; margin-top: 7px; background-color: white; width: 150px; height: 150px; opacity: 0.3; color: black; display: none;">
-                        <p>ON MOUSEEEEEEEEEE</p>
+                     <div class="view view-img">
+                     <img style="margin:auto;margin-top: 30px;" src="/Content/images/jquery.png" />
+                        <div class="mask">
+                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                 <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                     <img style="margin:auto" src="/Content/images/html5.png" />
+                        <div class="mask">
+                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         
+                        </div>
+                    </div>
+                </td>
+                <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                     <img style="margin:auto" src="/Content/images/css3.png" />
+                        <div class="mask">
+                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                         
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -173,7 +203,8 @@
               //        $(this).dialog("close");
               //    }
               //}
-          });
+        });
+       
           $(".ui-dialog-titlebar").prepend("<div class='visual_logo'></div>");
           $(".ui-dialog-titlebar").prepend("<div class='visual_buttons'>" +
             "<div class='buttons' onclick='debug();' style='background:url(/Content/images/debug.png) no-repeat'></div>" +
@@ -190,8 +221,8 @@
 
           var target = $("#aspNet");
           $("#console").dialog("widget").position({
-              my: 'left middle',
-              at: 'left middle',
+              my: 'left+30 top+100',
+              at: 'left top',
               of: target
           });
 
@@ -210,7 +241,5 @@
               }
           });
       });
-
-
 
 </script>
