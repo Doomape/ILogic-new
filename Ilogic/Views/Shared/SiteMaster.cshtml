@@ -217,7 +217,7 @@
             validate_email();
             $.ajax({
                 type: "POST",
-                url: "SendForm",
+                url: "Site/SendForm",
                 data: "{'company': '" + comp_name + "','name_lastname': '" + name_lastname + "','phone': '" + phone + "','email': '" + emaila + "','message': '" + message + "','boolEmail': '" + email + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
