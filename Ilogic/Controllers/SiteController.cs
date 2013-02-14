@@ -36,7 +36,7 @@ namespace Ilogic.Controllers
         public static void SendMail(string subject, string body)
         {
 
-            var fromAddress = new MailAddress("ilogicmk@gmail.com", "Koki");
+            var fromAddress = new MailAddress("ilogicmk@gmail.com", "iLogic");
             string fromPassword = "trotinet";
 
             try

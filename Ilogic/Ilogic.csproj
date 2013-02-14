@@ -146,9 +146,11 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\html5.png" />
+    <Content Include="Content\images\joomla.png" />
     <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\phpLogo.png" />
+    <Content Include="Content\images\phpmyadmin.png" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\projects.png" />
     <Content Include="Content\images\send-button-md.png" />
@@ -158,6 +160,7 @@
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\visual_icon.png" />
     <Content Include="Content\images\vusial_white.png" />
+    <Content Include="Content\images\wordpress.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -243,11 +246,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\SiteMaster.cshtml" />
-    <Content Include="Views\Site\Index.cshtml" />
     <Content Include="Views\Site\Index_aspNet.cshtml" />
     <Content Include="Views\Site\Index_php.cshtml" />
     <Content Include="Views\Site\PartialConsoleWindow.cshtml" />
     <Content Include="Views\Site\Products.cshtml" />
+    <Content Include="Views\Site\Electronics.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
