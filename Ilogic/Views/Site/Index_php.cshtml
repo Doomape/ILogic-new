@@ -131,8 +131,10 @@
                      <div class="view view-img">
                      <img style="margin:auto;margin-top: 30px;" src="/Content/images/jquery.png" />
                         <div class="mask">
-                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                         
+                              <ol>
+                                  <li><p>Has strong logic and workflow and is easily extensible</p></li>
+                                  <li><p>The core file’s packed size is small</p></li>
+                              </ol>
                         </div>
                     </div>
                 </td>
@@ -142,8 +144,11 @@
                      <div class="view view-img">
                      <img style="margin:auto" src="/Content/images/html5.png" />
                         <div class="mask">
-                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                         
+                               <ol>
+                                  <li><p>Video and Audio Support</p></li>
+                                  <li><p>More Intelligent Storage</p></li>
+                                  <li><p>Across-Browser Support</p></li>  
+                               </ol>
                         </div>
                     </div>
                 </td>
@@ -151,8 +156,11 @@
                      <div class="view view-img">
                      <img style="margin:auto" src="/Content/images/css3.png" />
                         <div class="mask">
-                              <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                         
+                             <ol>
+                                 <li><p>Device-responsive pages</p></li>
+                                 <li><p>Easier to maintain</p></li>
+                                 <li><p>Cleaner code</p></li>
+                             </ol>
                         </div>
                     </div>
                 </td>
@@ -197,7 +205,7 @@
             open: function (event, ui) {
                 //Load the CreateAlbumPartial action which will return 
                 // the partial view _CreateAlbumPartial
-                $(this).load("@Url.Action("PartialConsoleWindow")");
+                $(this).load("@Url.Action("PartialConsoleWindow", "Site")");
               },
               //buttons: {
               //    "Close": function () {
