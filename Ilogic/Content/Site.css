@@ -74,7 +74,7 @@ table {
   overflow:hidden;
  } 
  * html div#content{
-  height:100%;
+  height:5%;
   overflow:auto;
  }
 
@@ -118,7 +118,7 @@ html, body { height: 100%; /*overflow-y: auto;*/ background-color: rgba(128, 128
 }
 #open_mail_form
 {
-    height:400px;background:rgb(0, 122, 204);position:absolute;bottom:130px;width:400px;display:none;margin-left: 624px;
+    height:400px;background:rgb(0, 122, 204);position:absolute;bottom:130px;width:400px;display:none;margin-left: 624px;opacity:0.9;
 }
 /*~Master*/
 
