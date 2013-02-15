@@ -33,7 +33,7 @@
                  <img src="/Content/images/phpLogo.png" />
             </div>
         </div>
-        <div id="content-row">
+        <div id="content" style="box-shadow: 1px 1px 10px gray;">
             @RenderBody()
         </div>
         <div id="bottom-row">
@@ -109,11 +109,6 @@
 
 
     <script type="text/javascript">
-
-        var con = document.getElementById("content-row").offsetHeight;
-        var top = document.getElementById("top-row").offsetHeight;
-        var body = document.body.offsetHeight;
-        if ((con + top) < body) { document.getElementById("bottom-row").style.position = "fixed"; }
 
         $(document).ready(
 		function meni() {

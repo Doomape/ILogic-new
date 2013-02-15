@@ -44,19 +44,51 @@ table {
 /*~reset css*/
 
 
+  body{
+  margin:0;
+  padding:100px 0 50px 0;
+ }
+ div#header{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100px;
+ }
+ div#footer{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:50px;
+ }
+ @media screen{
+  body>div#header{
+   position:fixed;
+  }
+  body>div#footer{
+   position:fixed;
+  }
+ }
+ * html body{
+  overflow:hidden;
+ } 
+ * html div#content{
+  height:100%;
+  overflow:auto;
+ }
+
 
 /*Master*/
 #top-row {background:white;position:fixed;z-index:100;width: 1024px;height:100px;box-shadow: 1px 1px 10px gray;top:0;border-bottom: 1px solid gray;} 
 
-#content-row {padding-top:1px;margin-top:0px;background:#eee;height: 100%;} 
+/*#content-row {padding-top:1px;background:#eee;height: 100%;margin: 100px 0 0 0;background-color: white;box-shadow: 1px 1px 10px gray;}*/ 
 
 #bottom-row {color:#ddd;background:white;width: 1024px;position:fixed;bottom:0px;border-top: 2px solid gray;box-shadow: 2px 0px 10px gray;}
-
-#content-row {margin: 100px 0 0 0;background-color: white;box-shadow: 1px 1px 10px gray;} 
  
-html, body { height: 100%; overflow-y: auto; background-color: rgba(128, 128, 128, 0.07);}
+html, body { height: 100%; /*overflow-y: auto;*/ background-color: rgba(128, 128, 128, 0.07);}
 
-#wrapper {width: 1024px;margin: auto;}
+#wrapper {width: 1024px;margin: auto;background-color: rgba(128, 128, 128, 0.07);}
 
 #bottom-row, .push { height: 130px; } 
 
