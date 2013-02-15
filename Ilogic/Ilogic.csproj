@@ -146,6 +146,7 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\html5.png" />
+    <Content Include="Content\images\in_construction.png" />
     <Content Include="Content\images\joomla.png" />
     <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\pause.png" />

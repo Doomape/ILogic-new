@@ -2,9 +2,30 @@
     ViewBag.Title = "Electronics";
     Layout = "~/Views/Shared/SiteMaster.cshtml";
 }
-
-<div style="width: 1024px;height: 450px;">
-    <h2>kkkkkkkkkkk
-    </h2>
-
+<div id="electronics" style="width:100%">
+    <div class="icons" style="width:200px;float:left"></div>
+    <div class="middle" style="width:624px;float:left">
+        <div style="margin: auto;padding: 0;width: 420px;">
+        <img style="margin:auto;" src="~/Content/images/in_construction.png" />
+       </div>
+    </div>
+    <div class="icons" style="width:200px;float:left"></div>
 </div>
+
+
+<script type="text/javascript">
+
+
+    $(window).resize(function () {
+        var height = parseInt($(document).height() - 230);
+        $("#electronics").css("height", height);
+        $(".icons").css("height", height);
+        $(".middle").css("height", height);
+    });
+    $(document).ready(function () {
+        var height = parseInt($(document).height() - 230);
+        $("#electronics").css("height", height);
+        $(".icons").css("height", height);
+        $(".middle").css("height", height);
+    });
+</script>
