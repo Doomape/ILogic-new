@@ -148,7 +148,9 @@
     <Content Include="Content\images\html5.png" />
     <Content Include="Content\images\in_construction.png" />
     <Content Include="Content\images\joomla.png" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\MicrosoftSQL_Server.png" />
+    <Content Include="Content\images\navbuttons.png" />
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\phpLogo.png" />
     <Content Include="Content\images\phpmyadmin.png" />
@@ -157,6 +159,8 @@
     <Content Include="Content\images\send-button-md.png" />
     <Content Include="Content\images\sqlserver2.png" />
     <Content Include="Content\images\stop.png" />
+    <Content Include="Content\images\sumo.png" />
+    <Content Include="Content\images\Sumo_Robot%281%29.JPG" />
     <Content Include="Content\images\twitter_logo.svg" />
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\visual_icon.png" />
@@ -224,6 +228,7 @@
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-slider.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
