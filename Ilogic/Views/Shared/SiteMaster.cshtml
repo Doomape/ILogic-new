@@ -17,14 +17,22 @@
         #image_button:hover {
             box-shadow:1px 1px 10px gray;
         }
+        #logo {
+            background-image:url('/Content/images/logo1.png');
+            background-repeat:no-repeat;
+            background-position: 0px 20px;
+            background-size:108px 227px;
+        }
+        #logo:hover {
+            background-position: 0px -128px;
+        }
     </style>
 </head>
 
 <body>
     <div id="wrapper">
         <div id="top-row">
-            <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
-                <img src="/Content/images/logo.png" />
+            <div id="logo" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
             </div>
             <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 302px; height: 100px; border-right: 1px solid black; text-align: center;">
                 <div style="margin:auto;width: 170px;"><img src="/Content/images/171545_VS_Purp526_rgbtran.png" /></div>
