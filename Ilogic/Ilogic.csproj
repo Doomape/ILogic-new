@@ -146,6 +146,7 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\html5.png" />
+    <Content Include="Content\images\invalid.png" />
     <Content Include="Content\images\in_construction.png" />
     <Content Include="Content\images\joomla.png" />
     <Content Include="Content\images\logo.png" />
@@ -156,12 +157,14 @@
     <Content Include="Content\images\phpmyadmin.png" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\projects.png" />
+    <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\send-button-md.png" />
     <Content Include="Content\images\sqlserver2.png" />
     <Content Include="Content\images\stop.png" />
     <Content Include="Content\images\sumo.png" />
     <Content Include="Content\images\Sumo_Robot%281%29.JPG" />
     <Content Include="Content\images\twitter_logo.svg" />
+    <Content Include="Content\images\valid.png" />
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\visual_icon.png" />
     <Content Include="Content\images\vusial_white.png" />

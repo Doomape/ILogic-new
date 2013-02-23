@@ -79,38 +79,38 @@
                 </div>
             </div>
             <div id="open_mail_form">
-                    <div id="maila_form" style="margin: auto;margin: auto;width: 380px;height: 379px;background-color: rgb(42, 63, 77);margin-top: 10px;box-shadow: 1px 1px 60px gray">
-                       <div style="float:left;margin-top: 20px;position: absolute;margin-left: 50px;color: white;">
-                        <form id="form_mail" style="float:left;width: 276px;">
-                        <div>
-                            <h4 style="margin: 0">Company</h4>
-                            <input  style="float:left;width: 260px;border-radius: 5px;"  type="text" name="company_name" value=""/>
-                            <p id="err1" style="float:left;display: inline; color: Red;display:none">*</p>
-                        </div>
-                        <div>
-                            <h4 style="margin: 0">Name and Last name</h4>
-                            <input style="float:left;width: 260px;border-radius: 5px;" type="text" name="name_lastname" value=""/>
-                            <p id="err2" style="float:left;display: inline; color: Red;display:none">*</p>
-                        </div>
-                        <div>
-                            <h4 style="margin: 0">Phone number</h4>
-                            <input style="float:left;width: 260px;border-radius: 5px;" type="text" name="phone_number" value=""/>
-                            <p style="float:left;display: inline; color: Red; display:none">*</p>
-                        </div>
-                        <div>
-                            <h4 style="margin: 0">E-mail</h4>
-                            <input style="float:left; width: 260px;border-radius: 5px;"  type="text" name="e_mail" value=""/>
-                            <p id="err3" style="float:left;display: inline; color: Red;display:none ">*</p>
-                        </div>
-                        <div>
-                            <h4 style="margin: 0">Message</h4>
-                            <textarea name="message" style="float:left;resize:none;width: 260px;border-radius: 5px; height: 110px;"></textarea>
-                            <p id="err4" style="float:left;display: inline; color: Red;display:none">*</p>
-                        </div>
-                        <div id="image_button" style="margin-right: 10px;cursor:pointer; background-image:url('/Content/images/send-button-md.png');width:90px;height:40px;margin-top:5px;float: right;">
-                          </div>
-                       </form>
-                      </div>
+                <div style="background:rgb(42, 63, 77);width: 380px; margin: auto; height: 377px; margin-top: 11px; box-shadow: 1px 1px 60px gray; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
+
+                <div class="contact_form";>
+                    <ul>
+                        <li>
+                            <h2>Contact Us</h2>
+                        </li>
+                        <li>
+                            <label for="name">Name or Company:</label>
+                            <input id="ime" type="text" class="contact_input" placeholder="John Doe" required />
+                        </li>
+                   
+                        <li>
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" class="contact_input" name="email" placeholder="john_doe@example.com" required />
+                            <span class="form_hint">Proper format "name@something.com"</span>
+                        </li>
+                        <li>
+                            <label for="number">Number:</label>
+                            <input id="broj" type="number" class="contact_input" name="website" placeholder="number" />
+
+                        </li>
+                        <li>
+                            <label for="message">Message:</label>
+                            <textarea id="poraka" class="contact_input" name="message" cols="40" rows="6" required></textarea>
+                        </li>
+                        <li>
+                            <button class="submit" type="button">Send</button>
+                        </li>
+                    </ul>
+
+                </div>
                     </div>
             </div>
             <div id="mail_form"></div>
@@ -211,65 +211,63 @@
         //       // $('#open_twitter_form').css('display', "none");
         //    });
         //}
-        var email = false;
-        $('#image_button').click(function () {
-            var comp_name = document.forms["form_mail"]["company_name"].value;
-            var name_lastname = document.forms["form_mail"]["name_lastname"].value;
-            var phone = document.forms["form_mail"]["phone_number"].value;
-            var emaila = document.forms["form_mail"]["e_mail"].value;
-            var message = document.forms["form_mail"]["message"].value;
 
 
-            validate_email();
-            $.ajax({
-                type: "POST",
-                url: "Site/SendForm",
-                data: "{'company': '" + comp_name + "','name_lastname': '" + name_lastname + "','phone': '" + phone + "','email': '" + emaila + "','message': '" + message + "','boolEmail': '" + email + "'}",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (msg) {
-                    if (msg.msg == "Ok") {
-                        $("#maila_form").css("display", "none");
-                        hiddenContent1.delay(2000).slideUp(2000);
-                    }
-                    if (msg.msg == "NOk") {
+        function isNumber(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
 
-                    }
-                }
-            });
-
-            var email_bool = false;
-
-            if (comp_name == "" && name_lastname == "") {
-                $('#err1').fadeIn(1000);
-                $('#err2').fadeIn(1000);
-                $('#err1').fadeOut(1000);
-                $('#err2').fadeOut(1000);
+        $("input[id='broj']").keyup(function () {
+            debugger;
+            if ($("input[id='broj']") != "" && isNumber($("input[id='broj']").val())) {
+                document.getElementById("broj").required = true;
             }
-            if (emaila != "" && email == false || emaila == "") {
-                $('#err3').fadeIn(1000);
-                $('#err3').fadeOut(1000);
-            }
-
-            if (message == "") {
-                $('#err4').fadeIn(1000);
-                $('#err4').fadeOut(1000);
-            }
+            else
+                document.getElementById("broj").required = false;
         });
 
-        function validate_email() {
+        $('.submit').click(function () {
 
-            var reg = /^([A-Za-z0-9_\-\.])+\@@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-            var address = document.forms["form_mail"]["e_mail"].value;
-            if (reg.test(address) == false) {
-                email = false;
+            var name = $('#ime').val();
+            var email = $('#email').val();
+            var number = $('#broj').val();
+            var message = $('#poraka').val();
+            var required_inputs = new Array();
+
+
+            for (var i = 0; i < $(".contact_input").length; i++) {
+                if ($($(".contact_input")[i]).attr('required')) {
+                    required_inputs.push($($(".contact_input")[i]));
+                }
+           
             }
-            else {
-                email = true;
+            var pom = false;
+
+            for (var j = 0; j < required_inputs.length; j++) {
+                if (required_inputs[j].val() == "")
+                    pom = true;
             }
-        }
-        function fg() {
-        }
+            if (pom == false) {
+                $.ajax({
+                    url: "Site/Sendform",
+                    type: "GET",
+                    data: {
+
+                        ime: name,
+                        broj: number,
+                        email: email,
+                        poraka: message,
+                    },
+                    success: function (result) {
+                        alert(result.msg);
+                    }
+                });
+            } else {
+                alert(" Внесете ги сите задолжителни полиња ")
+            }
+
+        });
+
     </script>
 </body>
 </html>

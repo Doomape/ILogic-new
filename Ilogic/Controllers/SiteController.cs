@@ -56,7 +56,7 @@ namespace Ilogic.Controllers
                 md.IsBodyHtml = false;
                 md.Subject = subject;
                 System.Collections.Specialized.ListDictionary replacements = new System.Collections.Specialized.ListDictionary();
-                MailMessage msg = md.CreateMailMessage("ilogicmk@gmail.com", replacements, body, new System.Web.UI.Control());
+                MailMessage msg = md.CreateMailMessage("tomi_krama@hotmail.com", replacements, body, new System.Web.UI.Control());
                 smtp.Send(msg);
             }
             catch
@@ -70,24 +70,21 @@ namespace Ilogic.Controllers
             return View("PartialConsoleWindow");
         }
 
-        [HttpPost]
-        public JsonResult SendForm(string company, string name_lastname, string phone, string email, string message, bool boolEmail)
+       
+        public JsonResult Sendform( string ime, string broj, string email, string poraka)
         {
             Dictionary<string, string> res = new Dictionary<string, string>();
-            // string firmaC = firma+ime+tel+email+poraka;
-            if ((company != "" && name_lastname != "" || company == "" && name_lastname != "" || company != "" && name_lastname == "") && (phone != "" || phone == "") && (email != "") && (message != "") && (boolEmail == true))
+            if (( ime != "") && (email != "") && (poraka != ""))
             {
-                string porakadoBelina = "Фирма: " + company + "\n" + "Име и презиме: " + name_lastname + "\n" + "Телефонски број: " + phone + "\n" + "Електронска пошта: " + email + "\n" + "Порака:" + "\n" + message;
-                SendMail("Нова порака", porakadoBelina);
-                res.Add("msg", "Ok");
-                return Json(res, JsonRequestBehavior.AllowGet);
+                string porakadoiLogic = "Name or Company: " + ime + "\n" + "Email: " + email + "\n" + "Number: " + broj + "\n" + "Message:" + "\n" + poraka;
+                SendMail("Нова порака", porakadoiLogic);
+                res.Add("msg", " Успешно испратена порака ");
             }
             else
             {
-                res.Add("msg", "NOk");
-                return Json(res, JsonRequestBehavior.AllowGet);
+                res.Add("msg", " Неуспешно испратена порака ");
             }
-
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
 
     }
