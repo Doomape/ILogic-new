@@ -80,7 +80,8 @@
             </div>
             <div id="open_mail_form">
                 <div style="background:rgb(42, 63, 77);width: 380px; margin: auto; height: 377px; margin-top: 11px; box-shadow: 1px 1px 60px gray; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-
+                    <p id="succesed_msg" style =" display: none; position: absolute; text-align:center;
+margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your message has been sent</p>
                 <div class="contact_form";>
                     <ul>
                         <li>
@@ -164,6 +165,7 @@
         var hiddenContent1 = $('#open_mail_form');
         $("#mail_form").click(function (event) {
             $("#maila_form").css("display", "block");
+            
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
 
@@ -173,6 +175,7 @@
                 // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
+                   
                 }
 
             } else {
@@ -180,6 +183,8 @@
                 // Show it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideDown(2000);
+                    $("#succesed_msg").css("display", "none");
+                    $(".contact_form").fadeIn();
                 }
 
             }
@@ -228,6 +233,8 @@
 
         $('.submit').click(function () {
 
+           
+
             var name = $('#ime').val();
             var email = $('#email').val();
             var number = $('#broj').val();
@@ -259,13 +266,18 @@
                         poraka: message,
                     },
                     success: function (result) {
-                        alert(result.msg);
+                        //alert(result.msg);
+                        $(".contact_form").fadeOut(1000);
+                      
+                        setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 2000);
+                        setTimeout(function () { hiddenContent1.slideUp(3010); }, 4000);
                     }
                 });
             } else {
                 alert(" Внесете ги сите задолжителни полиња ")
             }
 
+            
         });
 
     </script>
