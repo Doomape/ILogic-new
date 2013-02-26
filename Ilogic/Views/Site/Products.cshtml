@@ -125,7 +125,7 @@
     </div>
     <div class="div2">
         <div id="mcts1" style="float: left;">
-            <div onclick="showImage()" class="mouse_hover" >
+            <div onclick="showThumb('sumo')" class="mouse_hover" >
                 <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
            <div onclick="showImage()" class="mouse_hover" >
                 <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
@@ -146,27 +146,68 @@
         </div>
     </div>
 </div>
-<div id="products" style="background-color: white; width: 100%"></div>
+<div id="products" style="background-color: white; width: 100%">
+    <div id="thumbs" style=" width:115px; float:left;  ">
+         </div>
+    
+    <div id="img" style=" width:600px; float:left;  ">
+
+    </div>
+     <div id="text" style=" width:300px; float:left; ">
+
+    </div>
+</div>
 
 <script type="text/javascript">
 
     $(window).resize(function () {
         var height = parseInt($(document).height() - 230);
         $("#products").css("height", height);
+        $("#thumbs").css("height", height);
+        $("#img").css("height", height);
+        $("#text").css("height", height);
     });
     $(document).ready(function () {
         $("#top-row").empty();
         var height = parseInt($(document).height() - 230);
         $("#products").css("height", height);
+        $("#thumbs").css("height", height);
+        $("#img").css("height", height);
+        $("#text").css("height", height);
         $("html").css("height", height);
         //$("#logoImages").css("height", height);
         $('#bottom-row').css('background', 'white');
         $('#top-row').css('background', '#979dd7');
         document.body.style.background = "white";
     });
-    function showImage() {
-        $("#products").empty();
-        $("#products").append("<img src='/Content/images/Sumo_Robot(1).JPG'/>");
+   
+    function showThumb(e) {
+        if (e == 'sumo')
+        {
+            $("#thumbs").empty();
+            $("#thumbs").append("<img id='sumo_1' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(1).png'/>");
+            $("#thumbs").append("<img id='sumo_2' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(2).png'/>");
+            $("#thumbs").append("<img id='sumo_3' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(3).png'/>");
+            $("#thumbs").append("<img id='sumo_4' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(4).png'/>");
+
+        }
     }
+
+    function showImageandText(e) {
+        if(e.id=='sumo_1'){
+            $("#img").empty();
+            $("#text").empty();
+            $("#img").append("<img src='/Content/images/robot_(1).png'/>");
+            $("#text").append("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing soft</p>");
+        }
+        if (e.id == 'sumo_2') {
+            $("#img").empty();
+            $("#text").empty();
+            $("#img").append("<img src='/Content/images/robot_(2).png'/>");
+            $("#text").append("<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>");
+
+        }
+    }
+
 </script>
 
