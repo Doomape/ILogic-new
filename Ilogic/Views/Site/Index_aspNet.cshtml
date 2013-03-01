@@ -191,14 +191,14 @@
 
 
     $(window).resize(function () {
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(window).height() - 210);
         $("#aspNet").css("height", height);
     });
 
 
 
     $(document).ready(function () {
-        var height = parseInt($(document).height() - 230); 
+        var height = parseInt($(window).height() - 210);
         $("#aspNet").css("height", height);
         $("html").css("height", height);
         //$("#logoImages").css("height", height);

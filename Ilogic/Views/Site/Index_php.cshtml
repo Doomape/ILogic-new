@@ -179,14 +179,14 @@
 
 
     $(window).resize(function () {
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(window).height() - 210);
         $("#Php").css("height", height);
     });
 
 
 
     $(document).ready(function () {
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(window).height() - 210);
         $("#Php").css("height", height);
         $("html").css("height", height);
         $('#bottom-row').css('background', 'rgb(19,31,51)');

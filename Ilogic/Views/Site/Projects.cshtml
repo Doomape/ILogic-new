@@ -189,7 +189,7 @@
 <script type="text/javascript">
 
     $(window).resize(function () {
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("#thumbs").css("height", height);
         $("#img").css("height", height);
@@ -197,7 +197,7 @@
     });
     $(document).ready(function () {
         $("#top-row").empty();
-        var height = parseInt($(document).height() - 230);
+        var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("#thumbs").css("height", height);
         $("#img").css("height", height);

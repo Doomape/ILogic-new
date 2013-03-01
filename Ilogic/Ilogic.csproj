@@ -135,7 +135,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Products.mdb" />
     <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
     <Content Include="Content\images\about_us.png" />
     <Content Include="Content\images\contact_us.png" />
@@ -158,6 +157,7 @@
     <Content Include="Content\images\phpmyadmin.png" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\projects.png" />
+    <Content Include="Content\images\projects_logo\feydom.png" />
     <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\robot.png" />
     <Content Include="Content\images\robot1.png" />
@@ -181,6 +181,7 @@
     <Content Include="Content\images\visual_icon.png" />
     <Content Include="Content\images\vusial_white.png" />
     <Content Include="Content\images\wordpress.png" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -246,6 +247,7 @@
     <Content Include="Scripts\jquery-slider.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -256,6 +258,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\widget.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -274,9 +277,10 @@
     <Content Include="Views\Site\Electronics.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Site\About_Us.cshtml" />
+    <Content Include="Views\Site\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
