@@ -14,7 +14,11 @@ namespace Ilogic.Controllers
 
         //
         // GET: /Site/
-       
+
+        public ActionResult Projects()
+        {
+            return View();
+        }
         
         public ActionResult Electronics()
         {

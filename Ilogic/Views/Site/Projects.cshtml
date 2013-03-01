@@ -1,0 +1,224 @@
+﻿@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/SiteMaster.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery-slider.js")" type="text/javascript"></script>
+<style>
+    #mcts1 {
+        width: 900px;
+        height: 100px;
+        margin: 0 auto;
+        margin-top: -3px;
+        /* padding:36px 20px;*/
+        /*  border:1px solid #dedcb4;
+    background:#f2f1ea url(loading.gif) no-repeat 50% 50%;
+    box-shadow: 0px 1px 11px #CCCCCC;*/
+        /* Do not alter the below settings */
+        white-space: nowrap;
+        position: relative;
+        font-size: 0px;
+        background-color: transparent;
+    }
+
+        #mcts1 > * {
+            display: none;
+        }
+
+        /*-------- div.item is each thumbnail's wrapper created by the javascript ------*/
+        #mcts1 div.item {
+            padding: 0px;
+            margin-right: 5px; /* this specifies the distance between each thumbnail */
+            background-color: transparent;
+            /*  border:1px solid #ddd;*/
+            text-align: center;
+            position: relative;
+            margin-right: -10px;
+            margin-left: 30px;
+        }
+
+        #mcts1 img {
+            border: none;
+        }
+        /*---------built-in navigation buttons-------*/
+        #mcts1 .navPrev, #mcts1 .navNext {
+            width: 16px;
+            height: 22px;
+            position: absolute;
+            background: url(/Content/images/navButtons.png);
+            display: inline-block;
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        #mcts1 .navPrev {
+            background-position: 0 -22px;
+            top: 33px;
+            left: 3px;
+        }
+
+            #mcts1 .navPrev:hover {
+                background-position: 0 -44px;
+            }
+
+        #mcts1 .navPrevDisabled, #mcts1 .navPrevDisabled:hover {
+            background-position: 0 0;
+            cursor: default;
+        }
+
+        #mcts1 .navNext {
+            background-position: -16px -22px;
+            top: 33px;
+            right: 3px;
+        }
+
+            #mcts1 .navNext:hover {
+                background-position: -16px -44px;
+            }
+
+        #mcts1 .navNextDisabled, #mcts1 .navNextDisabled:hover {
+            background-position: -16px 0;
+            cursor: default;
+        }
+    /*
+#mcts1 .navPause, #mcts1 .navPlay {left:360px;top:0px;}
+#mcts1 .navPause {background-position:0 -66px;} 
+#mcts1 .navPause:hover {background-position:0 -88px;} 
+#mcts1 .navPlay {background-position:-16px -66px;} 
+#mcts1 .navPlay:hover {background-position:-16px -88px;} */
+    .navPrev, .navNext {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    /*---------built-in navigation bullets--------*/
+    /* Note: the navBullets won't be available when "scrollByEachThumb" was set to false in the Javascript.*/
+    #mcts1 .navBullets {
+        display: none;
+    }
+    /*--------- class1 that is for the slide with HTML content------------*/
+    .class1 {
+        width: 130px;
+        height: 15px;
+        background: #444;
+        text-align: center;
+        color: White;
+        font: normal 11px/14px Arial;
+        white-space: normal;
+    }
+
+        .class1 p {
+            margin-top: 0;
+            margin-bottom: 0px;
+            padding-top: 0px;
+            font: bold 12px Verdana;
+            color: #007acc;
+        }
+    /* --------- Others ------- */
+    #mcts1 {
+        transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+    }
+</style>
+<div id="top-row">
+    <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
+        <img src="/Content/images/logo.png" />
+    </div>
+    <div class="div2">
+        <div id="mcts1" style="float: left;">
+            <div onclick="showThumb('sumo')" class="mouse_hover">
+                <img style="margin-top:12px" src="/Content/images/projects_logo/feydom.png" />
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+            <div onclick="showImage()" class="mouse_hover">
+                <img src="/Content/images/sumo.png" /><div class="class1">
+                    <p>Koki</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="products" style="background-color: white; width: 100%">
+    <div id="thumbs" style="width: 115px; float: left;">
+    </div>
+
+    <div id="img" style="width: 600px; float: left;">
+    </div>
+    <div id="text" style="width: 300px; float: left;">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).resize(function () {
+        var height = parseInt($(document).height() - 230);
+        $("#products").css("height", height);
+        $("#thumbs").css("height", height);
+        $("#img").css("height", height);
+        $("#text").css("height", height);
+    });
+    $(document).ready(function () {
+        $("#top-row").empty();
+        var height = parseInt($(document).height() - 230);
+        $("#products").css("height", height);
+        $("#thumbs").css("height", height);
+        $("#img").css("height", height);
+        $("#text").css("height", height);
+        $("html").css("height", height);
+        //$("#logoImages").css("height", height);
+        $('#bottom-row').css('background', 'white');
+        $('#top-row').css('background', '#979dd7');
+        document.body.style.background = "white";
+    });
+
+    function showThumb(e) {
+        if (e == 'sumo') {
+            $("#thumbs").empty();
+            $("#thumbs").append("<img id='sumo_1' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(1).png'/>");
+            $("#thumbs").append("<img id='sumo_2' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(2).png'/>");
+            $("#thumbs").append("<img id='sumo_3' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(3).png'/>");
+            $("#thumbs").append("<img id='sumo_4' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(4).png'/>");
+
+        }
+    }
+
+</script>
+
