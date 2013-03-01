@@ -32,6 +32,10 @@ namespace Ilogic.Controllers
         {
             return View();
         }
+        public ActionResult About_Us()
+        {
+            return View();
+        }
 
         public static void SendMail(string subject, string body)
         {

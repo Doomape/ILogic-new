@@ -273,6 +273,7 @@
     <Content Include="Views\Site\Electronics.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Site\About_Us.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
