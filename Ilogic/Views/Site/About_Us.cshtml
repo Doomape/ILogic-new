@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "About_Us";
+    Layout = "~/Views/Shared/SiteMaster.cshtml";
+}
+<style >
+   #content {
+    /*width:1024px;*/ /* Sizing - any length */
+    position: relative;
+    bottom:110px;
+    margin-top: 110px;
+    /*box-shadow: 1px 1px 10px gray;*/
+    margin-left: 0px;
+    padding:0px 0 0px 0;
+}
+   </style>
+
+
+  <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+
+
+<div style="width:512px;height:483px;float:left;background-color:goldenrod"></div>
+
+
+<div id=about_us style="width:512px;float:left;/*background-color:lawngreen*/">
+    <div style="width:314px;height:389px; float:left;color:#395B75;background-color: #E5E3DF;border: #395B75 10px;border-bottom: #395B75 46px;border-style: solid;">
+            <div id="map" style="width: 314px;height: 389px;">
+            </div>
+            <input id="second_location" type="text" style="margin-top: 11px; width: 239px;" />
+            <input  id="button" type="button" onclick="calcRoute();" value="Внеси"/>
+            
+         </div> 
+           <div style="clear:both"></div>
+         <div style="float:right;width: 336px;margin-right: 10px;margin: 0; " id="directionsPanel">
+            </div>
+</div>
+
+<script type ="text/javascript">
+    
+    $(window).resize(function () {
+        var height = parseInt($(document).height());
+        $("#about_us").css("height", height);
+    });
+
+
+    $(document).ready(function () {
+        var height = parseInt($(document).height());
+        $("#about_us").css("height", height);
+    });
+    // Start Contact Location Google Maps
+
+    var marker;
+    var email = false;
+
+    $("#second_location").keypress(function (event) {
+        if (event.which == 13) {
+            event.preventDefault();
+            calcRoute();
+        }
+    });
+
+    function open_map() {
+
+        if ($('#map_postion').val() == "0") {
+            $('#map_holder').animate({ height: '500px' }, 600, function () {
+                $('#map_draggable').css('background-image', 'url(/Content/images_web/kaart_up.png)');
+            });
+
+            $('#map_postion').val("1");
+
+        }
+        else {
+            $('#map_holder').animate({ height: '40px' }, 600, function () {
+                $('#map_draggable').css('background-image', 'url(/Content/images_web/kaart_down.png)');
+            });
+            $('#map_postion').val("0");
+
+        }
+    }
+
+
+    function loadscroll() {
+
+        //load InitilizeMap
+        if (window.addEventListener) // W3C standard
+        {
+            window.addEventListener('load', InitializeMap, false); // NB **not** 'onload'
+        }
+        else if (window.attachEvent) // Microsoft
+        {
+            window.attachEvent('onload', InitializeMap);
+        }
+    }
+
+
+    function InitializeMap() {
+
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+
+        var latlng = new google.maps.LatLng(41.935595, 21.525618);
+
+        var myOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            navigationControl: true
+
+        };
+        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+        marker = new google.maps.Marker
+        (
+            {
+
+                position: new google.maps.LatLng(41.935595, 21.525618),
+                map: map,
+                title: 'Click me'
+
+            }
+        );
+
+        var infowindow = new google.maps.InfoWindow({
+            content: 'Location info: Belina'
+
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            // Calling the open method of the infoWindow 
+            infowindow.open(map, marker);
+        });
+
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+    }
+
+    function calcRoute() {
+
+
+        var start = document.getElementById('second_location').value;
+
+        var request = {
+            origin: start,
+            destination: "41.935595,21.525618",
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+            }
+        });
+    }
+    window.onload = loadscroll();
+
+    // End Contact Location Google Maps
+
+</script>

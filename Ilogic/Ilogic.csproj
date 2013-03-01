@@ -135,6 +135,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Products.mdb" />
     <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
     <Content Include="Content\images\about_us.png" />
     <Content Include="Content\images\contact_us.png" />
@@ -273,9 +274,9 @@
     <Content Include="Views\Site\Electronics.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\Site\About_Us.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
