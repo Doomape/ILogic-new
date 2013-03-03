@@ -135,7 +135,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Products.mdb" />
     <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
+    <Content Include="Content\images\2\razvojna_ploca.png" />
+    <Content Include="Content\images\2\thumbs\razvojna_ploca.png" />
+    <Content Include="Content\images\3\thumbs\Untitled-3.png" />
+    <Content Include="Content\images\3\thumbs\Untitled-1.png" />
+    <Content Include="Content\images\3\thumbs\Untitled-2.png" />
+    <Content Include="Content\images\3\Untitled-1.png" />
+    <Content Include="Content\images\3\Untitled-2.png" />
+    <Content Include="Content\images\3\Untitled-3.png" />
     <Content Include="Content\images\about_us.png" />
     <Content Include="Content\images\contact_us.png" />
     <Content Include="Content\images\css3.png" />
@@ -150,7 +159,6 @@
     <Content Include="Content\images\in_construction.png" />
     <Content Include="Content\images\joomla.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\MicrosoftSQL_Server.png" />
     <Content Include="Content\images\navbuttons.png" />
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\phpLogo.png" />
@@ -160,21 +168,16 @@
     <Content Include="Content\images\projects_logo\feydom.png" />
     <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\robot.png" />
-    <Content Include="Content\images\robot1.png" />
-    <Content Include="Content\images\robot2.png" />
-    <Content Include="Content\images\robot_%281%29.png" />
-    <Content Include="Content\images\robot_%282%29.png" />
-    <Content Include="Content\images\robot_%283%29.png" />
-    <Content Include="Content\images\robot_%284%29.png" />
-    <Content Include="Content\images\send-button-md.png" />
+    <Content Include="Content\images\1\robot_%281%29.png" />
+    <Content Include="Content\images\1\robot_%282%29.png" />
+    <Content Include="Content\images\1\robot_%283%29.png" />
+    <Content Include="Content\images\1\robot_%284%29.png" />
     <Content Include="Content\images\sqlserver2.png" />
     <Content Include="Content\images\stop.png" />
-    <Content Include="Content\images\sumo.png" />
-    <Content Include="Content\images\Sumo_Robot%281%29.JPG" />
-    <Content Include="Content\images\thumbs\thumb_robot_%281%29.png" />
-    <Content Include="Content\images\thumbs\thumb_robot_%282%29.png" />
-    <Content Include="Content\images\thumbs\thumb_robot_%283%29.png" />
-    <Content Include="Content\images\thumbs\thumb_robot_%284%29.png" />
+    <Content Include="Content\images\1\thumbs\thumb_robot_%281%29.png" />
+    <Content Include="Content\images\1\thumbs\thumb_robot_%282%29.png" />
+    <Content Include="Content\images\1\thumbs\thumb_robot_%283%29.png" />
+    <Content Include="Content\images\1\thumbs\thumb_robot_%284%29.png" />
     <Content Include="Content\images\twitter_logo.svg" />
     <Content Include="Content\images\valid.png" />
     <Content Include="Content\images\visual.bmp" />
@@ -280,7 +283,6 @@
     <Content Include="Views\Site\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

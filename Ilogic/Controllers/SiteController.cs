@@ -96,7 +96,7 @@ namespace Ilogic.Controllers
             }
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult getProducts(string id)
+        public JsonResult getProducts()
         {
             string allInfo = "";
             OleDbConnection conn1 = null;
@@ -106,7 +106,7 @@ namespace Ilogic.Controllers
             conn1.Open();
             OleDbDataReader dbReader1 = null;
             OleDbCommand cmd1 = conn1.CreateCommand();
-            string allProductInfo = "SELECT * from Products where Products.id=1;";
+            string allProductInfo = "SELECT * from Products;";
             cmd1.CommandText = allProductInfo;
             dbReader1 = cmd1.ExecuteReader();
             List<string> list = new List<string>();
@@ -117,10 +117,39 @@ namespace Ilogic.Controllers
                 allInfo = "";
             }
             dbReader1.Close();
+            list.Reverse();
             list.Insert(0, list.Count.ToString());
             conn1.Close();
 
          
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult changeProduct(string productName)
+        {
+            string allInfo = "";
+            OleDbConnection conn1 = null;
+            conn1 = new OleDbConnection(
+            "Provider=Microsoft.Jet.OLEDB.4.0; " +
+            "Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~") + ("App_Data\\Products.mdb"));
+            conn1.Open();
+            OleDbDataReader dbReader1 = null;
+            OleDbCommand cmd1 = conn1.CreateCommand();
+            string allProductInfo = "SELECT * from Products where Products.product_name='" + productName + "';";
+            cmd1.CommandText = allProductInfo;
+            dbReader1 = cmd1.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dbReader1.Read())
+            {
+                allInfo = "@" + (string)dbReader1.GetValue(1) + "@" + (string)dbReader1.GetValue(2) + "@" + (string)dbReader1.GetValue(3) + "@" + (string)dbReader1.GetValue(4) + "@" + (string)dbReader1.GetValue(5);
+                list.Add(allInfo);
+                allInfo = "";
+            }
+            dbReader1.Close();
+            list.Reverse();
+            list.Insert(0, list.Count.ToString());
+            conn1.Close();
+
+
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
