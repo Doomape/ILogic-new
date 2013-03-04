@@ -146,7 +146,7 @@
     window.onload = loadscroll();
 
     function resizeafterdirections() {
-        var height = parseInt($(window).height() - 210);
+        var height = parseInt($(window).height()-210);
         var direction_div_height = $("#directionsPanel").css("height").replace("px", "");
         var sum_of_heights = parseInt(direction_div_height-210) + height;
         $("#about_us").css("height", sum_of_heights);
