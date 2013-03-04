@@ -32,9 +32,8 @@
             /*  border:1px solid #ddd;*/
             text-align: center;
             position: relative;
-             margin-right: -10px;
+            margin-right: -10px;
             margin-left: 30px;
-          
         }
 
         #mcts1 img {
@@ -127,6 +126,7 @@
         -o-transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
     }
+
     .thumbStyle {
         line-height: 90px;
         text-align: center;
@@ -134,8 +134,8 @@
         margin-top: 10px;
         border: 1px solid gray;
         box-shadow: 1px 1px 10px gray;
-        width:90px;
-        height:90px;
+        width: 90px;
+        height: 90px;
     }
 </style>
 <div id="top-row">
@@ -147,13 +147,12 @@
         </div>
     </div>
 </div>
-<div id="products" style="background-color: white; width: 100%">
-    <div id="thumbs" style="width: 115px; float: left;margin-top: 40px;">
-        
+<div id="products" style="width: 100%">
+    <div id="thumbs" style="width: 115px; float: left; margin-top: 40px;">
     </div>
-    <div id="mainPicture" style="width: 600px; float: left;text-align: center;margin-top: 40px;">
+    <div id="mainPicture" style="width: 600px; float: left; text-align: center; margin-top: 40px;">
     </div>
-    <div id="productDescription" style="width: 300px; float: left;margin-top: 40px;">
+    <div id="productDescription" style="width: 300px; float: left; margin-top: 40px;">
     </div>
 </div>
 
@@ -176,15 +175,12 @@
         $("#text").css("height", height);
         $("html").css("height", height);
         //$("#logoImages").css("height", height);
-        $('#bottom-row').css('background', 'white');
-        $('#top-row').css('background', '#979dd7');
-        document.body.style.background = "white";
+        //  document.body.style.background = "white";
         $.ajax({
             url: "getProducts",
             type: "GET",
             data: {},
-            success: function (result)
-            {
+            success: function (result) {
                 //  debugger;
                 $("#mainPicture").empty();
                 $("#thumbs").empty();
@@ -195,7 +191,7 @@
                     var thumbItems = result[i].split('@@')[3].split("#").length;
                     var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
                     var description = result[i].split('@@')[5];
-                  
+
                     if (i == 1)//set the main load project 
                     {
                         $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 100px;line-height: 100px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
@@ -203,11 +199,11 @@
                             var thumbItem = result[i].split('@@')[3].split("#")[j];
                             $("#thumbs").append('<a href="javascript:void(0);"><div  class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                             $("#" + j + "").fadeIn((j + 1) * 1000);
-                          
+
                         }
                         $("#mainPicture").fadeIn(500);
                         $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
-                       
+
                         $("#productDescription").append('<p>' + description + '</p>');
 
                     }
@@ -224,7 +220,7 @@
         $.ajax({
             url: "changeProduct",
             type: "GET",
-            data: {productName:e},
+            data: { productName: e },
             success: function (result) {
                 for (var i = 1; i <= result[0]; i++) {
                     var productName = result[i].split('@@')[1];
@@ -233,17 +229,17 @@
                     var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
                     var description = result[i].split('@@')[5];
                     $("#thumbs").empty();
-                         for (var j = 0; j < thumbItems; j++) {
-                            var thumbItem = result[i].split('@@')[3].split("#")[j];
-                            $("#thumbs").append('<a href="javascript:void(0);"><div class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
-                            $("#" + j + "").fadeIn((j + 1) * 1000);
-                         }
-                         $("#mainPicture").empty();
-                         $("#productDescription").empty();
-                         $("#mainPicture").fadeIn(500);
-                         $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
-                        
-                        $("#productDescription").append('<p>' + description + '</p>');
+                    for (var j = 0; j < thumbItems; j++) {
+                        var thumbItem = result[i].split('@@')[3].split("#")[j];
+                        $("#thumbs").append('<a href="javascript:void(0);"><div class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
+                        $("#" + j + "").fadeIn((j + 1) * 1000);
+                    }
+                    $("#mainPicture").empty();
+                    $("#productDescription").empty();
+                    $("#mainPicture").fadeIn(500);
+                    $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
+
+                    $("#productDescription").append('<p>' + description + '</p>');
                 }
             }
         });
@@ -252,7 +248,7 @@
         $("#mainPicture").empty();
         $("#mainPicture").fadeIn(500);
         $("#mainPicture").append('<img style="" src=' + e + ' />');
-       
+
     }
 
 </script>
