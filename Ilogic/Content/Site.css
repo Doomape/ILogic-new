@@ -136,8 +136,9 @@ input[type=number]::-webkit-outer-spin-button {
 	position:relative;
 } 
 .contact_form li:first-child /*.contact_form li:last-child*/ {
-    font-size: 20px; 
-    margin-left: 231px;
+    font-size: 19px;
+    margin-left: 207px;
+    font-family: monospace;
 	/*border-bottom:1px solid #777;*/
 }
 

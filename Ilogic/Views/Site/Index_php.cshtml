@@ -98,7 +98,7 @@
 </style>
 <div id="Php" style="background-color: rgb(26,41,68); width: 100%">
         <div id="logoImages" style="float: left; width: 424px;">
-        <table style="margin-top:50px;width:420px;">
+        <table style="margin-top:16px;width:420px;">
             <tr>
                 <td style="width:200px;height:150px">
                     <div class="view view-img">
@@ -179,22 +179,24 @@
 
 
     $(window).resize(function () {
-        var height = parseInt($(window).height() - 210);
+        var height = parseInt($(window).height() -210);
         $("#Php").css("height", height);
+  
     });
 
 
 
     $(document).ready(function () {
-        var height = parseInt($(window).height() - 210);
+        var height = parseInt($(window).height() -210);
         $("#Php").css("height", height);
-        $("html").css("height", height);
+
         $('#bottom-row').css('background', 'rgb(19,31,51)');
         $('#top-row').css('background', 'rgb(19,31,51)');
         document.body.style.background = "#182641";
 
        
     });
+
 
     $(function () {
         var dialog = $('#console').dialog({

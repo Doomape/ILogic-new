@@ -44,7 +44,7 @@
                  <div style="margin:auto;width: 170px;"> <img src="/Content/images/phpLogo.png" /></div>
             </div>
         </div>
-        <div id="content" style="box-shadow: 1px 1px 10px gray;padding-top: 0px; padding-bottom: 110px; ">
+        <div id="content" style="box-shadow: 1px 1px 10px gray; ">
             @RenderBody()
         </div>
         <div id="bottom-row">
@@ -87,7 +87,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                 <div class="contact_form";>
                     <ul>
                         <li>
-                            <h2>Contact Us</h2>
+                            <h3>Contact Us</h3>
                         </li>
                         <li>
                             <label for="name">Name or Company:</label>
@@ -123,6 +123,18 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
 
 
     <script type="text/javascript">
+
+        $(window).resize(function () {
+            var height = parseInt($(window).height() -210);
+            $("#wrapper").css("height", height);
+            $("html").css("height", height);
+        });
+
+        $(document).ready(function () {
+            var height = parseInt($(window).height() -210);
+            $("#wrapper").css("height", height);
+            $("html").css("height", height);
+        });
 
         $(document).ready(
 		function meni() {

@@ -103,7 +103,7 @@
         <div id="console" title="Create Album" style="overflow: hidden; min-height: 173px !important"></div>
     </div>
     <div id="logoImages" style="float: left; width: 424px;">
-        <table style="margin-top:50px;width:420px;">
+        <table style="margin-top:16px;width:420px;">
             <tr>
                 <td style="width:200px;height:150px">
                     <div class="view view-img">
@@ -181,6 +181,8 @@
                     </div>
                 </td>
             </tr>
+             
+        
         </table>
     </div>
 </div>
@@ -191,17 +193,16 @@
 
 
     $(window).resize(function () {
-        var height = parseInt($(window).height() - 210);
-        $("#aspNet").css("height", height);
+        var height = parseInt($(window).height() -210);
+        $("#aspNet").css("height", height);      
     });
 
 
 
     $(document).ready(function () {
-        var height = parseInt($(window).height() - 210);
+        var height = parseInt($(window).height() -210);
         $("#aspNet").css("height", height);
-        $("html").css("height", height);
-        //$("#logoImages").css("height", height);
+
         $('#bottom-row').css('background', 'rgb(30,30,30)');
         $('#top-row').css('background', 'rgb(30,30,30)');
         document.body.style.background = "#282828";
