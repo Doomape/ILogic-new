@@ -19,6 +19,7 @@
         font-size: 0px;
         background-color: transparent;
     }
+
         #mcts1 > * {
             display: none;
         }
@@ -31,9 +32,11 @@
             /*  border:1px solid #ddd;*/
             text-align: center;
             position: relative;
-            margin-right: -10px;
+             margin-right: -10px;
             margin-left: 30px;
+          
         }
+
         #mcts1 img {
             border: none;
         }
@@ -53,6 +56,7 @@
             top: 33px;
             left: 3px;
         }
+
             #mcts1 .navPrev:hover {
                 background-position: 0 -44px;
             }
@@ -67,6 +71,7 @@
             top: 33px;
             right: 3px;
         }
+
             #mcts1 .navNext:hover {
                 background-position: -16px -44px;
             }
@@ -96,19 +101,23 @@
     /*--------- class1 that is for the slide with HTML content------------*/
     .class1 {
         width: 130px;
-        height: 15px;
+        height: 14px;
         background: #444;
         text-align: center;
         color: White;
         font: normal 11px/14px Arial;
         white-space: normal;
+        margin-top: -15px;
+        position: relative;
+        z-index: 1;
     }
+
         .class1 p {
             margin-top: 0;
             margin-bottom: 0px;
             padding-top: 0px;
-            font: bold 12px Verdana;
-            color: #007acc;
+            font: bold 12px Helvetica;
+            color: white;
         }
     /* --------- Others ------- */
     #mcts1 {
@@ -118,6 +127,16 @@
         -o-transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
     }
+    .thumbStyle {
+        line-height: 90px;
+        text-align: center;
+        margin-left: 10px;
+        margin-top: 10px;
+        border: 1px solid gray;
+        box-shadow: 1px 1px 10px gray;
+        width:90px;
+        height:90px;
+    }
 </style>
 <div id="top-row">
     <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
@@ -125,39 +144,16 @@
     </div>
     <div class="div2">
         <div id="mcts1" style="float: left;">
-            <div onclick="putProductId(1)" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div>
-            </div>
-           <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div>
-           </div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div>
-            </div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
-            <div onclick="showImage()" class="mouse_hover" >
-                <img src="/Content/images/sumo.png" /><div class="class1"><p>Koki</p></div></div>
         </div>
     </div>
 </div>
 <div id="products" style="background-color: white; width: 100%">
-    <div id="thumbs" style=" width:115px; float:left;  ">
-         </div>
-    
-    <div id="img" style=" width:600px; float:left;  ">
-
+    <div id="thumbs" style="width: 115px; float: left;margin-top: 40px;">
+        
     </div>
-     <div id="text" style=" width:300px; float:left; ">
-
+    <div id="mainPicture" style="width: 600px; float: left;text-align: center;margin-top: 40px;">
+    </div>
+    <div id="productDescription" style="width: 300px; float: left;margin-top: 40px;">
     </div>
 </div>
 
@@ -166,14 +162,14 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-      
+
         $("#thumbs").css("height", height);
         $("#img").css("height", height);
         $("#text").css("height", height);
     });
     $(document).ready(function () {
         $("#top-row").empty();
-        var height = parseInt($(document).height() );
+        var height = parseInt($(document).height());
         $("#products").css("height", height);
         $("#thumbs").css("height", height);
         $("#img").css("height", height);
@@ -183,52 +179,80 @@
         $('#bottom-row').css('background', 'white');
         $('#top-row').css('background', '#979dd7');
         document.body.style.background = "white";
-    });
-   
-    function showThumb(e) {
-        if (e == 'sumo')
-        {
-            $("#thumbs").empty();
-            $("#thumbs").append("<img id='sumo_1' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(1).png'/>");
-            $("#thumbs").append("<img id='sumo_2' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(2).png'/>");
-            $("#thumbs").append("<img id='sumo_3' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(3).png'/>");
-            $("#thumbs").append("<img id='sumo_4' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(4).png'/>");
-
-        }
-    }
-
-    function showImageandText(e) {
-        if(e.id=='sumo_1'){
-            $("#img").empty();
-            $("#text").empty();
-            $("#img").append("<img src='/Content/images/robot_(1).png'/>");
-            $("#text").append("<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing soft</p>");
-        }
-        if (e.id == 'sumo_2') {
-            $("#img").empty();
-            $("#text").empty();
-            $("#img").append("<img src='/Content/images/robot_(2).png'/>");
-            $("#text").append("<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>");
-
-        }
-    }
-    function putProductId(e) {
-
         $.ajax({
             url: "getProducts",
             type: "GET",
-            data: {
+            data: {},
+            success: function (result)
+            {
+                //  debugger;
+                $("#mainPicture").empty();
+                $("#thumbs").empty();
+                $("#productDescription").empty();
+                for (var i = 1; i <= result[0]; i++) {
+                    var productName = result[i].split('@@')[1];
+                    var topRowThumb = result[i].split('@@')[2];
+                    var thumbItems = result[i].split('@@')[3].split("#").length;
+                    var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
+                    var description = result[i].split('@@')[5];
+                  
+                    if (i == 1)//set the main load project 
+                    {
+                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 100px;line-height: 100px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                        for (var j = 0; j < thumbItems; j++) {
+                            var thumbItem = result[i].split('@@')[3].split("#")[j];
+                            $("#thumbs").append('<a href="javascript:void(0);"><div  class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
+                            $("#" + j + "").fadeIn((j + 1) * 1000);
+                          
+                        }
+                        $("#mainPicture").fadeIn(500);
+                        $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
+                       
+                        $("#productDescription").append('<p>' + description + '</p>');
 
-                id: e
-            },
-            success: function (result) {
-              
-                alert(result[1]);
-               
+                    }
+                    if (i > 1) {
+                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 100px;line-height: 100px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                    }
+                }
             }
         });
+    });
 
+
+    function changeProduct(e) {
+        $.ajax({
+            url: "changeProduct",
+            type: "GET",
+            data: {productName:e},
+            success: function (result) {
+                for (var i = 1; i <= result[0]; i++) {
+                    var productName = result[i].split('@@')[1];
+                    var topRowThumb = result[i].split('@@')[2];
+                    var thumbItems = result[i].split('@@')[3].split("#").length;
+                    var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
+                    var description = result[i].split('@@')[5];
+                    $("#thumbs").empty();
+                         for (var j = 0; j < thumbItems; j++) {
+                            var thumbItem = result[i].split('@@')[3].split("#")[j];
+                            $("#thumbs").append('<a href="javascript:void(0);"><div class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
+                            $("#" + j + "").fadeIn((j + 1) * 1000);
+                         }
+                         $("#mainPicture").empty();
+                         $("#productDescription").empty();
+                         $("#mainPicture").fadeIn(500);
+                         $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
+                        
+                        $("#productDescription").append('<p>' + description + '</p>');
+                }
+            }
+        });
+    }
+    function changeMainPicture(e) {
+        $("#mainPicture").empty();
+        $("#mainPicture").fadeIn(500);
+        $("#mainPicture").append('<img style="" src=' + e + ' />');
+       
     }
 
 </script>
-
