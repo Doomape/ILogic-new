@@ -137,6 +137,12 @@
   <ItemGroup>
     <Content Include="Content\images\171545_VS_Purp526_rgbtran.png" />
     <Content Include="Content\images\about_us.png" />
+    <Content Include="Content\images\about_us\facebook.png" />
+    <Content Include="Content\images\about_us\linkedin.png" />
+    <Content Include="Content\images\about_us\skype.png" />
+    <Content Include="Content\images\about_us\skype1.png" />
+    <Content Include="Content\images\about_us\twitter.png" />
+    <Content Include="Content\images\about_us\youtube.png" />
     <Content Include="Content\images\contact_us.png" />
     <Content Include="Content\images\css3.png" />
     <Content Include="Content\images\debug.png" />

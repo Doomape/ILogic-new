@@ -3,42 +3,75 @@
     Layout = "~/Views/Shared/SiteMaster.cshtml";
 }
 
-
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+<style>
+    .info {
+        font-size: 18px;font-family: Georgia,serif;font-weight: bold;margin-bottom: 6px; color: #395B75;
+    }
+</style>
+
+<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 
 
 <div id="about_us">
-    <div style="width: 512px; height: 483px; float: left; background-color: goldenrod"></div>
+    <div style="width: 341px; height: 300px; float: left;">
+        <table style="line-height: 1.2em; margin: 70px 0px 0px 70px;text-align: left">
+        <tbody><tr><td><p class="info">Address</p>Ul. 4-ti Juli 1/2/2 <br>1000 Skopje<br>R.Macedonia<br><br></td></tr>
+        <tr><td><p class="info">Contact</p>
+            tomislav.shestakov@ilogic.mk <a href="skype:ilogicmk?add"><img src="/Content/images/about_us/skype1.png" style="border: none; width:16px; height:16px;" /></a><br>
+            aleksandar.dzabirski@ilogic.mk <a href="skype:ilogicmk?add"><img src="/Content/images/about_us/skype1.png" style="border: none; width:16px; height:16px;" /></a><br>
+            kosta.micevski@ilogic.mk <a href="skype:koki_thug?add"><img src="/Content/images/about_us/skype1.png" style="border: none; width:16px; height:16px;" /></a><br><br></td></tr>
+        <tr><td><p class="info">Phone</p>+389.2044045</td></tr>
+        </tbody></table>
+    </div>
 
 
-    <div id="map_container" style="width: 512px; float: left; /*background-color: lawngreen*/">
-        <div style="width: 314px; height: 389px; float: left; color: #395B75; background-color: #E5E3DF; border: #395B75 10px; border-bottom: #395B75 46px; border-style: solid;">
+    <div id="map_container" style="width: 341px; float: left;">
+        <div style="width: 314px; height: 389px; float: left; color: #395B75; background-color: #E5E3DF; border: #E5E3DF 10px; border-bottom: #E5E3DF 46px; border-style: solid;">
             <div id="map" style="width: 314px; height: 389px;">
             </div>
             <input id="second_location" type="text" style="margin-top: 11px; width: 239px;" />
-            <input id="button" type="button" onclick="calcRoute();" value="Внеси" />
+            <input id="button" type="button" onclick="calcRoute();" value="Search" />
 
         </div>
         <div style="clear: both"></div>
-        <div style="float: right; width: 336px; margin-right: 10px; margin: 0;" id="directionsPanel">
+        <div style="float: left; width: 336px; margin-right: 10px; margin: 0;" id="directionsPanel">
         </div>
     </div>
+
+    <div style="width: 341px; height: 600px; float: left;">
+    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FiLogic%2F124722254377442&amp;width=292&amp;height=290&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:290px; margin-top:16px" allowTransparency="true"></iframe>
+
+        <div style= "float: left; width: 300px" >
+            <h3>Also you can Find Us</h3>
+            <ul style= " margin-top: 20px;">
+                <li style="float:left"><a href="http://www.facebook.com/ilogicmk" rel="nofollow" target="_blank"> <img src="/Content/images/about_us/facebook.png" /> </a> </li>
+                <li style="float:left"><a href="https://www.youtube.com/ilogicmk" rel="nofollow" target="_blank" > <img src="/Content/images/about_us/youtube.png" /> </a></li>
+                <li style="float:left"><a href="http://twitter.com/ilogicmk" rel="nofollow" target="_blank"> <img src="/Content/images/about_us/linkedin.png" /> </a></li>
+                <li style="float:left"><a href="https://twitter.com/ilogicmk" rel="nofollow" target="_blank"> <img src="/Content/images/about_us/twitter.png" /> </a> </li>
+                 <li style="float:left"><a href="skype:koki_thug?add" rel="nofollow" target="_blank"> <img src="/Content/images/about_us/skype.png" /> </a> </li>
+          
+            </ul>
+          
+        </div>
+
+    </div>
+
 </div>
 
 <script type="text/javascript">
     var refreshIntervalId;
 
     $(window).resize(function () {
-        var height = parseInt($(window).height()-210);
+        var height = parseInt($(Window).height()  -210);
         $("#about_us").css("height", height);
-        $("html").css("height", height);
     });
 
 
     $(document).ready(function () {
-        var height = parseInt($(window).height()-210);
+        var height = parseInt($(window).height() -210);
         $("#about_us").css("height", height);
-        $("html").css("height", height);
     });
     // Start Contact Location Google Maps
 
@@ -146,10 +179,11 @@
     window.onload = loadscroll();
 
     function resizeafterdirections() {
-        var height = parseInt($(window).height() - 210);
+        var height = parseInt($(window).height());
         var direction_div_height = $("#directionsPanel").css("height").replace("px", "");
-        var sum_of_heights = parseInt(direction_div_height-210) + height;
+        var sum_of_heights = parseInt(direction_div_height - 210) + height;
         $("#about_us").css("height", sum_of_heights);
+        $("#wrapper").css("height", sum_of_heights);
         $("html").css("height", sum_of_heights);
         clearInterval(refreshIntervalId);
     }
