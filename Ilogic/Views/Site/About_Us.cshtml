@@ -18,12 +18,12 @@
 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 
 
-<div id="about_us">
-    <div style="width: 341px; height: 300px; float: left;">
+<div id="about_us"  style="background: url('/Content/images/contentImage.gif');">
+    <div style="width: 341px; float: left;">
         <table style="line-height: 1.2em; margin: 70px 0px 0px 70px; text-align: left">
-           
+                       
                 <tr>
-                    <td class="info">Address</td>
+                    <td><p class="info">Address</p></td>
                 </tr>
                 <tr>
                     <td>Ul. 4-ti Juli 1/2/2</td>
@@ -36,19 +36,19 @@
                 </tr>
          
         </table>
-         <table style="line-height: 1.2em; margin: 70px 0px 0px 70px; text-align: left">
+         <table style="line-height: 1.2em; margin: 10px 0px 0px 70px; text-align: left">
        
                <tr> <td><p class="info">Contact</p></td></tr>
                
               <tr><td>tomislav.shestakov@ilogic.mk</td> 
-               <td> <a href="skype:ilogicmk?add">
-                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px;" /></a></td> </tr>  
+               <td> <a href="skype:tomikrama?add">
+                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td> </tr>  
              <tr><td> kosta.micevski@ilogic.mk</td>  
                <td> <a href="skype:koki_thug?add">
-                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px;" /></a></td> </tr>
+                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td> </tr>
             
       
-             <tr> <td><p class="info"><p class="info">Phone</p></p></td></tr>
+             <tr> <td><p class="info" style="margin-top: 10px;"><p class="info">Phone</p></p></td></tr>
                  <tr> <td><p> +389.2044045</p></td></tr>
                
         </table>
@@ -68,25 +68,25 @@
         </div>
     </div>
 
-    <div style="width: 341px; height: 600px; float: left;">
+    <div style="width: 341px; float: left;">
         <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FiLogic%2F124722254377442&amp;width=292&amp;height=290&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 292px; height: 290px; margin-top: 16px" allowtransparency="true"></iframe>
 
         <div style="float: left; width: 300px">
             <h3>Also you can Find Us</h3>
             <ul style="margin-top: 20px;">
-                <li style="float: left"><a href="http://www.facebook.com/ilogicmk" rel="nofollow" target="_blank">
+                <li style="float: left"><a href="https://www.facebook.com/ilogicmacedonia" rel="nofollow" target="_blank">
                     <img src="/Content/images/about_us/facebook.png" />
                 </a></li>
                 <li style="float: left"><a href="https://www.youtube.com/ilogicmk" rel="nofollow" target="_blank">
                     <img src="/Content/images/about_us/youtube.png" />
                 </a></li>
-                <li style="float: left"><a href="http://twitter.com/ilogicmk" rel="nofollow" target="_blank">
+                <li style="float: left"><a href="http://www.linkedin.com/in/ilogicmk" rel="nofollow" target="_blank">
                     <img src="/Content/images/about_us/linkedin.png" />
                 </a></li>
-                <li style="float: left"><a href="https://twitter.com/ilogicmk" rel="nofollow" target="_blank">
+                <li style="float: left"><a href="https://www.twitter.com/ilogicmk" rel="nofollow" target="_blank">
                     <img src="/Content/images/about_us/twitter.png" />
                 </a></li>
-                <li style="float: left"><a href="skype:koki_thug?add" rel="nofollow" target="_blank">
+                <li style="float: left"><a href="skype:ilogicmk?add" rel="nofollow" target="_blank">
                     <img src="/Content/images/about_us/skype.png" />
                 </a></li>
 
@@ -102,14 +102,16 @@
     var refreshIntervalId;
 
     $(window).resize(function () {
-        var height = parseInt($(Window).height() - 210);
+        var height = parseInt($(window).height() - 210);
         $("#about_us").css("height", height);
+
     });
 
 
     $(document).ready(function () {
         var height = parseInt($(window).height() - 210);
         $("#about_us").css("height", height);
+
     });
     // Start Contact Location Google Maps
 
