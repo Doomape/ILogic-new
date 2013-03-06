@@ -154,6 +154,9 @@
     <Content Include="Content\images\about_us\twitter.png" />
     <Content Include="Content\images\about_us\youtube.png" />
     <Content Include="Content\images\accessLogo.png" />
+    <Content Include="Content\images\Electronic_content.gif" />
+    <Content Include="Content\images\Micro_1.gif" />
+    <Content Include="Content\images\Micro_body.gif" />
     <Content Include="Content\images\phpContent.gif" />
     <Content Include="Content\images\aspAsp.gif" />
     <Content Include="Content\images\back23.gif" />
