@@ -180,6 +180,8 @@
     <Content Include="Content\images\phpmyadmin.png" />
     <Content Include="Content\images\bodyBackground.gif" />
     <Content Include="Content\images\contentImage.gif" />
+    <Content Include="Content\images\php_logo.png" />
+    <Content Include="Content\images\php_logoo.png" />
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\proizvodi.png" />
     <Content Include="Content\images\projects.png" />
@@ -202,6 +204,7 @@
     <Content Include="Content\images\visual_icon.png" />
     <Content Include="Content\images\wordpress.png" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\images\php_logo1.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
