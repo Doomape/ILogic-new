@@ -6,8 +6,11 @@
     #electronics {
         /*background-color: white;*/
     }
+     body {
+       background: url("/Content/images/Micro_body.gif");
+    }
 </style>
-<div id="electronics" style="width: 100%">
+<div id="electronics" style="width: 100%;background:url('/Content/images/Electronic_content.gif');">
     <div class="icons" style="width: 200px; float: left"></div>
     <div class="middle" style="width: 624px; float: left">
         <div style="margin: auto; padding: 0; width: 420px;">
@@ -33,5 +36,7 @@
         $("html").css("height", height);
         $(".icons").css("height", height);
         $(".middle").css("height", height);
+        $('#bottom-row').css('background', 'url("/Content/images/Micro_1.gif")');
+        $('#top-row').css('background', 'url("/Content/images/Micro_1.gif")');
     });
 </script>
