@@ -18,54 +18,63 @@
 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 
 
-<div id="about_us"  style="background: url('/Content/images/contentImage.gif');">
+<div id="about_us" style="background: url('/Content/images/contentImage.gif');position:relative;">
+
+    
+    <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
+        <div id="map" style="width: 1024px;height:400px;position: fixed;overflow: hidden;">
+        </div>
+    </div>
+    <button style="position:absolute;top:32px;right:0px" type="button" id="toggle_map" value="Show Map">Show Map</button>
+
     <div style="width: 341px; float: left;">
         <table style="line-height: 1.2em; margin: 70px 0px 0px 70px; text-align: left">
-                       
-                <tr>
-                    <td><p class="info">Address</p></td>
-                </tr>
-                <tr>
-                    <td>Ul. 4-ti Juli 1/2/2</td>
-                </tr>
-                <tr>
-                    <td>1000 Skopje</td>
-                </tr>
-                <tr>
-                    <td>R.Macedonia</td>
-                </tr>
-         
+
+            <tr>
+                <td>
+                    <p class="info">Address</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Ul. 4-ti Juli 1/2/2</td>
+            </tr>
+            <tr>
+                <td>1000 Skopje</td>
+            </tr>
+            <tr>
+                <td>R.Macedonia</td>
+            </tr>
+
         </table>
-         <table style="line-height: 1.2em; margin: 10px 0px 0px 70px; text-align: left">
-       
-               <tr> <td><p class="info">Contact</p></td></tr>
-               
-              <tr><td>tomislav.shestakov@ilogic.mk</td> 
-               <td> <a href="skype:tomikrama?add">
-                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td> </tr>  
-             <tr><td> kosta.micevski@ilogic.mk</td>  
-               <td> <a href="skype:koki_thug?add">
-                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td> </tr>
-            
-      
-             <tr> <td><p class="info" style="margin-top: 10px;"><p class="info">Phone</p></p></td></tr>
-                 <tr> <td><p> +389.2044045</p></td></tr>
-               
+        <table style="line-height: 1.2em; margin: 10px 0px 0px 70px; text-align: left">
+            <tr>
+                <td>
+                    <p class="info">Contact</p>
+                </td>
+            </tr>
+            <tr>
+                <td>tomislav.shestakov@ilogic.mk</td>
+                <td><a href="skype:tomikrama?add">
+                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td>
+            </tr>
+            <tr>
+                <td>kosta.micevski@ilogic.mk</td>
+                <td><a href="skype:koki_thug?add">
+                    <img src="/Content/images/about_us/skype1.png" style="border: none; width: 16px; height: 16px; margin-left: 8px;" /></a></td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="info" style="margin-top: 10px;">
+                        <p class="info">Phone</p>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>+389.2044045</p>
+                </td>
+            </tr>
         </table>
-    </div>
-
-
-    <div id="map_container" style="width: 341px; float: left;">
-        <div style="width: 314px; height: 389px; float: left; color: #395B75; background-color: #E5E3DF; border: #E5E3DF 10px; border-bottom: #E5E3DF 46px; border-style: solid;">
-            <div id="map" style="width: 314px; height: 389px;">
-            </div>
-            <input id="second_location" type="text" style="margin-top: 11px; width: 239px;" />
-            <input id="button" type="button" onclick="calcRoute();" value="Search" />
-
-        </div>
-        <div style="clear: both"></div>
-        <div style="float: left; width: 336px; margin-right: 10px; margin: 0;" id="directionsPanel">
-        </div>
     </div>
 
     <div style="width: 341px; float: left;">
@@ -100,6 +109,13 @@
 
 <script type="text/javascript">
     var refreshIntervalId;
+    var map;
+
+    $("#toggle_map").toggle(function () {
+        $("#map_container").animate({ height: 400 }, 1000, "linear");
+    }, function () {
+        $("#map_container").animate({ height: 0 }, 1000, "linear");
+    });
 
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
@@ -118,27 +134,8 @@
     var marker;
     var email = false;
 
-    $("#second_location").keypress(function (event) {
-        if (event.which == 13) {
-            event.preventDefault();
-            calcRoute();
-        }
-    });
-
     function open_map() {
 
-        if ($('#map_postion').val() == "0") {
-            $('#map_holder').animate({ height: '500px' }, 600, function () {
-                $('#map_draggable').css('background-image', 'url(/Content/images_web/kaart_up.png)');
-            });
-            $('#map_postion').val("1");
-        }
-        else {
-            $('#map_holder').animate({ height: '40px' }, 600, function () {
-                $('#map_draggable').css('background-image', 'url(/Content/images_web/kaart_down.png)');
-            });
-            $('#map_postion').val("0");
-        }
     }
 
 
@@ -158,7 +155,6 @@
 
     function InitializeMap() {
 
-        directionsService = new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
 
         var latlng = new google.maps.LatLng(41.935595, 21.525618);
@@ -170,7 +166,8 @@
             navigationControl: true
 
         };
-        var map = new google.maps.Map(document.getElementById("map"), myOptions);
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
+        google.maps.event.trigger(map, 'resize');
 
         marker = new google.maps.Marker
         (
@@ -184,7 +181,7 @@
         );
 
         var infowindow = new google.maps.InfoWindow({
-            content: 'Location info: Belina'
+            content: 'Location info: iLogic'
 
         });
 
@@ -194,40 +191,11 @@
         });
 
         directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+        //directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 
     }
 
-    function calcRoute() {
-
-
-        var start = document.getElementById('second_location').value;
-
-        var request = {
-            origin: start,
-            destination: "41.935595,21.525618",
-            travelMode: google.maps.DirectionsTravelMode.DRIVING
-        };
-        directionsService.route(request, function (result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(result);
-                refreshIntervalId = window.setInterval(resizeafterdirections, 300);
-
-            }
-        });
-    }
     window.onload = loadscroll();
-
-    function resizeafterdirections() {
-
-        var height = parseInt($(window).height() - 210);
-        var direction_div_height = $("#directionsPanel").css("height").replace("px", "");
-        var sum_of_heights = parseInt(direction_div_height - 210) + height;
-        $("#about_us").css("height", sum_of_heights);
-        $("#wrapper").css("height", sum_of_heights);
-        $("html").css("height", sum_of_heights);
-        clearInterval(refreshIntervalId);
-    }
 
     // End Contact Location Google Maps
 
