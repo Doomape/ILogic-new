@@ -6,15 +6,134 @@
     #electronics {
         /*background-color: white;*/
     }
+     body {
+       background: url("/Content/images/micro/micro_body.gif");
+    }
 </style>
-<div id="electronics" style="width: 100%">
-    <div class="icons" style="width: 200px; float: left"></div>
+
+<div id="electronics" style="width: 100%;background:url('/Content/images/micro/electronic_content.gif');">
+
+@*    LEV DIV*@
+
+    <div class="icons" style="width: 200px; float: left">
+
+        <div id="logoImages_left" style="float: left; width: 200px;">
+
+        <table style="margin-top:46px;width:200px;">
+
+            <tr>
+                <td style="width:200px;height:150px">
+                    <div class="view view-img">
+                        <img style="margin-left: 4px;" src="/Content/images/micro/avrstudio_logo.png" />
+                         <div class="mask">
+                            <ol>
+                                <li><p>Better tooling support, especially for .NET @*(Entity Framework + other ORM support is better)*@</p></li>
+                                 <li><p>SQL Server is the most secure of any of the major database platforms.</p></li>
+                                <li><p>SQL Server enables 1 million commands per second.</p></li>
+                            </ol>
+                         </div>
+                    </div>
+                </td>
+           </tr>
+
+           <tr>
+                <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                        <img style="margin-left: 23px;" src="/Content/images/micro/arduino_logo.png" />
+                        <div class="mask">
+                         <ol>
+                             <li><p>Allows for Rapid Application Development</p></li>
+                             <li><p>Easily Integrates with Microsoft Office</p></li>
+                             <li><p>Great for Data Entry</p></li>
+                         </ol>
+                          </div>
+                    </div>
+                </td>
+           </tr>
+
+           <tr>
+                  <td style="width:200px;height:150px">
+                       <div class="view view-img">
+                        <img style="margin-left: -19px;" src="/Content/images/micro/assembler.png" />
+                          <div class="mask">
+                             <ol>
+                                 <li><p>Good for lots of db usage</p></li>
+                                 <li><p>Good with memory leaks and handles multiple threads</p></li>
+                                 <li><p>Easy database backup</p></li>
+                             </ol>
+                        </div>
+                    </div>
+                </td>
+             
+           </tr>
+        
+        </table>
+    </div>
+    
+ </div>
+
     <div class="middle" style="width: 624px; float: left">
         <div style="margin: auto; padding: 0; width: 420px;">
-            <img style="margin: auto;" src="~/Content/images/in_construction.png" />
+            <img style="margin: auto;" src="~/Content/images/micro/in_construction.png" />
         </div>
     </div>
-    <div class="icons" style="width: 200px; float: left"></div>
+
+ @*   DESEN DIV *@
+
+    <div class="icons" style="width: 200px; float: right">
+
+         <div id="logoImages_right" style="float: left; width: 200px;">
+
+        <table style=" margin-top:16px; width:200px;">
+
+            <tr>
+           <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                     <img style=" margin-right: 5px; margin-top: 30px;" src="/Content/images/micro/microchip_logo.png" />
+                        <div class="mask">
+                              <ol>
+                                  <li><p>Has strong logic and workflow and is easily extensible</p></li>
+                                  <li><p>The core file’s packed size is small</p></li>
+                              </ol>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                 <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                     <img style="margin-top: 13px;" src="/Content/images/micro/mikro_bc.png" />
+                        <div class="mask">
+                              <ol>
+                                  <li><p>Video and Audio Support</p></li>
+                                  <li><p>More Intelligent Storage</p></li>
+                                  <li><p>Across-Browser Support</p></li>  
+                              </ol>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:200px;height:150px">
+                     <div class="view view-img">
+                     <img style="margin:auto" src="/Content/images/micro/OshonSoft_logo.png" />
+                        <div class="mask">
+                             <ol>
+                                 <li><p>Device-responsive pages</p></li>
+                                 <li><p>Easier to maintain</p></li>
+                                 <li><p>Cleaner code</p></li>
+                             </ol>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+     </div>
 </div>
 
 
@@ -33,5 +152,7 @@
         $("html").css("height", height);
         $(".icons").css("height", height);
         $(".middle").css("height", height);
+        $('#bottom-row').css('background', 'url("/Content/images/micro/micro_bottom_top.gif")');
+        $('#top-row').css('background', 'url("/Content/images/micro/micro_bottom_top.gif")');
     });
 </script>
