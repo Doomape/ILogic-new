@@ -408,11 +408,11 @@ a.dock-item
 .view-img .mask {
    background-color:transparent;
    opacity:0.5;
-   -webkit-transform: translateX(-300px);
-   -moz-transform: translateX(-300px);
-   -o-transform: translateX(-300px);
-   -ms-transform: translateX(-300px);
-   transform: translateX(-300px);
+   -webkit-transform: translateX(600px);
+   -moz-transform: translateX(600px);
+   -o-transform: translateX(600px);
+   -ms-transform: translateX(600px);
+   transform: translateX(600px);
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
    filter: alpha(opacity=100);
    opacity: 1;
@@ -460,4 +460,5 @@ a.dock-item
    filter: alpha(opacity=100);
    opacity: 1;
 }
+				
 /*~Sliding images*/
