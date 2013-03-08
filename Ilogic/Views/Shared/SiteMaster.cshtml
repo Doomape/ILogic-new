@@ -15,7 +15,8 @@
     <script src="@Url.Content("~/Scripts/widget.js")" type="text/javascript"></script>
     <style>
         #image_button:hover {
-            box-shadow:1px 1px 10px gray;
+            -webkit-box-shadow: 1px 1px 10px gray;
+            box-shadow: 1px 1px 10px gray;
         }
         #logo {
             background-image:url('/Content/images/logo1.png');
@@ -44,7 +45,7 @@
                  <div style="margin:auto;width: 170px;"> <img src="/Content/images/phpLogo.png" /></div>
             </div>
         </div>
-        <div id="content" style="box-shadow: 1px 1px 10px gray; ">
+        <div id="content" style="-webkit-box-shadow: 1px 1px 10px gray; box-shadow: 1px 1px 10px gray;">
             @RenderBody()
         </div>
         <div id="bottom-row">
