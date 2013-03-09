@@ -209,6 +209,7 @@
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
+    <Content Include="Content\images\projects\feydom.png" />
     <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\robot.png" />
     <Content Include="Content\images\1\robot_%281%29.png" />
@@ -221,6 +222,7 @@
     <Content Include="Content\images\1\thumbs\thumb_robot_%283%29.png" />
     <Content Include="Content\images\1\thumbs\thumb_robot_%284%29.png" />
     <Content Include="Content\images\twitter_logo.png" />
+    <Content Include="Content\images\twitter_logo.svg" />
     <Content Include="Content\images\valid.png" />
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\VisualStudio_logo.png" />
