@@ -158,7 +158,10 @@
     <Content Include="Content\images\asp\jquery_logo.png" />
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
-    <Content Include="Content\images\Feydom.png" />
+    <Content Include="Content\images\projects\1\13.jpg" />
+    <Content Include="Content\images\projects\2\ilogic.png" />
+    <Content Include="Content\images\projects\2\logo\2.png" />
+    <Content Include="Content\images\projects\1\Feydom.png" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
     <Content Include="Content\images\lll.png" />
@@ -194,7 +197,7 @@
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
-    <Content Include="Content\images\projects\feydom.png" />
+    <Content Include="Content\images\projects\1\logo\1.png" />
     <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\robot.png" />
     <Content Include="Content\images\1\robot_%281%29.png" />

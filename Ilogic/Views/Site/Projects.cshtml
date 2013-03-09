@@ -9,11 +9,6 @@
         height: 100px;
         margin: 0 auto;
         margin-top: -3px;
-        /* padding:36px 20px;*/
-        /*  border:1px solid #dedcb4;
-    background:#f2f1ea url(loading.gif) no-repeat 50% 50%;
-    box-shadow: 0px 1px 11px #CCCCCC;*/
-        /* Do not alter the below settings */
         white-space: nowrap;
         position: relative;
         font-size: 0px;
@@ -123,37 +118,50 @@
         -o-transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
     }
+
+    #thumbs_container {
+        width: 115px;
+        float: left;
+        height: 100%;
+        background: url('/Content/images/top_bottom_background.gif');
+        position: relative;
+    }
+
+        #thumbs_container #thumbs {
+            width: 100%;
+            height: 50%;
+            background-color: pink;
+            position: absolute;
+            top: 25%;
+        }
 </style>
 <div id="top-row">
     <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
         <img src="/Content/images/lll.png" />
     </div>
-    <div class="div2">
-        <div id="mcts1" style="float: left;">
-            <div onclick="showThumb('sumo')" class="mouse_hover">
-                <img style="margin-top: 12px" src="/Content/images/projects/feydom.png" />
-            </div>
-            <div onclick="showImage()" class="mouse_hover">
-                <img src="/Content/images/sumo.png" /><div class="class1">
-                    <p>Koki</p>
-                </div>
+    <div id="mcts1" style="float: left;">
+        <div onclick="showThumb('sumo')" class="mouse_hover">
+            <img style="margin-top: 12px" src="/Content/images/projects/feydom.png" />
+        </div>
+        <div onclick="showImage()" class="mouse_hover">
+            <img src="/Content/images/sumo.png" /><div class="class1">
+                <p>Koki</p>
             </div>
         </div>
     </div>
 </div>
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
-    <div id="thumbs" style="width: 115px; float: left; background:url('/Content/images/top_bottom_background.gif');">
-        <div style="width:100px;height:300px;background-color:pink;text-align:center"> 
-            
+    <div id="thumbs_container">
+        <div id="thumbs">
         </div>
     </div>
 
-    <div id="img" style="width: 600px; float: left;text-align: center;">
-        <img src="/Content/images/Feydom.png" / style="margin-top: 26px; border:3px solid black">
+    <div id="img" style="width: 600px; float: left; text-align: center; height: 100%">
+        <img src="/Content/images/Feydom.png" style="margin-top: 26px; border: 3px solid black" />
     </div>
 
-    <div id="text" style="width: 309px; float: left;">
-        <div id="text_content" style="width:260px;height:300px;margin: 36px 0px 0px 23px;background:url('/Content/images/top_bottom_background.gif');"></div>
+    <div id="text" style="width: 309px; float: left; height: 100%">
+        <div id="text_content" style="width: 260px; height: 300px; margin: 36px 0px 0px 23px; background: url('/Content/images/top_bottom_background.gif');"></div>
     </div>
 </div>
 
@@ -162,22 +170,20 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-        $("#thumbs").css("height", height);
-        $("#img").css("height", height);
-        $("#text").css("height", height);
     });
     $(document).ready(function () {
-        $("#top-row").empty();
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-        $("#thumbs").css("height", height);
-        $("#img").css("height", height);
-        $("#text").css("height", height);
         $("html").css("height", height);
-        //$("#logoImages").css("height", height);
-        //  $('#bottom-row').css('background', 'white');
-        //   $('#top-row').css('background', '#979dd7');
-        //  document.body.style.background = "white";
+
+        $.ajax({
+            url: "getProjects",
+            type: "GET",
+            data: {},
+            success: function (result) {
+            }
+        });
+
     });
 
     function showThumb(e) {
