@@ -5,7 +5,7 @@ var mct1_Options =
     direction: "horizontal",
     scrollInterval: 1400,
     scrollDuration: 100,
-    hoverPause: true,
+    hoverPause: false,
     autoAdvance: false,
     scrollByEachThumb: true,
     circular: true,

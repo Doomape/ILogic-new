@@ -153,11 +153,6 @@
     <Content Include="Content\images\about_us\twitter.png" />
     <Content Include="Content\images\about_us\youtube.png" />
     <Content Include="Content\images\asp\access_logo.png" />
-    <Content Include="Content\images\accessLogo.png" />
-    <Content Include="Content\images\alogo.png" />
-    <Content Include="Content\images\ArduinoLogo.gif" />
-    <Content Include="Content\images\ArduinoLogo.png" />
-    <Content Include="Content\images\arduino_logo.png" />
     <Content Include="Content\images\asp\access_logo.png" />
     <Content Include="Content\images\asp\asp_body.gif" />
     <Content Include="Content\images\asp\asp_content.gif" />
@@ -166,6 +161,8 @@
     <Content Include="Content\images\asp\jquery_logo.png" />
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
+    <Content Include="Content\images\Feydom.png" />
+    <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
     <Content Include="Content\images\lll.png" />
@@ -177,18 +174,7 @@
     <Content Include="Content\images\micro\OshonSoft_logo.png" />
     <Content Include="Content\images\micro\micro_bottom_top.gif" />
     <Content Include="Content\images\micro\micro_body.gif" />
-    <Content Include="Content\images\assemb.png" />
-    <Content Include="Content\images\assembler.png" />
-    <Content Include="Content\images\avr_studio.png" />
-    <Content Include="Content\images\Electronic_content.gif" />
-    <Content Include="Content\images\ilogi.png" />
-    <Content Include="Content\images\ilogic.png" />
-    <Content Include="Content\images\jquery_logo.png" />
-    <Content Include="Content\images\jquery_w.png" />
     <Content Include="Content\images\lll.png" />
-    <Content Include="Content\images\micr.png" />
-    <Content Include="Content\images\microchip.png" />
-    <Content Include="Content\images\microchip1.png" />
     <Content Include="Content\images\micro\arduino_logo.png" />
     <Content Include="Content\images\micro\assembler.png" />
     <Content Include="Content\images\micro\avrstudio_logo.png" />
@@ -199,12 +185,6 @@
     <Content Include="Content\images\micro\micro_bottom_top.gif" />
     <Content Include="Content\images\micro\mikro_bc.png" />
     <Content Include="Content\images\micro\OshonSoft_logo.png" />
-    <Content Include="Content\images\Micro_1.gif" />
-    <Content Include="Content\images\Micro_body.gif" />
-    <Content Include="Content\images\oracle_l.png" />
-    <Content Include="Content\images\oshon_soft.png" />
-    <Content Include="Content\images\PHP Logo.png" />
-    <Content Include="Content\images\php1.png" />
     <Content Include="Content\images\phpContent.gif" />
     <Content Include="Content\images\asp\asp_content.gif" />
     <Content Include="Content\images\back23.gif" />
@@ -225,14 +205,10 @@
     <Content Include="Content\images\php\joomla_logo.png" />
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
     <Content Include="Content\images\php\wordpress_logo.png" />
-    <Content Include="Content\images\php_b.png" />
-    <Content Include="Content\images\php_l.png" />
-    <Content Include="Content\images\php_ll.png" />
     <Content Include="Content\images\php_logo.png" />
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
-    <Content Include="Content\images\projects_logo\feydom.png" />
     <Content Include="Content\images\red_asterisk.png" />
     <Content Include="Content\images\robot.png" />
     <Content Include="Content\images\1\robot_%281%29.png" />
@@ -245,7 +221,6 @@
     <Content Include="Content\images\1\thumbs\thumb_robot_%283%29.png" />
     <Content Include="Content\images\1\thumbs\thumb_robot_%284%29.png" />
     <Content Include="Content\images\twitter_logo.png" />
-    <Content Include="Content\images\twitter_logo.svg" />
     <Content Include="Content\images\valid.png" />
     <Content Include="Content\images\visual.bmp" />
     <Content Include="Content\images\VisualStudio_logo.png" />
@@ -351,6 +326,7 @@
     <Content Include="Views\Site\About_Us.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\images\projects_logo\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
