@@ -134,20 +134,29 @@
             position: absolute;
             top: 25%;
         }
+    .logos {
+        margin-top: 12px;
+    }
+    .thumbStyle {
+        line-height: 93px;
+        text-align: center;
+        margin-left: 10px;
+        margin-top: 10px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 1px 1px 10px gray;
+        box-shadow: 1px 1px 10px gray;
+        width: 100px;
+        height: 93px;
+        background-repeat:no-repeat;
+    }
 </style>
 <div id="top-row">
     <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
         <img src="/Content/images/lll.png" />
     </div>
     <div id="mcts1" style="float: left;">
-        <div onclick="showThumb('sumo')" class="mouse_hover">
-            <img style="margin-top: 12px" src="/Content/images/projects/feydom.png" />
-        </div>
-        <div onclick="showImage()" class="mouse_hover">
-            <img src="/Content/images/sumo.png" /><div class="class1">
-                <p>Koki</p>
-            </div>
-        </div>
+        
+
     </div>
 </div>
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
@@ -167,6 +176,10 @@
 
 <script type="text/javascript">
 
+    var project_ids = new Array();
+    var project_screenshots = new Array();
+    var project_counter = new Array();
+
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
@@ -180,20 +193,42 @@
             url: "getProjects",
             type: "GET",
             data: {},
-            success: function (result) {
+            success: function (data) {
+
+                project_ids = data.id;
+                project_screenshots = data.img;
+                project_counter = data.screen_counter;
+                debugger;
+                for (i = 0; i < data.id.length; i++) {
+                    $("#mcts1").append("<div onclick='showThumbs(" + data.id[i] + ")'>" +
+                        "<img class='mouse_hover logos' src='" + data.logos[i] + "'/></div>");
+                    if (i == 0)
+                        showThumbs(data.id[i]);
+                }
             }
         });
 
     });
 
-    function showThumb(e) {
-        if (e == 'sumo') {
-            $("#thumbs").empty();
-            $("#thumbs").append("<img id='sumo_1' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(1).png'/>");
-            $("#thumbs").append("<img id='sumo_2' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(2).png'/>");
-            $("#thumbs").append("<img id='sumo_3' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(3).png'/>");
-            $("#thumbs").append("<img id='sumo_4' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(4).png'/>");
-
+    function showThumbs(e) {
+        $("#thumbs").empty();
+        
+        var which_project = project_ids.indexOf(e.toString());
+        var project_image_count = parseInt(project_counter[which_project]);
+        //first project
+        if (which_project == 0) {
+            for (j = 0; j < project_image_count; j++) {
+                $("#thumbs").append("<div class='thumbStyle' style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ")'></div>");
+            }
+        }
+        else {
+            var how_many_img_are_skipped = 0;
+            for (j = 0; j < which_project; j++) {
+                how_many_img_are_skipped += parseInt(project_counter[j]);
+            }
+            for (z = how_many_img_are_skipped; z < project_image_count + how_many_img_are_skipped; z++) {
+                $("#thumbs").append("<div class='thumbStyle' style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ")'></div>");
+            }
         }
     }
 

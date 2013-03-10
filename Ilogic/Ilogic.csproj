@@ -159,6 +159,8 @@
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
     <Content Include="Content\images\projects\1\13.jpg" />
+    <Content Include="Content\images\projects\1\thumbs\13.jpg" />
+    <Content Include="Content\images\projects\1\thumbs\Feydom.png" />
     <Content Include="Content\images\projects\2\ilogic.png" />
     <Content Include="Content\images\projects\2\logo\2.png" />
     <Content Include="Content\images\projects\1\Feydom.png" />
@@ -194,6 +196,14 @@
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
     <Content Include="Content\images\php\wordpress_logo.png" />
     <Content Include="Content\images\php_logo.png" />
+    <Content Include="Content\images\projects\2\thumbs\ilogic.png" />
+    <Content Include="Content\images\projects\3\1.png" />
+    <Content Include="Content\images\projects\3\2.png" />
+    <Content Include="Content\images\projects\3\3.png" />
+    <Content Include="Content\images\projects\3\logo\1.png" />
+    <Content Include="Content\images\projects\3\thumbs\1.png" />
+    <Content Include="Content\images\projects\3\thumbs\2.png" />
+    <Content Include="Content\images\projects\3\thumbs\3.png" />
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
