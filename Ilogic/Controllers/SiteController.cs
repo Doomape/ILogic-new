@@ -172,15 +172,18 @@ namespace Ilogic.Controllers
 
             List<string> list_id = new List<string>();
             List<string> list_imgsrc = new List<string>();
+            List<string> screen_counter = new List<string>();
+            List<string> logos = new List<string>();
             string[] extensions = new[] { ".jpg", ".tiff", ".bmp" , ".png" };
 
             while (dbReader1.Read())
             {
+                int counter = 0;
                 string project_id = dbReader1.GetValue(0).ToString();
                 list_id.Add(project_id);
-                DirectoryInfo screenshotsdir = new DirectoryInfo(root_path+("\\Content\\images\\projects\\" + project_id));
-                DirectoryInfo logodir = new DirectoryInfo(root_path+("\\Content\\images\\projects\\" + project_id + "\\logo"));
 
+                DirectoryInfo screenshotsdir = new DirectoryInfo(root_path + ("\\Content\\images\\projects\\" + project_id + "\\thumbs"));
+                DirectoryInfo logodir = new DirectoryInfo(root_path+("\\Content\\images\\projects\\" + project_id + "\\logo"));
                 FileInfo[] logo = logodir.EnumerateFiles()
          .Where(f => extensions.Contains(f.Extension.ToLower()))
          .ToArray();
@@ -188,13 +191,21 @@ namespace Ilogic.Controllers
          .Where(f => extensions.Contains(f.Extension.ToLower()))
          .ToArray();
 
-
-                //list_imgsrc.Add();
+                logos.Add(logo[0].FullName.Replace(root_path, "").Insert(0,@"\"));
+                foreach (var screen in screenshots)
+                {
+                    list_imgsrc.Add(screen.FullName.Replace(root_path, "").Insert(0, @"\"));
+                    counter++;
+                }
+                screen_counter.Add(counter.ToString());
             }
+            
             dbReader1.Close();
             conn1.Close();
             res.Add("id",list_id);
             res.Add("img", list_imgsrc);
+            res.Add("screen_counter", screen_counter);
+            res.Add("logos", logos);
 
             return Json(res,JsonRequestBehavior.AllowGet);
         }
