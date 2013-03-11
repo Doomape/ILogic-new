@@ -204,12 +204,11 @@
 
                     if (i == 1)//set the main load project 
                     {
-                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                        $("#mcts1").append('<a href="javascript:void(0);" style="text-decoration: none;"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
                         for (var j = 0; j < thumbItems; j++) {
                             var thumbItem = result[i].split('@@')[3].split("#")[j];
                             $("#thumbs").append('<a href="javascript:void(0);"><div  class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                             $("#" + j + "").fadeIn((j + 1) * 1000);
-
                         }
                         var img = new Image();
                         img.src = mainPicture;
@@ -222,7 +221,7 @@
                         $("#productDescription").append('<p>' + description + '</p>');
                     }
                     if (i > 1) {
-                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                        $("#mcts1").append('<a href="javascript:void(0);" style="text-decoration: none;"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
                     }
                 }
             }
