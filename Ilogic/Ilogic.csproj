@@ -159,6 +159,8 @@
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
     <Content Include="Content\images\Feydom.png" />
+    <Content Include="Content\images\GoogleMap.png" />
+    <Content Include="Content\images\GoogleMaps.png" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
     <Content Include="Content\images\lll.png" />
