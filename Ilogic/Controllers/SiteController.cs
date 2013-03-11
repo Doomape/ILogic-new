@@ -174,6 +174,7 @@ namespace Ilogic.Controllers
             List<string> list_imgsrc = new List<string>();
             List<string> screen_counter = new List<string>();
             List<string> logos = new List<string>();
+            List<string> description = new List<string>();
             string[] extensions = new[] { ".jpg", ".tiff", ".bmp" , ".png" };
 
             while (dbReader1.Read())
@@ -198,6 +199,7 @@ namespace Ilogic.Controllers
                     counter++;
                 }
                 screen_counter.Add(counter.ToString());
+                description.Add(dbReader1.GetValue(2).ToString());
             }
             
             dbReader1.Close();
@@ -206,6 +208,7 @@ namespace Ilogic.Controllers
             res.Add("img", list_imgsrc);
             res.Add("screen_counter", screen_counter);
             res.Add("logos", logos);
+            res.Add("desc", description);
 
             return Json(res,JsonRequestBehavior.AllowGet);
         }

@@ -130,24 +130,40 @@
         #thumbs_container #thumbs {
             width: 100%;
             height: 50%;
-            background-color: pink;
+            /*background-color: pink;*/
             position: absolute;
             top: 25%;
+            /*overflow: hidden;*/
         }
     .logos {
         margin-top: 12px;
     }
     .thumbStyle {
-        line-height: 93px;
-        text-align: center;
-        margin-left: 10px;
-        margin-top: 10px;
+        margin: 10px 10px 0 10px;
         border: 1px solid gray;
         -webkit-box-shadow: 1px 1px 10px gray;
         box-shadow: 1px 1px 10px gray;
-        width: 100px;
+        width: 93px;
         height: 93px;
-        background-repeat:no-repeat;
+        -moz-background-size: 93px 93px;
+        -o-background-size: 93px 93px;
+        -webkit-background-size: 93px 93px;
+        background-size: 93px 93px !important;
+        background-repeat: no-repeat;
+    }
+    .main_image {
+        height: 50%;
+        margin-top:25%;
+        max-width:80%;
+    }
+    .description {
+        height: 300px;
+        margin-top: 49%;
+        width: 300px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 1px 1px 10px;
+        box-shadow: 1px 1px 10px;
+        text-align: center;
     }
 </style>
 <div id="top-row">
@@ -165,12 +181,16 @@
         </div>
     </div>
 
-    <div id="img" style="width: 600px; float: left; text-align: center; height: 100%">
-        <img src="/Content/images/Feydom.png" style="margin-top: 26px; border: 3px solid black" />
+    <div id="img_container" style="width: 580px; float: left; text-align: center; height: 100%">
     </div>
 
-    <div id="text" style="width: 309px; float: left; height: 100%">
-        <div id="text_content" style="width: 260px; height: 300px; margin: 36px 0px 0px 23px; background: url('/Content/images/top_bottom_background.gif');"></div>
+    <div id="text" style="width: 300px; float: left; height: 100%">
+        <div class="description">
+            <div style="border: 1px solid gray; background: rgb(53, 51, 51); text-align: center; color: white; height: 30px; line-height: 30px;">
+                <p>Description</p>
+            </div>
+            <div id="productDescription" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+        </div>
     </div>
 </div>
 
@@ -179,11 +199,13 @@
     var project_ids = new Array();
     var project_screenshots = new Array();
     var project_counter = new Array();
+    var project_description = new Array();
 
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
     });
+
     $(document).ready(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
@@ -198,10 +220,11 @@
                 project_ids = data.id;
                 project_screenshots = data.img;
                 project_counter = data.screen_counter;
-                debugger;
+                project_description = data.desc;
+                //debugger;
                 for (i = 0; i < data.id.length; i++) {
-                    $("#mcts1").append("<div onclick='showThumbs(" + data.id[i] + ")'>" +
-                        "<img class='mouse_hover logos' src='" + data.logos[i] + "'/></div>");
+                    $("#mcts1").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[i] + ")'>" +
+                        "<img class='mouse_hover logos' src='" + data.logos[i] + "'/></div></a>");
                     if (i == 0)
                         showThumbs(data.id[i]);
                 }
@@ -212,13 +235,19 @@
 
     function showThumbs(e) {
         $("#thumbs").empty();
-        
+        $("#productDescription").empty();
+
         var which_project = project_ids.indexOf(e.toString());
         var project_image_count = parseInt(project_counter[which_project]);
+        
+        $("#productDescription").append("<p>" + project_description[which_project] + "</p>");
         //first project
         if (which_project == 0) {
             for (j = 0; j < project_image_count; j++) {
-                $("#thumbs").append("<div class='thumbStyle' style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ")'></div>");
+                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + j + "' class='thumbStyle' style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ") center center'></div></a>");
+                $("#" + j + "").fadeIn((j + 1) * 1000);
+                if (j == 0)
+                    ShowBigImage($("#" + j + ""));
             }
         }
         else {
@@ -227,9 +256,20 @@
                 how_many_img_are_skipped += parseInt(project_counter[j]);
             }
             for (z = how_many_img_are_skipped; z < project_image_count + how_many_img_are_skipped; z++) {
-                $("#thumbs").append("<div class='thumbStyle' style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ")'></div>");
+                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + z + "' class='thumbStyle' style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ") center center'></div></a>");
+                $("#" + z + "").fadeIn((z + 1) * 1000);
+                if (z == how_many_img_are_skipped)
+                    ShowBigImage($("#" + z + ""));
             }
         }
+    }
+
+    function ShowBigImage(e) {
+        debugger;
+        var image_src = $(e).css("background-image").replace("url(","").replace(")","").replace("/thumbs","");
+        $("#img_container").empty();
+        $("#img_container").append("<img class='main_image' src='" + image_src + "'/>");
+        $(".main_image").fadeIn(1000);
     }
 
 </script>
