@@ -9,11 +9,6 @@
         height: 100px;
         margin: 0 auto;
         margin-top: -3px;
-        /* padding:36px 20px;*/
-        /*  border:1px solid #dedcb4;
-    background:#f2f1ea url(loading.gif) no-repeat 50% 50%;
-    box-shadow: 0px 1px 11px #CCCCCC;*/
-        /* Do not alter the below settings */
         white-space: nowrap;
         position: relative;
         font-size: 0px;
@@ -123,72 +118,158 @@
         -o-transform: translate3d(0,0,0);
         -webkit-transform: translate3d(0,0,0);
     }
+
+    #thumbs_container {
+        width: 115px;
+        float: left;
+        height: 100%;
+        background: url('/Content/images/top_bottom_background.gif');
+        position: relative;
+    }
+
+        #thumbs_container #thumbs {
+            width: 100%;
+            height: 50%;
+            /*background-color: pink;*/
+            position: absolute;
+            top: 25%;
+            /*overflow: hidden;*/
+        }
+    .logos {
+        margin-top: 12px;
+    }
+    .thumbStyle {
+        margin: 10px 10px 0 10px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 1px 1px 10px gray;
+        box-shadow: 1px 1px 10px gray;
+        width: 93px;
+        height: 93px;
+        -moz-background-size: 93px 93px;
+        -o-background-size: 93px 93px;
+        -webkit-background-size: 93px 93px;
+        background-size: 93px 93px !important;
+        background-repeat: no-repeat;
+    }
+    .main_image {
+        height: 50%;
+        margin-top:25%;
+        max-width:80%;
+    }
+    .description {
+        height: 300px;
+        margin-top: 49%;
+        width: 300px;
+        border: 1px solid gray;
+        -webkit-box-shadow: 1px 1px 10px;
+        box-shadow: 1px 1px 10px;
+        text-align: center;
+    }
 </style>
 <div id="top-row">
     <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
         <img src="/Content/images/lll.png" />
     </div>
-    <div class="div2">
-        <div id="mcts1" style="float: left;">
-            <div onclick="showThumb('sumo')" class="mouse_hover">
-                <img style="margin-top: 12px" src="/Content/images/projects/feydom.png" />
-            </div>
-            <div onclick="showImage()" class="mouse_hover">
-                <img src="/Content/images/sumo.png" /><div class="class1">
-                    <p>Koki</p>
-                </div>
-            </div>
-        </div>
+    <div id="mcts1" style="float: left;">
+        
+
     </div>
 </div>
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
-    <div id="thumbs" style="width: 115px; float: left; background:url('/Content/images/top_bottom_background.gif');">
-        <div style="width:100px;height:300px;background-color:pink;text-align:center"> 
-            
+    <div id="thumbs_container">
+        <div id="thumbs">
         </div>
     </div>
 
-    <div id="img" style="width: 600px; float: left;text-align: center;">
-        <img src="/Content/images/Feydom.png" / style="margin-top: 26px; border:3px solid black">
+    <div id="img_container" style="width: 580px; float: left; text-align: center; height: 100%">
     </div>
 
-    <div id="text" style="width: 309px; float: left;">
-        <div id="text_content" style="width:260px;height:300px;margin: 36px 0px 0px 23px;background:url('/Content/images/top_bottom_background.gif');"></div>
+    <div id="text" style="width: 300px; float: left; height: 100%">
+        <div class="description">
+            <div style="border: 1px solid gray; background: rgb(53, 51, 51); text-align: center; color: white; height: 30px; line-height: 30px;">
+                <p>Description</p>
+            </div>
+            <div id="productDescription" style="width: 300px; height: 300px; margin-top: 10px;"></div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
 
+    var project_ids = new Array();
+    var project_screenshots = new Array();
+    var project_counter = new Array();
+    var project_description = new Array();
+
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-        $("#thumbs").css("height", height);
-        $("#img").css("height", height);
-        $("#text").css("height", height);
     });
+
     $(document).ready(function () {
-        $("#top-row").empty();
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-        $("#thumbs").css("height", height);
-        $("#img").css("height", height);
-        $("#text").css("height", height);
         $("html").css("height", height);
-        //$("#logoImages").css("height", height);
-        //  $('#bottom-row').css('background', 'white');
-        //   $('#top-row').css('background', '#979dd7');
-        //  document.body.style.background = "white";
+
+        $.ajax({
+            url: "getProjects",
+            type: "GET",
+            data: {},
+            success: function (data) {
+
+                project_ids = data.id;
+                project_screenshots = data.img;
+                project_counter = data.screen_counter;
+                project_description = data.desc;
+                //debugger;
+                for (i = 0; i < data.id.length; i++) {
+                    $("#mcts1").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[i] + ")'>" +
+                        "<img class='mouse_hover logos' src='" + data.logos[i] + "'/></div></a>");
+                    if (i == 0)
+                        showThumbs(data.id[i]);
+                }
+            }
+        });
+
     });
 
-    function showThumb(e) {
-        if (e == 'sumo') {
-            $("#thumbs").empty();
-            $("#thumbs").append("<img id='sumo_1' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(1).png'/>");
-            $("#thumbs").append("<img id='sumo_2' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(2).png'/>");
-            $("#thumbs").append("<img id='sumo_3' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(3).png'/>");
-            $("#thumbs").append("<img id='sumo_4' onclick='showImageandText(this)' style='margin-left: 13px;' src='/Content/images/thumbs/thumb_robot_(4).png'/>");
+    function showThumbs(e) {
+        $("#thumbs").empty();
+        $("#productDescription").empty();
 
+        var which_project = project_ids.indexOf(e.toString());
+        var project_image_count = parseInt(project_counter[which_project]);
+        
+        $("#productDescription").append("<p>" + project_description[which_project] + "</p>");
+        //first project
+        if (which_project == 0) {
+            for (j = 0; j < project_image_count; j++) {
+                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + j + "' class='thumbStyle' style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ") center center'></div></a>");
+                $("#" + j + "").fadeIn((j + 1) * 1000);
+                if (j == 0)
+                    ShowBigImage($("#" + j + ""));
+            }
         }
+        else {
+            var how_many_img_are_skipped = 0;
+            for (j = 0; j < which_project; j++) {
+                how_many_img_are_skipped += parseInt(project_counter[j]);
+            }
+            for (z = how_many_img_are_skipped; z < project_image_count + how_many_img_are_skipped; z++) {
+                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + z + "' class='thumbStyle' style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ") center center'></div></a>");
+                $("#" + z + "").fadeIn((z + 1) * 1000);
+                if (z == how_many_img_are_skipped)
+                    ShowBigImage($("#" + z + ""));
+            }
+        }
+    }
+
+    function ShowBigImage(e) {
+        debugger;
+        var image_src = $(e).css("background-image").replace("url(","").replace(")","").replace("/thumbs","");
+        $("#img_container").empty();
+        $("#img_container").append("<img class='main_image' src='" + image_src + "'/>");
+        $(".main_image").fadeIn(1000);
     }
 
 </script>

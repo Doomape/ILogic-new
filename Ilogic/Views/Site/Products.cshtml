@@ -26,14 +26,22 @@
 
         /*-------- div.item is each thumbnail's wrapper created by the javascript ------*/
         #mcts1 div.item {
+            display: block;
+            float: left;
+            height: 93px;
+            line-height: 93px;
+            text-align: center;
+            background: url("/Content/images/contentImage.gif");
+            margin-top: 6px;
+            box-shadow: 1px 1px 20px gray;
             padding: 0px;
-            margin-right: 5px; /* this specifies the distance between each thumbnail */
+            /*margin-right: 5px;*/ /* this specifies the distance between each thumbnail */
             background-color: transparent;
             /*  border:1px solid #ddd;*/
             text-align: center;
             position: relative;
-            margin-right: -10px;
-            margin-left: 30px;
+            /*margin-right: -10px;*/
+            margin-left: 50px;
         }
 
         #mcts1 img {
@@ -44,7 +52,7 @@
             width: 16px;
             height: 22px;
             position: absolute;
-            background: url(/Content/images/navButtons.png);
+            background: url("/Content/images/navButtons.png");
             display: inline-block;
             z-index: 5;
             cursor: pointer;
@@ -99,19 +107,21 @@
     }
     /*--------- class1 that is for the slide with HTML content------------*/
     .class1 {
-        width: 130px;
+        opacity: 0.8;
+        width: 165px;
         height: 14px;
         background: #444;
         text-align: center;
         color: White;
         font: normal 11px/14px Arial;
         white-space: normal;
-        margin-top: -15px;
+        margin-top: -14px;
         position: relative;
         z-index: 1;
     }
 
         .class1 p {
+            width: 165px;
             margin-top: 0;
             margin-bottom: 0px;
             padding-top: 0px;
@@ -128,21 +138,21 @@
     }
 
     .thumbStyle {
-        line-height: 90px;
+        line-height: 93px;
         text-align: center;
         margin-left: 10px;
         margin-top: 10px;
         border: 1px solid gray;
         box-shadow: 1px 1px 10px gray;
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 93px;
     }
 </style>
 <div id="top-row">
     <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
         <img src="/Content/images/logo.png" />
     </div>
-    <div class="div2">
+    <div class="div2" style="float: left; width: 900px; height: 100px;">
         <div id="mcts1" style="float: left;">
         </div>
     </div>
@@ -150,14 +160,19 @@
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
     <div id="thumbs" style="width: 115px; float: left; margin-top: 40px;">
     </div>
-    <div id="mainPicture" style="width: 600px; float: left; text-align: center; margin-top: 40px;">
+    <div id="mainPictures" style="width: 600px; float: left; text-align: center; margin-top: 40px;">
+        <img id="loading" style="margin-top: 25%; background-repeat: no-repeat no-repeat;" src="/Content/images/loader.gif" />
     </div>
-    <div id="productDescription" style="width: 300px; height: 300px; float: left; margin-top: 40px;">
+    <div id="allproductDescription" style="width: 300px; height: 300px; float: left; margin-top: 40px; border: 1px solid gray; box-shadow: 1px 1px 10px; text-align: center;">
+        <div style="border: 1px solid gray; background: rgb(53, 51, 51); text-align: center; color: white; height: 30px; line-height: 30px;">
+            <p>Description</p>
+        </div>
+        <div id="productDescription" style="width: 300px; height: 300px; margin-top: 10px;">
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
-
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
@@ -166,23 +181,18 @@
         $("#img").css("height", height);
         $("#text").css("height", height);
     });
-    $(document).ready(function () {
+    function preloader() {
         $("#top-row").empty();
-        var height = parseInt($(window).height()-210);
+        var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("#thumbs").css("height", height);
         $("#img").css("height", height);
         $("#text").css("height", height);
-      //  $("html").css("height", height);
-        //$("#logoImages").css("height", height);
-        //  document.body.style.background = "white";
         $.ajax({
             url: "getProducts",
             type: "GET",
             data: {},
             success: function (result) {
-                //  debugger;
-                $("#mainPicture").empty();
                 $("#thumbs").empty();
                 $("#productDescription").empty();
                 for (var i = 1; i <= result[0]; i++) {
@@ -194,29 +204,33 @@
 
                     if (i == 1)//set the main load project 
                     {
-                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 100px;line-height: 100px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                        $("#mcts1").append('<a href="javascript:void(0);" style="text-decoration: none;"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
                         for (var j = 0; j < thumbItems; j++) {
                             var thumbItem = result[i].split('@@')[3].split("#")[j];
                             $("#thumbs").append('<a href="javascript:void(0);"><div  class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                             $("#" + j + "").fadeIn((j + 1) * 1000);
-
                         }
-                        $("#mainPicture").fadeIn(500);
-                        $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
+                        var img = new Image();
+                        img.src = mainPicture;
+                        $(img).load(function () {
+                            $("#mainPictures img").attr("src", img.src);
+                            $("#mainPictures img").css('margin-top', '0px');
+                            $("#mainPictures img").fadeIn(500);
 
+                        });
                         $("#productDescription").append('<p>' + description + '</p>');
-
                     }
                     if (i > 1) {
-                        $("#mcts1").append('<a href="javascript:void(0);"><div style="height: 100px;line-height: 100px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
+                        $("#mcts1").append('<a href="javascript:void(0);" style="text-decoration: none;"><div style="height: 93px;line-height: 93px;text-align: center;" onclick="changeProduct(\'' + productName + '\');" class="mouse_hover" ><img style="vertical-align: middle;" src=' + topRowThumb + ' /><div class="class1"><p>' + productName + '</p></div></div></a>');
                     }
                 }
             }
         });
-    });
-
+    }
 
     function changeProduct(e) {
+        $("#mainPictures img").css('margin-top', '25%');
+        $("#mainPictures img").attr("src", "/Content/images/loader.gif");
         $.ajax({
             url: "changeProduct",
             type: "GET",
@@ -234,21 +248,30 @@
                         $("#thumbs").append('<a href="javascript:void(0);"><div class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                         $("#" + j + "").fadeIn((j + 1) * 1000);
                     }
-                    $("#mainPicture").empty();
-                    $("#productDescription").empty();
-                    $("#mainPicture").fadeIn(500);
-                    $("#mainPicture").append('<img style="" src=' + mainPicture + ' />');
 
+                    $("#productDescription").empty();
+                    var img = new Image();
+                    img.src = mainPicture;
+                    $(img).load(function () {
+                        $("#mainPictures img").attr("src", img.src);
+                        $("#mainPictures img").css('margin-top', '0px');
+                        $("#mainPictures img").fadeIn(500);
+                    });
                     $("#productDescription").append('<p>' + description + '</p>');
                 }
             }
         });
     }
     function changeMainPicture(e) {
-        $("#mainPicture").empty();
-        $("#mainPicture").fadeIn(500);
-        $("#mainPicture").append('<img style="" src=' + e + ' />');
-
+        $("#mainPictures img").css('margin-top', '25%');
+        $("#mainPictures img").attr("src", "/Content/images/loader.gif");
+        var img = new Image();
+        img.src = e;
+        $(img).load(function () {
+            $("#mainPictures img").attr("src", img.src);
+            $("#mainPictures img").css('margin-top', '0px');
+            $("#mainPictures img").fadeIn(500);
+        });
     }
-
+    window.onload = preloader;
 </script>
