@@ -175,6 +175,16 @@
     $(loading).ready(function () {
         $("#top-row-items").empty();
     });
+    $(document).keydown(function (e) {
+        if (e.keyCode == 37) {
+            $("#mcts1 .navPrev").click();
+            return false;
+        }
+        if (e.keyCode == 39) {
+            $("#mcts1 .navNext").click();
+            return false;
+        }
+    });
     function preloader() {
         $("#top-row-items").empty();
         var openLogoDiv = "<div onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;'>";
