@@ -47,10 +47,7 @@
               <div style="margin:auto;width: 120px;"> <img src="/Content/images/electronic_logo.png" /></div>
             </div>
             <div onclick="redirectPhp()" class="mouse_hover" style="float: left; position: relative; width: 259px; height: 100px;text-align: center; line-height: 100px; ">
-                <div style="margin:auto;width: 170px;"><img src="/Content/images/VisualStudio_logo.png" /></div>
-            </div>
-            <div onclick="redirectElectronic()" class="mouse_hover" style="float: left; position: relative; width: 290px; height: 100px; border-right: 1px solid black;">
-              <div style="margin:auto;width: 120px;"> <img src="/Content/images/electronic_logo.png" /></div>
+                 <div style="margin:auto;width: 236px;"> <img src="/Content/images/php_logo.png" style="vertical-align: middle;" /></div>
             </div>
             <div id="android" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 115px; height: 100px; border-left: 1px solid black;">
                  <div style="margin:auto;text-align:center;line-height:100px;"><img style="vertical-align:middle;" src="/Content/images/android.png" /></div>
@@ -143,13 +140,13 @@
     <script type="text/javascript">
 
         $(window).resize(function () {
-            var height = parseInt($(window).height() -210);
+            var height = parseInt($(window).height() - 210);
             $("#wrapper").css("height", height);
             $("html").css("height", height);
         });
 
         $(document).ready(function () {
-            var height = parseInt($(window).height() -210);
+            var height = parseInt($(window).height() - 210);
             $("#wrapper").css("height", height);
             $("html").css("height", height);
         });
@@ -197,7 +194,7 @@
         var hiddenContent1 = $('#open_mail_form');
         $("#mail_form").click(function (event) {
             $("#maila_form").css("display", "block");
-            
+
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
 
@@ -207,7 +204,7 @@
                 // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                   
+
                 }
 
             } else {
@@ -265,7 +262,7 @@
 
         $('.submit').click(function () {
 
-           
+
 
             var name = $('#ime').val();
             var email = $('#email').val();
@@ -278,7 +275,7 @@
                 if ($($(".contact_input")[i]).attr('required')) {
                     required_inputs.push($($(".contact_input")[i]));
                 }
-           
+
             }
             var pom = false;
 
@@ -300,7 +297,7 @@
                     success: function (result) {
                         //alert(result.msg);
                         $(".contact_form").fadeOut(1000);
-                      
+
                         setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 2000);
                         setTimeout(function () { hiddenContent1.slideUp(3010); }, 4000);
                     }
@@ -309,7 +306,7 @@
                 alert("Enter the required values");
             }
 
-            
+
         });
 
     </script>
