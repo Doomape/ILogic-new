@@ -160,16 +160,37 @@
         box-shadow: 1px 1px 10px;
         text-align: center;
     }
+    .thumb_mask {
+        width: 93px;
+        height: 93px;
+        background: url("/Content/images/top_bottom_background.gif");
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+        display:table;
+    }
+        .thumb_mask:hover {
+            -moz-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            -webkit-transition: all 1s linear;
+            transition: all 1s linear;
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 0;
+        }
+    .thumb_text {
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        /*padding:24px 5px 0 5px;*/
+        display: table-cell;
+        vertical-align: middle;
+        font-family:Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    }
 </style>
-<div id="top-row">
-    <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
-        <img src="/Content/images/lll.png" />
-    </div>
-    <div id="mcts1" style="float: left;">
-        
 
-    </div>
-</div>
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
     <div id="thumbs_container">
         <div id="thumbs">
@@ -195,6 +216,8 @@
     var project_screenshots = new Array();
     var project_counter = new Array();
     var project_description = new Array();
+    var thumb_description = new Array();
+    var current_project = "";
 
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
@@ -202,6 +225,15 @@
     });
 
     $(document).ready(function () {
+
+        $("#top-row-items").empty();
+        var openLogoDiv = "<div onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;'>";
+        var imgLogo = "<img src='/Content/images/logo.png'/>";
+        var closeDiv = "</div>";
+        var productsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
+        var productItems = "<div id='mcts1' style='float: left;'>";
+        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv + productItems + closeDiv);
+
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("html").css("height", height);
@@ -216,12 +248,13 @@
                 project_screenshots = data.img;
                 project_counter = data.screen_counter;
                 project_description = data.desc;
+                thumb_description = data.thumb_desc;
                 //debugger;
-                for (i = 0; i < data.id.length; i++) {
-                    $("#mcts1").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[i] + ")'>" +
-                        "<img class='mouse_hover logos' src='" + data.logos[i] + "'/></div></a>");
-                    if (i == 0)
-                        showThumbs(data.id[i]);
+                for (b = 0; b < data.id.length; b++) {
+                    $("#mcts1").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
+                        "<img class='mouse_hover logos' src='" + data.logos[b] + "'/></div></a>");
+                    if (b == 0)
+                        showThumbs(data.id[b]);
                 }
             }
         });
@@ -233,14 +266,27 @@
         $("#productDescription").empty();
 
         var which_project = project_ids.indexOf(e.toString());
+        current_project = which_project;
         var project_image_count = parseInt(project_counter[which_project]);
+        var thumb_desc = thumb_description[current_project].split(",");
         
         $("#productDescription").append("<p>" + project_description[which_project] + "</p>");
         //first project
         if (which_project == 0) {
             for (j = 0; j < project_image_count; j++) {
-                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + j + "' class='thumbStyle' style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ") center center'></div></a>");
-                $("#" + j + "").fadeIn((j + 1) * 1000);
+                debugger;
+                var image_name = project_screenshots[j].replace(/\\/g, "/").split("/")[6].split(".")[0];
+                var image_desc = "";
+                for (i = 0; i < thumb_desc.length; i++) {
+                    if (thumb_desc[i].split("@@")[0] == image_name)
+                        image_desc = thumb_desc[i].split("@@")[1];
+                }
+                $("#thumbs").append("<a style='text-decoration: none;' href='javascript:void(0);'>" +
+                    "<div onclick='ShowBigImage(this)' id='" + j + "' class='thumbStyle' " +
+                    "style='background:url(" + project_screenshots[j].replace(/\\/g, "/") + ") center center'>"+
+                    "<div class='thumb_mask'><p class='thumb_text'>" + image_desc + "</p></div></div></a>");
+
+                //$("#" + j + "").fadeIn((j + 1) * 1000);
                 if (j == 0)
                     ShowBigImage($("#" + j + ""));
             }
@@ -251,8 +297,11 @@
                 how_many_img_are_skipped += parseInt(project_counter[j]);
             }
             for (z = how_many_img_are_skipped; z < project_image_count + how_many_img_are_skipped; z++) {
-                $("#thumbs").append("<a href='javascript:void(0);'><div onclick='ShowBigImage(this)' id='" + z + "' class='thumbStyle' style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ") center center'></div></a>");
-                $("#" + z + "").fadeIn((z + 1) * 1000);
+                $("#thumbs").append("<a style='text-decoration: none;' href='javascript:void(0);'>" +
+                    "<div onclick='ShowBigImage(this)' id='" + z + "' class='thumbStyle' "+
+                    "style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ") center center'>"+
+                    "<div class='thumb_mask'></div></div></a>");
+                //$("#" + z + "").fadeIn((z + 1) * 1000);
                 if (z == how_many_img_are_skipped)
                     ShowBigImage($("#" + z + ""));
             }
@@ -260,7 +309,6 @@
     }
 
     function ShowBigImage(e) {
-        debugger;
         var image_src = $(e).css("background-image").replace("url(","").replace(")","").replace("/thumbs","");
         $("#img_container").empty();
         $("#img_container").append("<img class='main_image' src='" + image_src + "'/>");

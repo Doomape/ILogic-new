@@ -85,7 +85,7 @@ table {
 
 /*#content-row {padding-top:1px;background:#eee;height: 100%;margin: 100px 0 0 0;background-color: white;box-shadow: 1px 1px 10px gray;}*/ 
 
-#bottom-row {width: 100%;position:fixed;bottom:0px;border-top: 2px solid gray;box-shadow: 2px 0px 10px gray;background:url("/Content/images/top_bottom_background.gif");}
+#bottom-row {color:#ddd;width: 100%;position:fixed;bottom:0px;border-top: 2px solid gray;box-shadow: 2px 0px 10px gray;background:url("/Content/images/top_bottom_background.gif");}
  
 html, body { height: 100%; /*overflow-y: auto;*/ }
 
