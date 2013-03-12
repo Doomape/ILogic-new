@@ -37,22 +37,30 @@
 <body>
     <div id="wrapper">
         <div id="top-row">
-            <div id="logo" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
+            <div id="top-row-items" style="width:1024px;margin:auto;">
+            <div id="logo" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;">
             </div>
-            <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 290px; height: 100px; border-right: 1px solid black; text-align: center;">
+            <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 259px; height: 100px; border-right: 1px solid black; text-align: center;">
                 <div style="margin:auto;width: 170px;"><img src="/Content/images/VisualStudio_logo.png" /></div>
             </div>
-            <div onclick="redirectElectronic()" class="mouse_hover" style="float: left; position: relative; width: 290px; height: 100px; border-right: 1px solid black;">
+            <div onclick="redirectElectronic()" class="mouse_hover" style="float: left; position: relative; width: 260px; height: 100px; border-right: 1px solid black;">
               <div style="margin:auto;width: 120px;"> <img src="/Content/images/electronic_logo.png" /></div>
             </div>
-            <div onclick="redirectPhp()" class="mouse_hover" style="float: left; position: relative; width: 290px; height: 100px;text-align: center; line-height: 100px; ">
+            <div onclick="redirectPhp()" class="mouse_hover" style="float: left; position: relative; width: 259px; height: 100px;text-align: center; line-height: 100px; ">
                  <div style="margin:auto;width: 236px;"> <img src="/Content/images/php_logo.png" style="vertical-align: middle;" /></div>
             </div>
+            <div id="android" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 115px; height: 100px; border-left: 1px solid black;">
+                 <div style="margin:auto;text-align:center;line-height:100px;"><img style="vertical-align:middle;" src="/Content/images/android.png" /></div>
+            </div>
+         </div>
         </div>
-        <div id="content" style="-webkit-box-shadow: 1px 1px 10px gray; box-shadow: 1px 1px 10px gray;">
+        <div id="content">
+            <div style="width:1024px;margin:auto;">
             @RenderBody()
         </div>
+        </div>
         <div id="bottom-row">
+             <div style="width:1024px;margin:auto;">
             <div id="open_twitter_form">
                 <div class="twitter">
                     <script type="text/javascript">
@@ -87,8 +95,9 @@
             </div>
             <div id="open_mail_form">
                 <div style="background:rgb(42, 63, 77);width: 380px; margin: auto; height: 377px; margin-top: 11px; box-shadow: 1px 1px 60px gray; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;">
-                    <p id="succesed_msg" style =" display: none; position: absolute; text-align:center;
-margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your message has been sent</p>
+                    <p id="succesed_msg" style =" display: none; position: absolute; text-align:center;margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">
+                        Your message has been sent
+                    </p>
                 <div class="contact_form";>
                     <ul>
                         <li>
@@ -122,6 +131,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                     </div>
             </div>
             <div id="mail_form"></div>
+            </div>
         </div>
     </div>
 
@@ -130,13 +140,13 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
     <script type="text/javascript">
 
         $(window).resize(function () {
-            var height = parseInt($(window).height() -210);
+            var height = parseInt($(window).height() - 210);
             $("#wrapper").css("height", height);
             $("html").css("height", height);
         });
 
         $(document).ready(function () {
-            var height = parseInt($(window).height() -210);
+            var height = parseInt($(window).height() - 210);
             $("#wrapper").css("height", height);
             $("html").css("height", height);
         });
@@ -184,7 +194,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
         var hiddenContent1 = $('#open_mail_form');
         $("#mail_form").click(function (event) {
             $("#maila_form").css("display", "block");
-            
+
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
 
@@ -194,7 +204,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                 // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                   
+
                 }
 
             } else {
@@ -252,7 +262,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
 
         $('.submit').click(function () {
 
-           
+
 
             var name = $('#ime').val();
             var email = $('#email').val();
@@ -265,7 +275,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                 if ($($(".contact_input")[i]).attr('required')) {
                     required_inputs.push($($(".contact_input")[i]));
                 }
-           
+
             }
             var pom = false;
 
@@ -287,7 +297,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                     success: function (result) {
                         //alert(result.msg);
                         $(".contact_form").fadeOut(1000);
-                      
+
                         setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 2000);
                         setTimeout(function () { hiddenContent1.slideUp(3010); }, 4000);
                     }
@@ -296,7 +306,7 @@ margin-top: 150px; margin-left: 86px; color:white; font-family:sans-serif ">Your
                 alert("Enter the required values");
             }
 
-            
+
         });
 
     </script>

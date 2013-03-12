@@ -148,15 +148,7 @@
         height: 93px;
     }
 </style>
-<div id="top-row">
-    <div onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;">
-        <img src="/Content/images/logo.png" />
-    </div>
-    <div class="div2" style="float: left; width: 900px; height: 100px;">
-        <div id="mcts1" style="float: left;">
-        </div>
-    </div>
-</div>
+
 <div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
     <div id="thumbs" style="width: 115px; float: left; margin-top: 40px;">
     </div>
@@ -176,13 +168,21 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
-
         $("#thumbs").css("height", height);
         $("#img").css("height", height);
         $("#text").css("height", height);
     });
+    $(loading).ready(function () {
+        $("#top-row-items").empty();
+    });
     function preloader() {
-        $("#top-row").empty();
+        $("#top-row-items").empty();
+        var openLogoDiv = "<div onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;'>";
+        var imgLogo = "<img src='/Content/images/logo.png'/>";
+        var closeDiv = "</div>";
+        var productsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
+        var productItems = "<div id='mcts1' style='float: left;'>";
+        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv + productItems + closeDiv);
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("#thumbs").css("height", height);

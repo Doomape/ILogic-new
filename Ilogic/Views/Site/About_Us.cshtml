@@ -38,25 +38,15 @@
 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 
 
-    <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
+<div id="about_us" style="position:relative">
+
+    <div id="toggle_map" style="position: absolute; right: 100px; width: 60px; height: 60px; cursor: pointer; z-index: 99; background: url('/Content/images/GoogleMap.png') center center; -moz-background-size: 40px 40px; -o-background-size: 40px 40px; -webkit-background-size: 40px 40px; background-size: 40px 40px; background-repeat: no-repeat;">
+    </div>
+
+   <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
         <div id="map" style="width: 1024px;height:700px;position: fixed;overflow: hidden;">
         </div>
     </div>
-            <div id="toggle_map" style="position:absolute; right:100px; width:60px; height:60px; cursor: pointer; z-index:99;
-        background: url('/Content/images/GoogleMap.png') center center;
-        background-size:40px 40px;
-        background-repeat:no-repeat;" >
-    </div>
-    
-
-
-   
-
-
-<div id="about_us" style="position:relative">
-
-   
-  
 
     <div class="content" style="width: 20%; left:8%;">
      
@@ -167,19 +157,22 @@
     var map;
     //$(window).load(function () { $("#top-row").empty(); });
     $("#toggle_map").toggle(function () {
+        $(".content").css("display", "none");
         $("#map_container").animate({ height: 700 }, 1000, "linear", function () {
-            debugger;
             var height = parseInt($("#about_us").css("height")) + 700;
-            $("#about_us").css("height", height);
-            $("html").css("height", height);
+            //$("#about_us").css("height", height);
+            //$("html").css("height", height);
         });
-      
-      
+
+
     }, function () {
+
         $("#map_container").animate({ height: 0 }, 1000, "linear", function () {
             var height = parseInt($("#about_us").css("height")) - 700;
-            $("#about_us").css("height", height);
-            $("html").css("height", height);
+            //$("#about_us").css("height", height);
+            //$("html").css("height", height);
+            //$(".content").css("display", "block");
+            $(".content").fadeIn(600);
         });
 
     });
@@ -187,7 +180,7 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#about_us").css("height", height);
-        
+
     });
 
 
