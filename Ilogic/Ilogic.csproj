@@ -158,6 +158,9 @@
     <Content Include="Content\images\asp\jquery_logo.png" />
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
+    <Content Include="Content\images\Feydom.png" />
+    <Content Include="Content\images\GoogleMap.png" />
+    <Content Include="Content\images\GoogleMaps.png" />
     <Content Include="Content\images\projects\1\13.jpg" />
     <Content Include="Content\images\projects\1\thumbs\13.jpg" />
     <Content Include="Content\images\projects\1\thumbs\Feydom.png" />

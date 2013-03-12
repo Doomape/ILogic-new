@@ -13,22 +13,44 @@
         margin-bottom: 6px;
         color: #395B75;
     }
+
+    .links {
+       
+        margin-left:7px;
+        margin-top:13px;
+    }
+
+    #about_us {
+        height: 50%;
+        background: url('/Content/images/contentImage.gif');
+        position: absolute;
+    }
+
+        #about_us .content {
+            height: 25%;
+            position: absolute;
+            top: 18%;
+           
+        }
+
 </style>
 
 <script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>
 
 
-<div id="about_us" style="background: url('/Content/images/contentImage.gif');position:relative;">
+<div id="about_us" style="position:relative">
 
-    
-    <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
+    <div id="toggle_map" style="position: absolute; right: 100px; width: 60px; height: 60px; cursor: pointer; z-index: 99; background: url('/Content/images/GoogleMap.png') center center; -moz-background-size: 40px 40px; -o-background-size: 40px 40px; -webkit-background-size: 40px 40px; background-size: 40px 40px; background-repeat: no-repeat;">
+    </div>
+
+   <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
         <div id="map" style="width: 1024px;height:700px;position: fixed;overflow: hidden;">
         </div>
     </div>
-    <button style="position:absolute;top:32px;right:0px" type="button" id="toggle_map" value="Show Map">Show Map</button>
 
-    <div style="width: 341px; float: left;">
-        <table style="line-height: 1.2em; margin: 70px 0px 0px 70px; text-align: left">
+    <div class="content" style="width: 20%; left:8%;">
+     
+        <table style="line-height: 1.2em; text-align: left">
 
             <tr>
                 <td>
@@ -46,10 +68,12 @@
             </tr>
 
         </table>
-        <table style="line-height: 1.2em; margin: 10px 0px 0px 70px; text-align: left">
+        <table style="line-height: 1.2em; text-align: left">
             <tr>
                 <td>
-                    <p class="info">Contact</p>
+                    <p class="info" style="margin-top: 10px;">
+                    <p class="info" >Contact</p>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -71,59 +95,84 @@
             </tr>
             <tr>
                 <td>
-                    <p>+389.2044045</p>
+                    <p>+389 077/849-706</p>
                 </td>
+                
             </tr>
+            <tr>
+                  <td>
+                    <p>+389 070/475-591</p>
+                 </td>
+             </tr>
         </table>
     </div>
 
-    <div style="width: 341px; float: left;">
-        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FiLogic%2F124722254377442&amp;width=292&amp;height=290&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color&amp;header=true" scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 292px; height: 290px; margin-top: 16px" allowtransparency="true"></iframe>
-
-        <div style="float: left; width: 300px">
-            <h3>Also you can Find Us</h3>
-            <ul style="margin-top: 20px;">
-                <li style="float: left"><a href="https://www.facebook.com/ilogicmacedonia" rel="nofollow" target="_blank">
-                    <img src="/Content/images/about_us/facebook.png" />
-                </a></li>
-                <li style="float: left"><a href="https://www.youtube.com/ilogicmk" rel="nofollow" target="_blank">
-                    <img src="/Content/images/about_us/youtube.png" />
-                </a></li>
-                <li style="float: left"><a href="http://www.linkedin.com/in/ilogicmk" rel="nofollow" target="_blank">
-                    <img src="/Content/images/about_us/linkedin.png" />
-                </a></li>
-                <li style="float: left"><a href="https://www.twitter.com/ilogicmk" rel="nofollow" target="_blank">
-                    <img src="/Content/images/about_us/twitter.png" />
-                </a></li>
-                <li style="float: left"><a href="skype:ilogicmk?add" rel="nofollow" target="_blank">
-                    <img src="/Content/images/about_us/skype.png" />
-                </a></li>
-
-            </ul>
-
-        </div>
+    <div class="content " style="width: 20%; left: 36%;">
+    
+       <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Filogicmacedonia&amp;width=292&amp;height=290&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23353331&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:290px;" allowTransparency="true"></iframe>
 
     </div>
+
+     <div class="content"  style="width: 16%; left: 72%; ">
+
+         <table >
+           <tr>
+                <td>
+                   <h2 style=" color: #395B75;"> Also you can Find Us </h2>  
+                </td>
+            </tr>
+            <tr style="float:left">
+                <td>
+                    <a href="https://www.facebook.com/ilogicmacedonia" rel="nofollow" target="_blank"> 
+                    <img class="links" src="/Content/images/about_us/facebook.png" /></a>
+                </td>
+                <td>
+                    <a href="https://www.youtube.com/ilogicmk" rel="nofollow" target="_blank">
+                        <img class="links" src="/Content/images/about_us/youtube.png" /></a>
+                </td>
+                <td>
+                    <a href="http://www.linkedin.com/in/ilogicmk" rel="nofollow" target="_blank"> 
+                        <img class="links" src="/Content/images/about_us/linkedin.png" /></a>
+                </td>
+            </tr>
+            <tr style="float:left">
+                <td>
+                    <a href="https://www.twitter.com/ilogicmk" rel="nofollow" target="_blank">
+                        <img class="links" src="/Content/images/about_us/twitter.png" /></a>
+                </td>
+                <td>
+                   <a href="skype:ilogicmk?add" rel="nofollow" target="_blank">
+                        <img class="links" src="/Content/images/about_us/skype.png" /> </a>
+                </td>
+            </tr>
+          
+         </table>
+   
+        </div>
 
 </div>
 
 <script type="text/javascript">
     var refreshIntervalId;
     var map;
-
+    //$(window).load(function () { $("#top-row").empty(); });
     $("#toggle_map").toggle(function () {
+        $(".content").css("display", "none");
         $("#map_container").animate({ height: 700 }, 1000, "linear", function () {
-            debugger;
             var height = parseInt($("#about_us").css("height")) + 700;
-            $("#about_us").css("height", height);
-            $("html").css("height", height);
+            //$("#about_us").css("height", height);
+            //$("html").css("height", height);
         });
       
+      
     }, function () {
+       
         $("#map_container").animate({ height: 0 }, 1000, "linear", function () {
             var height = parseInt($("#about_us").css("height")) - 700;
-            $("#about_us").css("height", height);
-            $("html").css("height", height);
+            //$("#about_us").css("height", height);
+            //$("html").css("height", height);
+            //$(".content").css("display", "block");
+            $(".content").fadeIn(600);
         });
 
     });
@@ -131,7 +180,7 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() - 210);
         $("#about_us").css("height", height);
-
+        
     });
 
 
