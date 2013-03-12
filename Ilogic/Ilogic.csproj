@@ -191,6 +191,7 @@
     <Content Include="Content\images\contentImage.gif" />
     <Content Include="Content\images\php\joomla_logo.png" />
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
+    <Content Include="Content\images\php\bottom_top.gif" />
     <Content Include="Content\images\php\wordpress_logo.png" />
     <Content Include="Content\images\php_logo.png" />
     <Content Include="Content\images\projects\1\1.png" />
