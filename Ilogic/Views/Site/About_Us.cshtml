@@ -44,8 +44,9 @@
     </div>*@
     <button id="toggle_map" value="test">test</button>
 
+
    <div id="map_container" style="width: 1024px;overflow:hidden;z-index:-999;height:0px;">
-        <div id="map" style="width: 1024px;height:700px;position: fixed;overflow: hidden;">
+        <div id="map" style="width: 1024px;height:400px;position: fixed;overflow: hidden;">
         </div>
     </div>
 
@@ -156,13 +157,14 @@
 <script type="text/javascript">
     var refreshIntervalId;
     var map;
-    var content = $(".content");
-    //$(window).load(function () { $("#top-row").empty(); });
+
     $("#toggle_map").toggle(function () {
+
         $("#toggle_map").attr("disabled", "disabled");
         hide_content();
         $("#map_container").animate({ height: 700 }, 1000, "linear", function () {
             $("#toggle_map").removeAttr("disabled");
+
         });
 
     }, function () {
@@ -170,6 +172,7 @@
         $("#map_container").animate({ height: 0 }, 1000, "linear", function () {
             show_content();
             $("#toggle_map").removeAttr("disabled");
+
         });
 
     });
