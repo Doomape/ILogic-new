@@ -2,120 +2,121 @@
     ViewBag.Title = "Projects";
     Layout = "~/Views/Shared/SiteMaster.cshtml";
 }
-<script src="@Url.Content("~/Scripts/jquery-slider.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.tools.min.js")" type="text/javascript"></script>
 <style>
-    #mcts1 {
-        width: 900px;
-        height: 100px;
-        margin: 0 auto;
-        margin-top: -3px;
-        white-space: nowrap;
-        position: relative;
-        font-size: 0px;
-        background-color: transparent;
-         -ms-transform: translate3d(0,0,0);
-        -moz-transform: translate3d(0,0,0);
-        -o-transform: translate3d(0,0,0);
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-    }
+  
+/*
+  root element for the scrollable.
+  when scrolling occurs this element stays still.
+  */
+.scrollable {
 
-        #mcts1 > * {
-            display: none;
-        }
+    /* required settings */
+    position:relative;
+    overflow:hidden;
+    /*width: 790px;*/
+    height:100px;
+    width: 899px;
+    /* custom decorations */
+}
 
-        /*-------- div.item is each thumbnail's wrapper created by the javascript ------*/
-        #mcts1 div.item {
-            padding: 0px;
-            margin-right: 5px; /* this specifies the distance between each thumbnail */
-            background-color: transparent;
-            /*  border:1px solid #ddd;*/
-            text-align: center;
-            position: relative;
-            margin-right: -10px;
-            margin-left: 30px;
-        }
+/*
+   root element for scrollable items. Must be absolutely positioned
+   and it should have a extremely large width to accomodate scrollable
+   items.  it's enough that you set the width and height for the root
+   element and not for this element.
+*/
+.scrollable .items {
+    /* this cannot be too large */
+    width:20000em;
+    position:absolute;
+    clear:both;
+}
+/*or .items div*/
+.items a {
+    float: left;
+    width: 93px;
+    display: block;
+    height: 93px;
+    margin-top: 3px;
+    padding: 0px;
+    position: relative;
+    margin-left: 46px;
+    margin-right: 6px;
+}
 
-        #mcts1 img {
-            border: none;
-        }
-        /*---------built-in navigation buttons-------*/
-        #mcts1 .navPrev, #mcts1 .navNext {
-            width: 16px;
-            height: 22px;
-            position: absolute;
-            background: url(/Content/images/navButtons.png);
-            display: inline-block;
-            z-index: 5;
-            cursor: pointer;
-        }
+/* single scrollable item */
+.scrollable img {
+    /*float:left;
+    margin:20px 5px 20px 21px;
+    background-color:#fff;
+    padding:2px;
+    border:1px solid #ccc;
+    width:100px;
+    height:75px;
 
-        #mcts1 .navPrev {
-            background-position: 0 -22px;
-            top: 33px;
-            left: 3px;
-        }
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;*/
+}
 
-            #mcts1 .navPrev:hover {
-                background-position: 0 -44px;
-            }
+/* active item */
+.scrollable .active {
+    border:2px solid #000;
+    position:relative;
+    cursor:default;
+}
 
-        #mcts1 .navPrevDisabled, #mcts1 .navPrevDisabled:hover {
-            background-position: 0 0;
-            cursor: default;
-        }
+/* this makes it possible to add next button beside scrollable */
+.scrollable {
+    float:left;
+}
 
-        #mcts1 .navNext {
-            background-position: -16px -22px;
-            top: 33px;
-            right: 3px;
-        }
+/* prev, next, prevPage and nextPage buttons */
+a.browse {
+    background:url("/Content/images/navbuttons.png") no-repeat;
+    display:block;
+    width:30px;
+    height:22px;
+    float:left;
+    margin:0px 0px;
+    cursor:pointer;
+    font-size:1px;
+    position: absolute;
+    z-index: 10000;
+}
 
-            #mcts1 .navNext:hover {
-                background-position: -16px -44px;
-            }
+/* right */
+a.right { background-position: -16px -22px; clear:right; margin-right: 0px;position: absolute;right: 0;top: 39px;}
+a.right:hover { background-position: -16px -44px; }
+a.right:active { background-position:-16px 1px; }
 
-        #mcts1 .navNextDisabled, #mcts1 .navNextDisabled:hover {
-            background-position: -16px 0;
-            cursor: default;
-        }
-    /*
-#mcts1 .navPause, #mcts1 .navPlay {left:360px;top:0px;}
-#mcts1 .navPause {background-position:0 -66px;} 
-#mcts1 .navPause:hover {background-position:0 -88px;} 
-#mcts1 .navPlay {background-position:-16px -66px;} 
-#mcts1 .navPlay:hover {background-position:-16px -88px;} */
-    .navPrev, .navNext {
-        -moz-user-select: -moz-none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        -o-user-select: none;
-        user-select: none;
-    }
-    /*---------built-in navigation bullets--------*/
-    /* Note: the navBullets won't be available when "scrollByEachThumb" was set to false in the Javascript.*/
-    #mcts1 .navBullets {
-        display: none;
-    }
-    /*--------- class1 that is for the slide with HTML content------------*/
-    .class1 {
-        width: 130px;
-        height: 15px;
-        background: #444;
-        text-align: center;
-        color: White;
-        font: normal 11px/14px Arial;
-        white-space: normal;
-    }
 
-        .class1 p {
-            margin-top: 0;
-            margin-bottom: 0px;
-            padding-top: 0px;
-            font: bold 12px Verdana;
-            color: #007acc;
-        }
-    /* --------- Others ------- */
+/* left */
+a.left { margin-left: 0px;position: absolute;left: 0;top: 39px; background-position: 14px -22px; }
+a.left:hover  { background-position: 14px -44px; }
+a.left:active {  background-position:14px 1px; }
+
+/* up and down */
+a.up, a.down  {
+    background:url(/media/img/scrollable/arrow/vert_large.png) no-repeat;
+    float: none;
+    margin: 10px 50px;
+}
+
+/* up */
+a.up:hover { background-position:-30px 0; }
+a.up:active { background-position:-60px 0; }
+
+/* down */
+a.down { background-position: 0 -30px; }
+a.down:hover { background-position:-30px -30px; }
+a.down:active { background-position:-60px -30px; }
+
+
+/* disabled navigational button */
+a.disabled {
+    visibility:hidden !important;
+}
 
     #thumbs_container {
         width: 115px;
@@ -147,9 +148,8 @@
         background-size: 93px 93px !important;
         background-repeat: no-repeat;
     }
-    .main_image {
+    #img_container img {
         max-height:400px;
-        margin-top:50px;
     }
     .description {
         height: 300px;
@@ -198,6 +198,7 @@
     </div>
 
     <div id="img_container" style="width: 580px; float: left; text-align: center; height: 100%">
+        <img id="loading" style="margin-top: 25%; background-repeat: no-repeat no-repeat;" src="/Content/images/loader.gif" />
     </div>
 
     <div id="text" style="width: 300px; float: left; height: 100%">
@@ -231,8 +232,8 @@
         var imgLogo = "<img src='/Content/images/logo.png'/>";
         var closeDiv = "</div>";
         var productsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
-        var productItems = "<div id='mcts1' style='float: left;'>";
-        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv + productItems + closeDiv);
+        var scrollItems = "<div class='scrollable' id='navigator'><a class='prev browse left'></a><div class='items'></div><a class='next browse right'></a></div>";
+        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv + scrollItems + closeDiv);
 
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
@@ -251,7 +252,7 @@
                 thumb_description = data.thumb_desc;
                 //debugger;
                 for (b = 0; b < data.id.length; b++) {
-                    $("#mcts1").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
+                    $(".items").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
                         "<img class='mouse_hover logos' src='" + data.logos[b] + "'/></div></a>");
                     if (b == 0)
                         showThumbs(data.id[b]);
@@ -309,10 +310,20 @@
     }
 
     function ShowBigImage(e) {
-        var image_src = $(e).css("background-image").replace("url(","").replace(")","").replace("/thumbs","");
-        $("#img_container").empty();
-        $("#img_container").append("<img class='main_image' src='" + image_src + "'/>");
-        $(".main_image").fadeIn(1000);
+        debugger;
+        $("#img_container img").css('margin-top', '25%');
+        $("#img_container img").attr("src", "/Content/images/loader.gif");
+        var image_src = $(e).css("background-image").replace("url(", "").replace(")", "").replace("/thumbs", "");
+        var img = new Image();
+        img.src = image_src;
+        $(img).load(function () {
+            $("#img_container img").attr("src", img.src);
+            $("#img_container img").css('margin-top', '50px');
+            $("#img_container img").fadeIn(500);
+        });
+        //$("#img_container").empty();
+        //$("#img_container").append("<img class='main_image' src='" + image_src + "'/>");
+        //$(".main_image").fadeIn(1000);
     }
 
 </script>
