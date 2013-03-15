@@ -159,6 +159,7 @@ a.disabled {
         -webkit-box-shadow: 1px 1px 10px;
         box-shadow: 1px 1px 10px;
         text-align: center;
+        background: url('/Content/images/contentImage.gif');
     }
     .thumb_mask {
         width: 93px;
@@ -191,7 +192,7 @@ a.disabled {
     }
 </style>
 
-<div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
+<div id="products" style="width: 100%;">
     <div id="thumbs_container">
         <div id="thumbs">
         </div>
@@ -228,12 +229,11 @@ a.disabled {
     $(document).ready(function () {
 
         $("#top-row-items").empty();
-        var openLogoDiv = "<div onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;'>";
-        var imgLogo = "<img src='/Content/images/logo.png'/>";
+        var logo = "<a href='javascript:void(0);'><div id='logo' onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;'></div></a>";
         var closeDiv = "</div>";
         var productsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
         var scrollItems = "<div class='scrollable' id='navigator'><a class='prev browse left'></a><div class='items'></div><a class='next browse right'></a></div>";
-        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv + scrollItems + closeDiv);
+        $("#top-row-items").append(logo + productsDiv + scrollItems + closeDiv);
 
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
@@ -250,7 +250,6 @@ a.disabled {
                 project_counter = data.screen_counter;
                 project_description = data.desc;
                 thumb_description = data.thumb_desc;
-                //debugger;
                 for (b = 0; b < data.id.length; b++) {
                     $(".items").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
                         "<img class='mouse_hover logos' src='" + data.logos[b] + "'/></div></a>");
@@ -275,7 +274,6 @@ a.disabled {
         //first project
         if (which_project == 0) {
             for (j = 0; j < project_image_count; j++) {
-                debugger;
                 var image_name = project_screenshots[j].replace(/\\/g, "/").split("/")[6].split(".")[0];
                 var image_desc = "";
                 for (i = 0; i < thumb_desc.length; i++) {

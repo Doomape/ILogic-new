@@ -146,13 +146,13 @@ a.disabled {
     }
 </style>
 
-<div id="products" style="width: 100%; background: url('/Content/images/contentImage.gif');">
+<div id="products" style="width: 100%;">
     <div id="thumbs" style="width: 115px; float: left; margin-top: 40px;">
     </div>
     <div id="mainPictures" style="width: 600px; float: left; text-align: center; margin-top: 40px;">
         <img id="loading" style="margin-top: 25%; background-repeat: no-repeat no-repeat;" src="/Content/images/loader.gif" />
     </div>
-    <div id="allproductDescription" style="width: 300px;  float: left; margin-top: 40px; border: 1px solid gray; box-shadow: 1px 1px 10px; text-align: center;">
+    <div id="allproductDescription" style="width: 300px;  float: left; margin-top: 40px; border: 1px solid gray; box-shadow: 1px 1px 10px; text-align: center;background: url('/Content/images/contentImage.gif');">
         <div style="border: 1px solid gray; background: rgb(53, 51, 51); text-align: center; color: white; height: 30px; line-height: 30px;">
             <p>Description</p>
         </div>
@@ -174,13 +174,11 @@ a.disabled {
 
     function preloader() {
         $("#top-row-items").empty();
-        var openLogoDiv = "<div onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 114px; height: 100px; border-right: 1px solid black; text-align: center;'>";
-        var imgLogo = "<img src='/Content/images/logo.png'/>";
+        var logo = "<a href='javascript:void(0);'><div id='logo' onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;'></div></a>";
         var closeDiv = "</div>";
         var productsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
         var scrollItems = "<div class='scrollable' id='navigator'><a class='prev browse left'></a><div class='items'></div><a class='next browse right'></a></div>";
-       // var productsImages = "<div></div>";//<img src='/Content/images/android.png' />
-        $("#top-row-items").append(openLogoDiv + imgLogo + closeDiv + productsDiv +  scrollItems + closeDiv);
+        $("#top-row-items").append(logo + productsDiv + scrollItems + closeDiv);
         var height = parseInt($(window).height() - 210);
         $("#products").css("height", height);
         $("#thumbs").css("height", height);
@@ -205,7 +203,7 @@ a.disabled {
                         $(".items").append('<a class="mouse_hover" href="javascript:void(0);"><div onclick="changeProduct(\'' + productName + '\');" ><img style="vertical-align: middle;" src=' + topRowThumb + '><p>' + productName + '</p></img></div></a>');
                         for (var j = 0; j < thumbItems; j++) {
                             var thumbItem = result[i].split('@@')[3].split("#")[j];
-                            $("#thumbs").append('<a href="javascript:void(0);"><div  class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
+                            $("#thumbs").append('<a href="javascript:void(0);"><div style="background-image: url(/Content/images/contentImage.gif);" class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                             $("#" + j + "").fadeIn((j + 1) * 1000);
                         }
                         var img = new Image();
@@ -254,7 +252,7 @@ a.disabled {
                     $("#thumbs").empty();
                     for (var j = 0; j < thumbItems; j++) {
                         var thumbItem = result[i].split('@@')[3].split("#")[j];
-                        $("#thumbs").append('<a href="javascript:void(0);"><div class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
+                        $("#thumbs").append('<a href="javascript:void(0);"><div style="background-image: url(/Content/images/contentImage.gif);" class="thumbStyle" onclick="changeMainPicture(\'' + result[i].split('@@')[4].split("#")[j] + '\');"><img style="vertical-align: middle;" id=' + j + ' src=' + thumbItem + ' /></div></a>');
                         $("#" + j + "").fadeIn((j + 1) * 1000);
                     }
 

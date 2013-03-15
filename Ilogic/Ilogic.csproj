@@ -165,6 +165,7 @@
     <Content Include="Content\images\micro\OshonSoft_logo.png" />
     <Content Include="Content\images\micro\micro_bottom_top.gif" />
     <Content Include="Content\images\micro\micro_body.gif" />
+    <Content Include="Content\images\micro\underConstruction.png" />
     <Content Include="Content\images\phpContent.gif" />
     <Content Include="Content\images\asp\asp_content.gif" />
     <Content Include="Content\images\back23.gif" />
@@ -176,7 +177,6 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\invalid.png" />
-    <Content Include="Content\images\micro\in_construction.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\navbuttons.png" />
     <Content Include="Content\images\pause.png" />
