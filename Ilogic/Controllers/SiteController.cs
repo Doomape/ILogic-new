@@ -31,15 +31,15 @@ namespace Ilogic.Controllers
         {
             return View();
         }
-        public ActionResult Index_aspNet()
+        public ActionResult Asp()
         {
             return View();
         }
-        public ActionResult Index_php()
+        public ActionResult Php()
         {
             return View();
         }
-        public ActionResult About_Us()
+        public ActionResult AboutUs()
         {
             return View();
         }

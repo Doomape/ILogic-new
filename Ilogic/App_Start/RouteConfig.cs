@@ -16,7 +16,7 @@ namespace Ilogic
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Site", action = "Index_aspNet", id = UrlParameter.Optional }
+                defaults: new { controller = "Site", action = "Asp", id = UrlParameter.Optional }
             );
         }
     }

@@ -80,7 +80,7 @@
             <a href="javascript:void(0);"><div id="twitter_form"></div></a>
             <div class="dock" id="dock">
                 <div class="dock-container">
-                    <a class="dock-item" href="/Site/Index_aspNet">
+                    <a class="dock-item" href="/Site/Asp">
                         <img src="~/Content/images/home.png" alt="home" /><span>Home</span></a>
                     <a class="dock-item" href="/Site/Products">
                         <img src="~/Content/images/products.png" alt="portfolio" /><span>Products</span></a>
@@ -89,7 +89,7 @@
 
                     <a class="dock-item" href="/Site/Projects">
                         <img src="~/Content/images/projects.png" alt="music" /><span>Projects</span></a>
-                    <a class="dock-item" href="/Site/About_Us">
+                    <a class="dock-item" href="/Site/AboutUs">
                         <img src="~/Content/images/about_us.png" alt="about_us" /><span>About us</span></a>
                 </div>
             </div>
@@ -164,6 +164,8 @@
 			)
 		}
 	);
+        var twiterCheck;
+        var mailCheck;
         var hiddenContent = $('#open_twitter_form');
         $("#twitter_form").click(function (event) {
             // Cancel the default event (this isn't a real link).
@@ -173,19 +175,18 @@
                 // Hide it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideUp(2000);
-                    $('#twitter_form').data('clicked', false);
+                    twiterCheck= false;
                 }
             } else {
                 // Show it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideDown(2000);
-                    $('#twitter_form').data('clicked', true);
+                    twiterCheck= true;
                 }
             }
         });
         var hiddenContent1 = $('#open_mail_form');
         $("#mail_form").click(function (event) {
-            $("#maila_form").css("display", "block");    
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
             // Check to see if the content is visible.
@@ -193,7 +194,7 @@
                // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    $('#mail_form').data('clicked', false);
+                    mailCheck= false;
                 }
             } else {
                 // Show it slowly.
@@ -201,34 +202,34 @@
                     hiddenContent1.slideDown(2000);
                     $("#succesed_msg").css("display", "none");
                     $(".contact_form").fadeIn();
-                    $('#mail_form').data('clicked', true);
+                    mailCheck= true;
                 }
             }
         });
-        $("body").click(function (event) {      
-            if ($('#mail_form').data('clicked')) {
+        $("#content").click(function (event) {
+            if (mailCheck) {
                 // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    $('#mail_form').data('clicked', false);
+                    mailCheck= false;
                 }
             }
-            if ($('#twitter_form').data('clicked')) {
+            if (twiterCheck) {
                 // Hide it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideUp(2000);
-                    $('#twitter_form').data('clicked', false);
+                    twiterCheck= false;
                 }
             }
         });
         function redirectAsp() {
-            window.location.href = "/Site/Index_aspNet";
+            window.location.href = "/Site/Asp";
         }
         function redirectElectronic() {
             window.location.href = "/Site/Electronics";
         }
         function redirectPhp() {
-            window.location.href = "/Site/Index_php";
+            window.location.href = "/Site/Php";
         }
         //if ($('#open_twitter_form').css('display') == 'none' || $('#open_twitter_form').css("height") == "0px") {
         //    $('#open_twitter_form').slideDown(2000, function () {
@@ -274,7 +275,7 @@
             }
             if (pom == false) {
                 $.ajax({
-                    url: "Site/Sendform",
+                    url: "Sendform",
                     type: "GET",
                     data: {
 
@@ -285,10 +286,10 @@
                     },
                     success: function (result) {
                         //alert(result.msg);
-                        $(".contact_form").fadeOut(1000);
+                        $(".contact_form").fadeOut(700);
 
-                        setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 2000);
-                        setTimeout(function () { hiddenContent1.slideUp(3010); }, 4000);
+                        setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 700);
+                        setTimeout(function () { hiddenContent1.slideUp(2000); }, 1000);
                     }
                 });
             } else {
