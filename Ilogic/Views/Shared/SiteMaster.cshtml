@@ -135,8 +135,6 @@
         </div>
     </div>
 
-
-
     <script type="text/javascript">
 
         $(window).resize(function () {
@@ -168,62 +166,64 @@
 	);
         var hiddenContent = $('#open_twitter_form');
         $("#twitter_form").click(function (event) {
-
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
-
             // Check to see if the content is visible.
             if (hiddenContent.is(":visible")) {
-
                 // Hide it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideUp(2000);
+                    $('#twitter_form').data('clicked', false);
                 }
-
             } else {
-
                 // Show it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideDown(2000);
+                    $('#twitter_form').data('clicked', true);
                 }
-
             }
-
-
         });
         var hiddenContent1 = $('#open_mail_form');
         $("#mail_form").click(function (event) {
-            $("#maila_form").css("display", "block");
-
+            $("#maila_form").css("display", "block");    
             // Cancel the default event (this isn't a real link).
             event.preventDefault();
-
             // Check to see if the content is visible.
             if (hiddenContent1.is(":visible")) {
-
-                // Hide it slowly.
+               // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-
+                    $('#mail_form').data('clicked', false);
                 }
-
             } else {
-
                 // Show it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideDown(2000);
                     $("#succesed_msg").css("display", "none");
                     $(".contact_form").fadeIn();
+                    $('#mail_form').data('clicked', true);
                 }
-
             }
-
-
+        });
+        $("body").click(function (event) {      
+            if ($('#mail_form').data('clicked')) {
+                // Hide it slowly.
+                if (hiddenContent1.css("height") == "400px") {
+                    hiddenContent1.slideUp(2000);
+                    $('#mail_form').data('clicked', false);
+                }
+            }
+            if ($('#twitter_form').data('clicked')) {
+                // Hide it slowly.
+                if (hiddenContent.css("height") == "400px") {
+                    hiddenContent.slideUp(2000);
+                    $('#twitter_form').data('clicked', false);
+                }
+            }
         });
         function redirectAsp() {
             window.location.href = "/Site/Index_aspNet";
         }
-
         function redirectElectronic() {
             window.location.href = "/Site/Electronics";
         }
@@ -245,37 +245,26 @@
         //       // $('#open_twitter_form').css('display', "none");
         //    });
         //}
-
-
         function isNumber(n) {
             return !isNaN(parseFloat(n)) && isFinite(n);
         }
-
         $("input[id='broj']").keyup(function () {
-            debugger;
             if ($("input[id='broj']") != "" && isNumber($("input[id='broj']").val())) {
                 document.getElementById("broj").required = true;
             }
             else
                 document.getElementById("broj").required = false;
         });
-
         $('.submit').click(function () {
-
-
-
             var name = $('#ime').val();
             var email = $('#email').val();
             var number = $('#broj').val();
             var message = $('#poraka').val();
             var required_inputs = new Array();
-
-
             for (var i = 0; i < $(".contact_input").length; i++) {
                 if ($($(".contact_input")[i]).attr('required')) {
                     required_inputs.push($($(".contact_input")[i]));
                 }
-
             }
             var pom = false;
 
@@ -305,10 +294,7 @@
             } else {
                 alert("Enter the required values");
             }
-
-
         });
-
     </script>
 </body>
 </html>
