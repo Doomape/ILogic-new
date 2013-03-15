@@ -9,6 +9,29 @@
      body {
        background: url("/Content/images/micro/micro_body.gif");
     }
+      .mask li {
+
+        list-style: square outside;
+    margin-left: 20px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.44);
+    cursor:pointer;
+    }
+       a:hover {
+                         cursor:pointer;
+                  }
+       .view-img p {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   /*color: #333;*/
+   color:black;
+   -webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
 </style>
 
 <div id="electronics" style="width: 100%;/*background:url('/Content/images/micro/electronic_content.gif');*/">
@@ -24,7 +47,7 @@
             <tr>
                 <td style="width:200px;height:150px">
                     <div class="view view-img">
-                        <img style="margin-left: 4px;" src="/Content/images/micro/avrstudio_logo.png" />
+                        <a><img style="margin-left: 4px;" src="/Content/images/micro/avrstudio_logo.png" /></a>
                          <div class="mask">
                             <ol>
                                 <li><p>Better tooling support, especially for .NET @*(Entity Framework + other ORM support is better)*@</p></li>
@@ -39,7 +62,7 @@
            <tr>
                 <td style="width:200px;height:150px">
                      <div class="view view-img">
-                        <img style="margin-left: 23px;" src="/Content/images/micro/arduino_logo.png" />
+                        <a><img style="margin-left: 23px;" src="/Content/images/micro/arduino_logo.png" /></a>
                         <div class="mask">
                          <ol>
                              <li><p>Allows for Rapid Application Development</p></li>
@@ -54,7 +77,7 @@
            <tr>
                   <td style="width:200px;height:150px">
                        <div class="view view-img">
-                        <img style="margin-left: -19px;" src="/Content/images/micro/assembler.png" />
+                        <a><img style="margin-left: -19px;" src="/Content/images/micro/assembler.png" /></a>
                           <div class="mask">
                              <ol>
                                  <li><p>Good for lots of db usage</p></li>
@@ -89,7 +112,7 @@
             <tr>
            <td style="width:200px;height:150px">
                      <div class="view view-img">
-                     <img style=" margin-right: 5px; margin-top: 30px;" src="/Content/images/micro/microchip_logo.png" />
+                    <a><img style=" margin-right: 5px; margin-top: 30px;" src="/Content/images/micro/microchip_logo.png" /></a>
                         <div class="mask">
                               <ol>
                                   <li><p>Has strong logic and workflow and is easily extensible</p></li>
@@ -103,7 +126,7 @@
             <tr>
                  <td style="width:200px;height:150px">
                      <div class="view view-img">
-                     <img style="margin-top: 13px;" src="/Content/images/micro/mikro_bc.png" />
+                     <a><img style="margin-top: 13px;" src="/Content/images/micro/mikro_bc.png" /></a>
                         <div class="mask">
                               <ol>
                                   <li><p>Video and Audio Support</p></li>
@@ -118,7 +141,7 @@
             <tr>
                 <td style="width:200px;height:150px">
                      <div class="view view-img">
-                     <img style="margin:auto" src="/Content/images/micro/OshonSoft_logo.png" />
+                     <a><img style="margin:auto" src="/Content/images/micro/OshonSoft_logo.png" /></a>
                         <div class="mask">
                              <ol>
                                  <li><p>Device-responsive pages</p></li>
