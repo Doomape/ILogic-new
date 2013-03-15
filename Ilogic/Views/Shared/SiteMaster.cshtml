@@ -164,6 +164,8 @@
 			)
 		}
 	);
+        var twiterCheck;
+        var mailCheck;
         var hiddenContent = $('#open_twitter_form');
         $("#twitter_form").click(function (event) {
             // Cancel the default event (this isn't a real link).
@@ -173,13 +175,13 @@
                 // Hide it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideUp(2000);
-                    $('#twitter_form').data('clicked', false);
+                    twiterCheck= false;
                 }
             } else {
                 // Show it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideDown(2000);
-                    $('#twitter_form').data('clicked', true);
+                    twiterCheck= true;
                 }
             }
         });
@@ -193,7 +195,7 @@
                // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    $('#mail_form').data('clicked', false);
+                    mailCheck= false;
                 }
             } else {
                 // Show it slowly.
@@ -201,23 +203,23 @@
                     hiddenContent1.slideDown(2000);
                     $("#succesed_msg").css("display", "none");
                     $(".contact_form").fadeIn();
-                    $('#mail_form').data('clicked', true);
+                    mailCheck= true;
                 }
             }
         });
-        $("body").click(function (event) {      
-            if ($('#mail_form').data('clicked')) {
+        $("#content").click(function (event) {
+            if (mailCheck) {
                 // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    $('#mail_form').data('clicked', false);
+                    mailCheck= false;
                 }
             }
-            if ($('#twitter_form').data('clicked')) {
+            if (twiterCheck) {
                 // Hide it slowly.
                 if (hiddenContent.css("height") == "400px") {
                     hiddenContent.slideUp(2000);
-                    $('#twitter_form').data('clicked', false);
+                    twiterCheck= false;
                 }
             }
         });
