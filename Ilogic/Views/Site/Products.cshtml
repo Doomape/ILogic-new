@@ -147,7 +147,7 @@ a.disabled {
 </style>
 
 <div id="products" style="width: 100%;">
-    <div id="thumbs" style="width: 115px; float: left; margin-top: 40px;">
+    <div id="thumbs" style="width: 115px; float: left; margin-top: 40px; height: 463px;">
     </div>
     <div id="mainPictures" style="width: 600px; float: left; text-align: center; margin-top: 40px;">
         <img id="loading" style="margin-top: 25%; background-repeat: no-repeat no-repeat;" src="/Content/images/loader.gif" />
@@ -161,14 +161,14 @@ a.disabled {
     </div>
 </div>
 <script type="text/javascript">
-    //$(document).ready(function () {
-    //    var height = parseInt($(window).height() - 210);
-    //    $("#products").css("height", height);
-    //});
-    //$(window).resize(function () {
-    //    var height = parseInt($(window).height() - 210);
-    //    $("#products").css("height", height);
-    //});
+    $(document).ready(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#products").css("height", height);
+    });
+    $(window).resize(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#products").css("height", height);
+    });
 
     function preloader() {
         $("#top-row-items").empty();
