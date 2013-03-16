@@ -222,7 +222,11 @@ a.disabled {
 <script type="text/javascript">
 
     $('#currency_dropdown').ddslick({
-        width: 100
+        width: '100px',
+        height: '30px',
+        onSelected: function (selectedData) {
+          ///enter code
+        }
     });
 
     function preloader() {
