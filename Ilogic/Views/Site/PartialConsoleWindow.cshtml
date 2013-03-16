@@ -1,7 +1,7 @@
 ﻿<style>
     .console_text
     {
-        color:white;
+        color:#56808b;
         font-size:12px;
     }
     #changeable_text
@@ -19,6 +19,9 @@
         padding: 1px 1px 1px 8px;
         margin: 5px 0px;
         width:0px;display:none;
+    }
+   #text_container p:first-letter {
+        color:#807e6e;
     }
    
 </style>
@@ -55,7 +58,11 @@
                   elem = this;
               setInterval(function () {
                   if (current < contentArray.length) {
-                      elem.text(elem.text() + contentArray[current++]);
+                      if (current == contentArray.length - 1) {
+                          elem.html(elem.html() + "<span style='color:#807e6e'>" + contentArray[current++] + "</span>");
+                      } else {
+                          elem.html(elem.html() + contentArray[current++]);
+                      }
                   }
               }, 70);
               if (content == "</html>")
