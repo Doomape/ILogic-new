@@ -148,6 +148,44 @@ a.disabled {
         list-style: square !important;
         margin-left: 16px;
     }
+
+    #product_priceContainer {
+        color: white;
+        width: 186px;
+        margin-left: 87px;
+        height: 32px;
+        margin-bottom: 10px;
+        display:none;
+    }
+        #product_priceContainer #currency_container {
+            float: left;
+            display: table;
+            color:black;
+        }
+        #product_priceContainer #price_container {
+           float: left;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+            display: table;
+            height: 31px;
+            text-align: center;
+            width: 70px;
+            background: rgb(53, 51, 51);
+        }
+    #currency_container p,#price_container p {
+        display: table-cell;vertical-align: middle;
+    }
+    .dd-select {
+        height: 30px;
+    }
+    .dd-selected {
+        height: 14px;
+        padding: 7px;
+    }
+    .dd-selected-text {
+        line-height: 19px !important;
+        margin-right: 12px !important;
+    }
 </style>
 
 <div id="products" style="width: 100%;">
@@ -162,16 +200,30 @@ a.disabled {
         </div>
         <div id="productDescription" style="width: 270px;min-height:300px;margin-bottom: 10px; margin-top: 10px;margin-left: 15px;text-align: left;">
         </div>
-        <div id="product_priceContainer" style="color:white;background: rgb(53, 51, 51);width:100px;margin-left: 190px;height: 25px;">
-          <div id="currency" style="float:left;word-wrap: break-word;display: table;height: 25px;">
-              <p style="display: table-cell;vertical-align: middle;">valut</p>
-          </div>
-            <div id="price" style="float:left;word-wrap: break-word;display: table;height: 25px;text-align: right;width: 60px;">
-                <p style="display: table-cell;vertical-align: middle;">200e</p></div>
+        <div id="product_priceContainer">
+
+            <div id="currency_container">
+                <select id="currency_dropdown">
+                    <option value="0" data-imagesrc="/Content/images/currencies/euro.gif"
+                        data-description="">EUR</option>
+                    <option value="1" data-imagesrc="/Content/images/currencies/mkd.png"
+                        data-description="">MKD</option>
+                    <option value="2" selected="selected" data-imagesrc="/Content/images/currencies/usd.gif"
+                        data-description="">USD</option>
+                </select>
+            </div>
+            <div id="price_container">
+               
+            </div>
+
         </div>
     </div>
 </div>
 <script type="text/javascript">
+
+    $('#currency_dropdown').ddslick({
+        width: 100
+    });
 
     function preloader() {
         $("#top-row-items").empty();
@@ -198,6 +250,7 @@ a.disabled {
                     var thumbItems = result[i].split('@@')[3].split("#").length;
                     var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
                     var description = result[i].split('@@')[5];
+                    var price = result[i].split('@@')[6];
 
                     if (i == 1)//set the main load project 
                     {
@@ -216,6 +269,9 @@ a.disabled {
 
                         });
                         $("#productDescription").append('<p>' + description + '</p>');
+                        if (price != "/") {
+                            show_price(price);
+                        }
                     }
                     if (i > 1) {
                         $(".items").append('<a class="mouse_hover" href="javascript:void(0);"><div onclick="changeProduct(\'' + productName + '\');"><img style="vertical-align: middle;" src=' + topRowThumb + '><p>' + productName + '</p></img></div></a>');
@@ -239,6 +295,7 @@ a.disabled {
     function changeProduct(e) {
         $("#mainPictures img").css('margin-top', '25%');
         $("#mainPictures img").attr("src", "/Content/images/loader.gif");
+        hide_price();
         $.ajax({
             url: "changeProduct",
             type: "GET",
@@ -250,6 +307,7 @@ a.disabled {
                     var thumbItems = result[i].split('@@')[3].split("#").length;
                     var mainPicture = result[i].split('@@')[4].split("#")[0];//set main picture for that product; [0] set the firt picture to be main picture
                     var description = result[i].split('@@')[5];
+                    var price = result[i].split('@@')[6];
                     $("#thumbs").empty();
                     for (var j = 0; j < thumbItems; j++) {
                         var thumbItem = result[i].split('@@')[3].split("#")[j];
@@ -266,6 +324,9 @@ a.disabled {
                         $("#mainPictures img").fadeIn(500);
                     });
                     $("#productDescription").append('<p>' + description + '</p>');
+                    if (price != "/") {
+                        show_price(price);
+                    }
                 }
             }
         });
@@ -281,5 +342,15 @@ a.disabled {
             $("#mainPictures img").fadeIn(500);
         });
     }
+
+    function show_price(e) {
+        $("#product_priceContainer").css("display", "block");
+        $("#price_container").append("<p>" + e + "</p>");
+    }
+    function hide_price() {
+        $("#product_priceContainer").css("display", "none");
+        $("#price_container").empty();
+    }
+
     window.onload = preloader;
 </script>

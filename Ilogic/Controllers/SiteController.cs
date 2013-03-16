@@ -113,7 +113,9 @@ namespace Ilogic.Controllers
             List<string> list = new List<string>();
             while (dbReader1.Read())
             {
-                allInfo = "@" + (string)dbReader1.GetValue(1) + "@" + (string)dbReader1.GetValue(2) + "@" + (string)dbReader1.GetValue(3) + "@" + (string)dbReader1.GetValue(4) + "@" + (string)dbReader1.GetValue(5);
+                allInfo = "@" + (string)dbReader1.GetValue(1) + "@" + 
+                    (string)dbReader1.GetValue(2) + "@" + (string)dbReader1.GetValue(3) + "@" +
+                    (string)dbReader1.GetValue(4) + "@" + (string)dbReader1.GetValue(5) + "@" + (string)dbReader1.GetValue(6);
                 list.Add(allInfo);
                 allInfo = "";
             }
@@ -141,7 +143,9 @@ namespace Ilogic.Controllers
             List<string> list = new List<string>();
             while (dbReader1.Read())
             {
-                allInfo = "@" + (string)dbReader1.GetValue(1) + "@" + (string)dbReader1.GetValue(2) + "@" + (string)dbReader1.GetValue(3) + "@" + (string)dbReader1.GetValue(4) + "@" + (string)dbReader1.GetValue(5);
+                allInfo = "@" + (string)dbReader1.GetValue(1) + "@" + (string)dbReader1.GetValue(2) + "@" + 
+                    (string)dbReader1.GetValue(3) + "@" + (string)dbReader1.GetValue(4) + "@" +
+                    (string)dbReader1.GetValue(5) + "@" + (string)dbReader1.GetValue(6);
                 list.Add(allInfo);
                 allInfo = "";
             }
