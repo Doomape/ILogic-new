@@ -152,7 +152,6 @@
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
     <Content Include="Content\images\GoogleMap.png" />
-    <Content Include="Content\images\GoogleMaps.png" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
@@ -174,10 +173,8 @@
     <Content Include="Content\images\debug.png" />
     <Content Include="Content\images\divider.png" />
     <Content Include="Content\images\edit.png" />
-    <Content Include="Content\images\email.png" />
     <Content Include="Content\images\home.png" />
     <Content Include="Content\images\invalid.png" />
-    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\navbuttons.png" />
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\bodyBackground.gif" />
@@ -260,7 +257,6 @@
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
     <Content Include="Content\images\red_asterisk.png" />
-    <Content Include="Content\images\robot.png" />
     <Content Include="Content\images\stop.png" />
     <Content Include="Content\images\twitter_logo.png" />
     <Content Include="Content\images\ui-icons_454545_256x240.png" />
