@@ -2,7 +2,8 @@
     .console_text
     {
         color:#56808b;
-        font-size:12px;
+        font-size:13px;
+        font-family: Consolas;
     }
     #changeable_text
     {
@@ -20,23 +21,30 @@
         margin: 5px 0px;
         width:0px;display:none;
     }
-   #text_container p:first-letter {
+   /*#text_container p:first-letter {
         color:#807e6e;
     }
+     #line_three p:first-letter {
+        color:white;
+    }*/
    
 </style>
-
+@*style="color:white !important" *@
 <div id="console" @*style="background-image:url('/Content/images/visual.bmp');height: 322px;width: 589px;border: 6px solid rgb(0,122,204);float:left;"*@>
     <div id="text_container">
         <p class="console_text" id="line_one" ></p>
         <p class="console_text" id="line_two"></p>
         <p class="console_text" id="line_three"></p>
         @*<div id="changeable_text" style="width:25px;height:10px;background:white;display:none"></div>*@
-        <input id="changeable_text" onfocus="inputFocus(this);" onblur="inputBlur(this);" value="Enter Text" type="text"/>
-        <p class="console_text" id="line_four"></p>
+       
+        <p class="console_text" id="line_four" style="color:white !important"></p>
         <p class="console_text" id="line_five"></p>
+         <input id="changeable_text" onfocus="inputFocus(this);" onblur="inputBlur(this);" value="Enter Text" type="text"/>
         <p class="console_text" id="line_six"></p>
-        <p class="console_text" id="line_seven"></p>
+        <p class="console_text" id="line_seven" style="color:white !important"></p>
+        <p class="console_text" id="line_eight"></p>
+        <p class="console_text" id="line_nine"></p>
+         <p class="console_text" id="line_ten"></p>
     </div>
 </div>
 
@@ -58,20 +66,30 @@
                   elem = this;
               setInterval(function () {
                   if (current < contentArray.length) {
-                      if (current == contentArray.length - 1) {
+                      if (current == 0 && contentArray[0] == '<') {
                           elem.html(elem.html() + "<span style='color:#807e6e'>" + contentArray[current++] + "</span>");
-                      } else {
+                      }
+                      if (current == 1 && contentArray[1] == '/') {
+                          elem.html(elem.html() + "<span style='color:#807e6e'>" + contentArray[current++] + "</span>");
+                      }
+                      if (current == contentArray.length - 1 && contentArray[contentArray.length - 1] == '>') {
+                          elem.html(elem.html() + "<span style='color:#807e6e'>" + contentArray[current++] + "</span>");
+                      }
+                      else {
                           elem.html(elem.html() + contentArray[current++]);
                       }
                   }
               }, 70);
-              if (content == "</html>")
+              if (content == "</html>") {
                   $("#edit_cons_text").css("display", "block");
+              }
           };
 
       })(jQuery);
 
-      var tag_lines_time = [["#line_one", "<html>", 1], ["#line_two", "<body>", 2], ["#line_three", "<p>", 3], ["#line_four", "</p>", 4], ["#line_five", "</html>", 5]];
+      var tag_lines_time = [["#line_one", "<html>", 1], ["#line_two", "<body>", 2], ["#line_three", "<h1>", 3], ["#line_four", "Welcome to iLogic", 4], ["#line_five", "</h1>", 6],
+          ["#line_six", "<p>", 7], ["#line_seven", "iLogic provides design, development and maintenance of custom tailored solutions as well as consulting and training services for our clients..",8],
+          ["#line_eight", "</p>", 18], ["#line_nine", "</body>", 19], ["#line_ten", "</html>", 20]];
 
       function addOnTimer(t_id,t_line,i)
       {
