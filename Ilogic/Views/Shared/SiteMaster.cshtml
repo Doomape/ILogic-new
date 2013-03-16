@@ -105,7 +105,7 @@
                         Your message has been sent
                     </p>
                 <div class="contact_form";>
-                    <ul>
+                    <ul class="inputs">
                         <li>
                             <h3>Contact Us</h3>
                         </li>
@@ -202,7 +202,7 @@
                // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    mailCheck= false;
+                    mailCheck = false;
                 }
             } else {
                 // Show it slowly.
@@ -210,10 +210,21 @@
                     hiddenContent1.slideDown(2000);
                     $("#succesed_msg").css("display", "none");
                     $(".contact_form").fadeIn();
-                    mailCheck= true;
+                    mailCheck = true;
                 }
             }
         });
+            $(document).keyup(function (e) {
+
+                if (e.keyCode == 27 && hiddenContent1.is(":visible"))
+                {
+                    $("#mail_form").click();
+                }   // esc
+                if (e.keyCode == 27 && hiddenContent.is(":visible"))
+                {
+                    $("#twitter_form").click();
+                }
+            });
         $("#content").click(function (event) {
             if (mailCheck) {
                 // Hide it slowly.
@@ -267,6 +278,11 @@
             else
                 document.getElementById("broj").required = false;
         });
+        function setInputsnull()
+        {
+            $('.inputs input').attr('value', '');
+            $('.inputs textarea').attr('value', '');
+        }
         $('.submit').click(function () {
             var name = $('#ime').val();
             var email = $('#email').val();
@@ -298,9 +314,9 @@
                     success: function (result) {
                         //alert(result.msg);
                         $(".contact_form").fadeOut(700);
-
                         setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 700);
                         setTimeout(function () { hiddenContent1.slideUp(2000); }, 1000);
+                        setInputsnull();
                     }
                 });
             } else {
