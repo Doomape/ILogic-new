@@ -37,12 +37,27 @@
         #ascrail2000-hr {
             display:none !important;
         }
+
+        *.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+/**.unselectable * {
+   -moz-user-select: text;
+   -khtml-user-select: text;
+   -webkit-user-select: text;
+   -o-user-select: text;
+   user-select: text;
+}*/
     </style>
 </head>
 
 <body>
     <div id="wrapper" >
-        <div id="top-row">
+        <div id="top-row" @*unselectable="on"*@ class="unselectable">
             <div id="top-row-items" style="width:1024px;margin:auto;">
             <a href="javascript:void(0);"><div id="logo" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;">
             </div></a>
@@ -60,12 +75,12 @@
             </div>
          </div>
         </div>
-        <div id="content">
+        <div id="content" class="unselectable">
             <div style="width:1024px;margin:auto;">
             @RenderBody()
         </div>
         </div>
-        <div id="bottom-row">
+        <div id="bottom-row" class="unselectable">
              <div style="width:1024px;margin:auto;">
             <div id="open_twitter_form">
                 <div class="twitter">
