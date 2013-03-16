@@ -183,7 +183,10 @@
     <Content Include="Content\images\bodyBackground.gif" />
     <Content Include="Content\images\contentImage.gif" />
     <Content Include="Content\images\php\joomla_logo.png" />
+    <Content Include="Content\images\php\netbeans_icon.png" />
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
+    <Content Include="Content\images\php\php_pause.png" />
+    <Content Include="Content\images\php\php_stop.png" />
     <Content Include="Content\images\php\wordpress_logo.png" />
     <Content Include="Content\images\php_logo.png" />
     <Content Include="Content\images\products\Arduino\ArduinoUno_1.png" />
@@ -333,6 +336,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.nicescroll.js" />
     <Content Include="Scripts\jquery.tools.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
