@@ -38,12 +38,27 @@
         #ascrail2000-hr {
             display:none !important;
         }
+
+        *.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+/**.unselectable * {
+   -moz-user-select: text;
+   -khtml-user-select: text;
+   -webkit-user-select: text;
+   -o-user-select: text;
+   user-select: text;
+}*/
     </style>
 </head>
 
 <body>
     <div id="wrapper" >
-        <div id="top-row">
+        <div id="top-row" @*unselectable="on"*@ class="unselectable">
             <div id="top-row-items" style="width:1024px;margin:auto;">
             <a href="javascript:void(0);"><div id="logo" onclick="redirectAsp()" class="mouse_hover" style="float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;">
             </div></a>
@@ -61,12 +76,12 @@
             </div>
          </div>
         </div>
-        <div id="content">
+        <div id="content" class="unselectable">
             <div style="width:1024px;margin:auto;">
             @RenderBody()
         </div>
         </div>
-        <div id="bottom-row">
+        <div id="bottom-row" class="unselectable">
              <div style="width:1024px;margin:auto;">
             <div id="open_twitter_form">
                 <div class="twitter">
@@ -106,7 +121,7 @@
                         Your message has been sent
                     </p>
                 <div class="contact_form";>
-                    <ul>
+                    <ul class="inputs">
                         <li>
                             <h3>Contact Us</h3>
                         </li>
@@ -203,7 +218,7 @@
                // Hide it slowly.
                 if (hiddenContent1.css("height") == "400px") {
                     hiddenContent1.slideUp(2000);
-                    mailCheck= false;
+                    mailCheck = false;
                 }
             } else {
                 // Show it slowly.
@@ -211,10 +226,21 @@
                     hiddenContent1.slideDown(2000);
                     $("#succesed_msg").css("display", "none");
                     $(".contact_form").fadeIn();
-                    mailCheck= true;
+                    mailCheck = true;
                 }
             }
         });
+            $(document).keyup(function (e) {
+
+                if (e.keyCode == 27 && hiddenContent1.is(":visible"))
+                {
+                    $("#mail_form").click();
+                }   // esc
+                if (e.keyCode == 27 && hiddenContent.is(":visible"))
+                {
+                    $("#twitter_form").click();
+                }
+            });
         $("#content").click(function (event) {
             if (mailCheck) {
                 // Hide it slowly.
@@ -239,6 +265,9 @@
         }
         function redirectPhp() {
             window.location.href = "/Site/Php";
+        }
+        function redirectProducts() {
+            window.location.href = "/Site/Products";
         }
         //if ($('#open_twitter_form').css('display') == 'none' || $('#open_twitter_form').css("height") == "0px") {
         //    $('#open_twitter_form').slideDown(2000, function () {
@@ -265,6 +294,11 @@
             else
                 document.getElementById("broj").required = false;
         });
+        function setInputsnull()
+        {
+            $('.inputs input').attr('value', '');
+            $('.inputs textarea').attr('value', '');
+        }
         $('.submit').click(function () {
             var name = $('#ime').val();
             var email = $('#email').val();
@@ -296,9 +330,9 @@
                     success: function (result) {
                         //alert(result.msg);
                         $(".contact_form").fadeOut(700);
-
                         setTimeout(function () { $("#succesed_msg").css("display", "block"); }, 700);
                         setTimeout(function () { hiddenContent1.slideUp(2000); }, 1000);
+                        setInputsnull();
                     }
                 });
             } else {

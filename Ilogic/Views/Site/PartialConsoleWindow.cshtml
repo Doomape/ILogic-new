@@ -79,7 +79,7 @@
                           elem.html(elem.html() + contentArray[current++]);
                       }
                   }
-              }, 70);
+              }, 35);
               if (content == "</html>") {
                   $("#edit_cons_text").css("display", "block");
               }
@@ -87,9 +87,9 @@
 
       })(jQuery);
 
-      var tag_lines_time = [["#line_one", "<html>", 1], ["#line_two", "<body>", 2], ["#line_three", "<h1>", 3], ["#line_four", "Welcome to iLogic", 4], ["#line_five", "</h1>", 6],
-          ["#line_six", "<p>", 7], ["#line_seven", "iLogic provides design, development and maintenance of custom tailored solutions as well as consulting and training services for our clients..",8],
-          ["#line_eight", "</p>", 18], ["#line_nine", "</body>", 19], ["#line_ten", "</html>", 20]];
+      var tag_lines_time = [["#line_one", "<html>", 1], ["#line_two", "<body>", 2], ["#line_three", "<h1>", 3], ["#line_four", "Welcome to iLogic", 4], ["#line_five", "</h1>", 5],
+          ["#line_six", "<p>", 6], ["#line_seven", "iLogic provides design, development and maintenance of custom tailored solutions as well as consulting and training services for our clients. Tehnologies: ASP.NET / PHP. ",7],
+          ["#line_eight", "</p>", 13], ["#line_nine", "</body>", 14], ["#line_ten", "</html>", 15]];
 
       function addOnTimer(t_id,t_line,i)
       {
