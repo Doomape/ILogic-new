@@ -302,10 +302,17 @@ a.disabled {
                 how_many_img_are_skipped += parseInt(project_counter[j]);
             }
             for (z = how_many_img_are_skipped; z < project_image_count + how_many_img_are_skipped; z++) {
+                var image_name = project_screenshots[z].replace(/\\/g, "/").split("/")[6].split(".")[0];
+                var image_desc = "";
+                for (r = 0; r < thumb_desc.length; r++) {
+                    if (thumb_desc[r].split("@@")[0] == image_name)
+                        image_desc = thumb_desc[r].split("@@")[1];
+                }
+
                 $("#thumbs").append("<a style='text-decoration: none;' href='javascript:void(0);'>" +
                     "<div onclick='ShowBigImage(this)' id='" + z + "' class='thumbStyle' "+
                     "style='background:url(" + project_screenshots[z].replace(/\\/g, "/") + ") center center'>"+
-                    "<div class='thumb_mask'></div></div></a>");
+                    "<div class='thumb_mask'><p class='thumb_text'>" + image_desc + "</p></div></div></a>");
                 //$("#" + z + "").fadeIn((z + 1) * 1000);
                 if (z == how_many_img_are_skipped)
                     ShowBigImage($("#" + z + ""));
