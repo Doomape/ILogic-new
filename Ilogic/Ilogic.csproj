@@ -208,6 +208,12 @@
     <Content Include="Content\images\products\EEprom_to_serial_rs232_interfejs\thumbs\EEprom_to_serial_rs232_interfejs_2.png" />
     <Content Include="Content\images\products\EEprom_to_serial_rs232_interfejs\thumbs\EEprom_to_serial_rs232_interfejs_3.png" />
     <Content Include="Content\images\products\EEprom_to_serial_rs232_interfejs\thumbs\EEprom_to_serial_rs232_interfejs_4.png" />
+    <Content Include="Content\images\products\Hasap_so_LCD\Hasap_System_so_LCD_1.png" />
+    <Content Include="Content\images\products\Hasap_so_LCD\Hasap_System_so_LCD_2.png" />
+    <Content Include="Content\images\products\Hasap_so_LCD\Hasap_System_so_LCD_3.PNG" />
+    <Content Include="Content\images\products\Hasap_so_LCD\thumbs\Hasap_System_so_LCD_1.png" />
+    <Content Include="Content\images\products\Hasap_so_LCD\thumbs\Hasap_System_so_LCD_2.png" />
+    <Content Include="Content\images\products\Hasap_so_LCD\thumbs\Hasap_System_so_LCD_3.png" />
     <Content Include="Content\images\products\Hasap_System\Hasap_System_1.png" />
     <Content Include="Content\images\products\Hasap_System\thumbs\Hasap_System_1.png" />
     <Content Include="Content\images\products\Kvarc_Kristal_tester\Kvarc_Kristal_tester_1.png" />
@@ -325,6 +331,7 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\New.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\interface.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
