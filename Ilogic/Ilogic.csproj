@@ -338,7 +338,6 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\New.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\interface.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
