@@ -423,6 +423,11 @@ a.dock-item
    -o-transition: all 0.3s ease-in-out;
    -ms-transition: all 0.3s ease-in-out;
    transition: all 0.3s ease-in-out;
+    -moz-user-select: text;
+   -khtml-user-select: text;
+   -webkit-user-select: text;
+   -o-user-select: text;
+   user-select: text;
 }
 .view-img h2 {
    background: rgba(255, 255, 255, 0.5);
