@@ -107,7 +107,7 @@ namespace Ilogic.Controllers
             conn1.Open();
             OleDbDataReader dbReader1 = null;
             OleDbCommand cmd1 = conn1.CreateCommand();
-            string allProductInfo = "SELECT * from Products;";
+            string allProductInfo = "SELECT * from Products order by id asc;";
             cmd1.CommandText = allProductInfo;
             dbReader1 = cmd1.ExecuteReader();
             List<string> list = new List<string>();
@@ -120,7 +120,6 @@ namespace Ilogic.Controllers
                 allInfo = "";
             }
             dbReader1.Close();
-            list.Reverse();
             list.Insert(0, list.Count.ToString());
             conn1.Close();
 
