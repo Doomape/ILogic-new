@@ -17,7 +17,10 @@ namespace Ilogic.Controllers
 
         //
         // GET: /Site/
-
+        public ActionResult Software()
+        {
+            return View();
+        }
         public ActionResult Projects()
         {
             return View();
@@ -217,6 +220,69 @@ namespace Ilogic.Controllers
             res.Add("thumb_desc", thumb_description);
 
             return Json(res,JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public JsonResult getSoftware()
+        {
+            Dictionary<string, List<string>> res = new Dictionary<string, List<string>>();
+            OleDbConnection conn1 = null;
+            conn1 = new OleDbConnection(
+            "Provider=Microsoft.Jet.OLEDB.4.0; " +
+            "Data Source=" + System.Web.HttpContext.Current.Server.MapPath("~") + ("App_Data\\Products.mdb"));
+            conn1.Open();
+            OleDbDataReader dbReader1 = null;
+            OleDbCommand cmd1 = conn1.CreateCommand();
+            string allProductInfo = "SELECT * from Software;";
+            cmd1.CommandText = allProductInfo;
+            dbReader1 = cmd1.ExecuteReader();
+            string root_path = System.Web.HttpContext.Current.Server.MapPath("~");
+
+            List<string> list_id = new List<string>();
+            List<string> list_imgsrc = new List<string>();
+            List<string> screen_counter = new List<string>();
+            List<string> logos = new List<string>();
+            List<string> description = new List<string>();
+            List<string> thumb_description = new List<string>();
+            string[] extensions = new[] { ".jpg", ".tiff", ".bmp", ".png" };
+
+            while (dbReader1.Read())
+            {
+                int counter = 0;
+                string project_id = dbReader1.GetValue(0).ToString();
+                list_id.Add(project_id);
+
+                DirectoryInfo screenshotsdir = new DirectoryInfo(root_path + ("\\Content\\images\\software\\" + project_id + "\\thumbs"));
+                DirectoryInfo logodir = new DirectoryInfo(root_path + ("\\Content\\images\\software\\" + project_id + "\\logo"));
+                FileInfo[] logo = logodir.EnumerateFiles()
+         .Where(f => extensions.Contains(f.Extension.ToLower()))
+         .ToArray();
+                FileInfo[] screenshots = screenshotsdir.EnumerateFiles()
+         .Where(f => extensions.Contains(f.Extension.ToLower()))
+         .ToArray();
+
+                logos.Add(logo[0].FullName.Replace(root_path, "").Insert(0, @"\"));
+                foreach (var screen in screenshots)
+                {
+                    list_imgsrc.Add(screen.FullName.Replace(root_path, "").Insert(0, @"\"));
+                    counter++;
+                }
+                screen_counter.Add(counter.ToString());
+                description.Add(dbReader1.GetValue(3).ToString());
+                thumb_description.Add(dbReader1.GetValue(1).ToString());
+            }
+
+            dbReader1.Close();
+            conn1.Close();
+            res.Add("id", list_id);
+            res.Add("img", list_imgsrc);
+            res.Add("screen_counter", screen_counter);
+            res.Add("logos", logos);
+            res.Add("desc", description);
+            res.Add("thumb_desc", thumb_description);
+
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
     }
 }
