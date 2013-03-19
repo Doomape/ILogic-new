@@ -152,7 +152,6 @@
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
     <Content Include="Content\images\GoogleMap.png" />
-    <Content Include="Content\images\koki1.png" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
@@ -267,10 +266,6 @@
     <Content Include="Content\images\projects\2\thumbs\1.png" />
     <Content Include="Content\images\projects\2\thumbs\2.png" />
     <Content Include="Content\images\projects\2\thumbs\3.png" />
-    <Content Include="Content\images\sof.png" />
-    <Content Include="Content\images\soft.png" />
-    <Content Include="Content\images\softt.png" />
-    <Content Include="Content\images\Software-icon.png" />
     <Content Include="Content\images\software\1\1.png" />
     <Content Include="Content\images\software\1\2.png" />
     <Content Include="Content\images\software\1\3.png" />
@@ -295,7 +290,6 @@
     <Content Include="Content\images\wordpress_logo.png" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\images\software.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
