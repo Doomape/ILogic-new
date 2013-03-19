@@ -191,7 +191,7 @@ a.disabled {
 
     }
     #projectDescription {
-           width: 270px;
+        width: 270px;
         min-height: 300px;
         margin-bottom: 10px;
         margin-top: 10px;
@@ -200,14 +200,20 @@ a.disabled {
         font-family: Consolas;
         font-size: 15px;
         -moz-user-select: text;
-       -khtml-user-select: text;
-       -webkit-user-select: text;
-       -o-user-select: text;
-       user-select: text;
+        -khtml-user-select: text;
+        -webkit-user-select: text;
+        -o-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
     }
 </style>
 
 <div id="projects" style="width: 100%;">
+
+    <div id="hidden_content" style="position:absolute;top:200px;left:0px;height:300px;width:250px;background:red;">
+        <div style="position:absolute;top:30px;right:-20px;width:20px;height:40px;background:yellow"></div>
+    </div>
+
     <div id="thumbs_container" style="width: 115px; float: left; margin-top:1px" >
         <div id="thumbs">
         </div>
@@ -269,7 +275,6 @@ a.disabled {
     });
 
     function showThumbs(e) {
-        debugger;
         $("#thumbs").empty();
         $("#projectDescription").empty();
 
