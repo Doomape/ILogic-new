@@ -136,6 +136,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Products.mdb" />
+    <Content Include="Content\dropdown\dd_arrow.png" />
+    <Content Include="Content\dropdown\dropdown.css" />
+    <Content Include="Content\dropdown\flags.css" />
+    <Content Include="Content\dropdown\skin2.css" />
     <Content Include="Content\images\android.png" />
     <Content Include="Content\images\asp\asp_body.gif" />
     <Content Include="Content\images\about_us.png" />
@@ -151,8 +155,13 @@
     <Content Include="Content\images\asp\jquery_logo.png" />
     <Content Include="Content\images\asp\oracle_logo.png" />
     <Content Include="Content\images\asp\sqlserver_logo.png" />
+    <Content Include="Content\images\currencies\euro.gif" />
+    <Content Include="Content\images\currencies\mkd.png" />
+    <Content Include="Content\images\currencies\usd.gif" />
     <Content Include="Content\images\GoogleMap.png" />
+    <Content Include="Content\images\hide-arrow.png" />
     <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\images\logoiIogic.png" />
     <Content Include="Content\images\micro\electronic_content.gif" />
     <Content Include="Content\images\electronic_logo.png" />
     <Content Include="Content\images\lll.png" />
@@ -179,6 +188,7 @@
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\bodyBackground.gif" />
     <Content Include="Content\images\contentImage.gif" />
+    <Content Include="Content\images\php\bottom_top.gif" />
     <Content Include="Content\images\php\joomla_logo.png" />
     <Content Include="Content\images\php\netbeans_icon.png" />
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
@@ -275,6 +285,7 @@
     <Content Include="Content\images\software\1\thumbs\2.png" />
     <Content Include="Content\images\software\1\thumbs\3.png" />
     <Content Include="Content\images\software\1\thumbs\4.png" />
+    <Content Include="Content\images\show-arrow.png" />
     <Content Include="Content\images\top_bottom_background.gif" />
     <Content Include="Content\images\products.png" />
     <Content Include="Content\images\projects.png" />
@@ -387,7 +398,6 @@
     </Content>
     <Content Include="Views\Site\Projects.cshtml" />
     <Content Include="Views\Site\AboutUs.cshtml" />
-    <Content Include="Views\Site\Software.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

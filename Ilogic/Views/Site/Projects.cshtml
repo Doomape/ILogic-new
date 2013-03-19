@@ -191,7 +191,7 @@ a.disabled {
 
     }
     #projectDescription {
-           width: 270px;
+        width: 270px;
         min-height: 300px;
         margin-bottom: 10px;
         margin-top: 10px;
@@ -200,14 +200,21 @@ a.disabled {
         font-family: Consolas;
         font-size: 15px;
         -moz-user-select: text;
-       -khtml-user-select: text;
-       -webkit-user-select: text;
-       -o-user-select: text;
-       user-select: text;
+        -khtml-user-select: text;
+        -webkit-user-select: text;
+        -o-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
     }
 </style>
 
+
 <div id="projects" style="width: 100%;">
+    
+   <div id="hidden_content" style="position:absolute;top:200px;left:-250px;height:300px;width:250px;background: url('/Content/images/top_bottom_background.gif');z-index:10000;overflow: visible !important;">
+     <div id="show_hide" style="position:absolute;top:30px;right:-25px;width:25px;height:53px;background-image:url('/Content/images/show-arrow.png');z-index:10000"></div>
+   </div>
+
     <div id="thumbs_container" style="width: 115px; float: left; margin-top:1px" >
         <div id="thumbs">
         </div>
@@ -236,6 +243,15 @@ a.disabled {
     var thumb_description = new Array();
     var current_project = "";
 
+    $('#show_hide').toggle(function () {
+        $('#hidden_content').animate({ left: '0px' }, 1000, function () {
+            $("#show_hide").css("background", "url('/Content/images/hide-arrow.png') center center")
+        });
+    }, function () {
+        $('#hidden_content').animate({ left: '-250px' }, 1000, function () {
+            $("#show_hide").css("background", "url('/Content/images/show-arrow.png') center center")
+        });
+    });
 
     $(document).ready(function () {
 
@@ -269,7 +285,6 @@ a.disabled {
     });
 
     function showThumbs(e) {
-        debugger;
         $("#thumbs").empty();
         $("#projectDescription").empty();
 
