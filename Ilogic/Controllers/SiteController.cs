@@ -171,7 +171,7 @@ namespace Ilogic.Controllers
             conn1.Open();
             OleDbDataReader dbReader1 = null;
             OleDbCommand cmd1 = conn1.CreateCommand();
-            string allProductInfo = "SELECT * from Projects;";
+            string allProductInfo = "SELECT * from Projects order by id asc;";
             cmd1.CommandText = allProductInfo;
             dbReader1 = cmd1.ExecuteReader();
             string root_path = System.Web.HttpContext.Current.Server.MapPath("~");
@@ -234,7 +234,7 @@ namespace Ilogic.Controllers
             conn1.Open();
             OleDbDataReader dbReader1 = null;
             OleDbCommand cmd1 = conn1.CreateCommand();
-            string allProductInfo = "SELECT * from Software;";
+            string allProductInfo = "SELECT * from Software order by id asc;";
             cmd1.CommandText = allProductInfo;
             dbReader1 = cmd1.ExecuteReader();
             string root_path = System.Web.HttpContext.Current.Server.MapPath("~");
@@ -245,6 +245,7 @@ namespace Ilogic.Controllers
             List<string> logos = new List<string>();
             List<string> description = new List<string>();
             List<string> thumb_description = new List<string>();
+            List<string> software_name = new List<string>();
             string[] extensions = new[] { ".jpg", ".tiff", ".bmp", ".png" };
 
             while (dbReader1.Read())
@@ -252,7 +253,7 @@ namespace Ilogic.Controllers
                 int counter = 0;
                 string project_id = dbReader1.GetValue(0).ToString();
                 list_id.Add(project_id);
-
+                software_name.Add(dbReader1.GetValue(2).ToString());
                 DirectoryInfo screenshotsdir = new DirectoryInfo(root_path + ("\\Content\\images\\software\\" + project_id + "\\thumbs"));
                 DirectoryInfo logodir = new DirectoryInfo(root_path + ("\\Content\\images\\software\\" + project_id + "\\logo"));
                 FileInfo[] logo = logodir.EnumerateFiles()
@@ -281,7 +282,7 @@ namespace Ilogic.Controllers
             res.Add("logos", logos);
             res.Add("desc", description);
             res.Add("thumb_desc", thumb_description);
-
+            res.Add("software_name", software_name);
             return Json(res, JsonRequestBehavior.AllowGet);
         }
     }

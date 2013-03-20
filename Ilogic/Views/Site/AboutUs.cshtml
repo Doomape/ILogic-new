@@ -259,12 +259,24 @@
         map = new google.maps.Map(document.getElementById("map"), myOptions);
         google.maps.event.trigger(map, 'resize');
 
+
+        //var image = '/Content/images/ilogic.ico';
+        //var myLatLng = new google.maps.LatLng(42.009137, 21.360166);
+        //var beachMarker = new google.maps.Marker({
+        //    position: myLatLng,
+        //    map: map,
+        //    icon: image,
+        //    title: 'Click me'
+        //});
+
+        var image = '/Content/images/about_us/maps_logo.png';
         marker = new google.maps.Marker
         (
             {
 
                 position: new google.maps.LatLng(42.009137, 21.360166),
                 map: map,
+                icon:image,
                 title: 'Click me'
 
             }
@@ -272,6 +284,7 @@
 
         var infowindow = new google.maps.InfoWindow({
             content: 'Location info: iLogic'
+          
 
         });
 
