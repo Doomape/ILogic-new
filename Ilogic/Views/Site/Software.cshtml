@@ -281,6 +281,11 @@ a.disabled {
                     if (b == 0)
                         showThumbs(data.id[b]);
                 }
+                $('.scrollable').scrollable({
+                    items: '.items',
+                    circular: true,
+                    itemsPerFrame: 4
+                })
             }
         });
 
