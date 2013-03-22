@@ -254,7 +254,7 @@ a.disabled {
     var software_description = new Array();
     var thumb_description = new Array();
     var current_software = "";
-   
+    var changeColor = "";
 
     $(document).ready(function () {
 
@@ -278,14 +278,14 @@ a.disabled {
                 thumb_description = data.thumb_desc;
                 var software_name = data.software_name;
                 for (b = 0; b < data.id.length; b++) {
-                    $(".items").append("<a class='mouse_hover' href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
-                        "<img  src='" + data.logos[b] + "'/><p>"+software_name[b]+"</p></div></a>");
+                    $(".items").append("<a class='mouse_hover' href='javascript:void(0)'><div class='softwareTopimage' onclick='showThumbs(" + data.id[b] + ")'>" +
+                        "<img  id=" + data.id[b] + 10 + "  src='/Content/images/softwareBlack.png'/><p>" + software_name[b] + "</p></div></a>");
                     if (b == 0)
                         showThumbs(data.id[b]);
                 }
                 $('.scrollable').scrollable({
                     items: '.items',
-                    circular: true,
+                    circular: false,
                     itemsPerFrame: 4
                 })
             }
@@ -294,9 +294,14 @@ a.disabled {
     });
 
     function showThumbs(e) {
+        debugger;
         $("#thumbs").empty();
         $("#softwareDescription").empty();
-
+        if (changeColor != "") {
+            $("#" + changeColor).attr('src', '/Content/images/softwareBlack.png');//change img to black&white if other picture is clicked
+        }
+        $("#" + e + 10).attr('src', '/Content/images/software/1/logo/1.png');//change clicked img with colorfull img
+        changeColor = e+ "" + 10;//keep the previous id of the img
         var which_software = software_ids.indexOf(e.toString());
         current_software = which_software;
         var software_image_count = parseInt(software_counter[which_software]);
