@@ -354,7 +354,7 @@ a.disabled {
     function ShowBigImage(e) {
         $("#img_container img").css('margin-top', '25%');
         $("#img_container img").attr("src", "/Content/images/loader.gif");
-        var image_src = $(e).css("background-image").replace("url(", "").replace(")", "").replace("/thumbs", "");
+        var image_src = $(e).css("background-image").replace("url(", "").replace(")", "").replace("/thumbs", "").replace(/"/g, "");
         var img = new Image();
         img.src = image_src;
         $(img).load(function () {

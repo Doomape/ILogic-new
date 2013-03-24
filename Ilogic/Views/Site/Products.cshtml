@@ -151,7 +151,7 @@ a.disabled {
     #productDescription {
         width: 270px;
         min-height:300px;
-        margin-bottom: 10px;
+        margin-bottom: 17px;
          margin-top: 10px;
          margin-left: 15px;
          text-align: left;
@@ -235,11 +235,31 @@ font-size: 17px;">
 </div>
 <script type="text/javascript">
 
-    var old_currency = "EUR";
     var currency_selected = "EUR";
+    var old_currency = "EUR";
+    var price_in_mkd = 0;
+    var mkd_euro_rate = 0;
+    var mkd_usd_rate = 0;
+    var eur_usd_rate = 0;
 
     $(document).ready(function (e) {
         $("#currency_dropdown").msDropDown();
+
+        var url1 = 'http://rate-exchange.appspot.com/currency?from=MKD&to=EUR';
+        $.get(url1, function (data) {
+            mkd_euro_rate = data.rate;
+        }, "jsonp");
+
+        var url2 = 'http://rate-exchange.appspot.com/currency?from=MKD&to=USD';
+        $.get(url2, function (data) {
+            mkd_usd_rate = data.rate;
+        }, "jsonp");
+
+        var url3 = 'http://rate-exchange.appspot.com/currency?from=EUR&to=USD';
+        $.get(url3, function (data) {
+            eur_usd_rate = data.rate;
+        }, "jsonp");
+
     });
 
     $("#currency_dropdown").change(function () {
@@ -255,15 +275,12 @@ font-size: 17px;">
                 currency_selected = "USD";
                 break;
         }
+        change_dropdown_price($("#price_container p").text());
 
-        convert_price(old_currency, currency_selected, parseFloat(parseFloat($("#price_container").text()).toFixed(2)));
-        
     });
 
-    //get the latest value before changing the currency
     $("#currency_dropdown").click(function () {
-        switch ($("#currency_dropdown").val())
-        {
+        switch ($("#currency_dropdown").val()) {
             case "0":
                 old_currency = "EUR";
                 break;
@@ -321,7 +338,8 @@ font-size: 17px;">
                         });
                         $("#productDescription").append('<p>' + description + '</p>');
                         if (price != "/") {
-                            show_price(price);
+                            price_in_mkd = price;
+                            onload_show_price(price);
                         }
                     }
                     if (i > 1) {
@@ -377,8 +395,8 @@ font-size: 17px;">
                     });
                     $("#productDescription").append('<p>' + description + '</p>');
                     if (price != "/") {
-                        debugger;
-                        project_change_convert_price(old_currency, currency_selected, parseFloat(parseFloat(price).toFixed(2)));
+                        price_in_mkd = price;
+                        change_project_price(price);
                     }
                 }
             }
@@ -396,49 +414,49 @@ font-size: 17px;">
         });
     }
 
-    function show_price(e) {
+    function onload_show_price(e) {
         $("#product_priceContainer").css("display", "block");
-        //$("#price_container").append("<p>" + e + "</p>");
-        convert_price("MKD", "EUR", parseFloat(e).toFixed(2));
+        $("#price_container").append("<p>" + Math.round(e * mkd_euro_rate) + "</p>");
+    }
+    function change_project_price(e) {
+
+        $("#product_priceContainer").css("display", "block");
+        if(currency_selected=="EUR")
+            $("#price_container").append("<p>" + Math.round(e * mkd_euro_rate) + "</p>");
+        else if(currency_selected=="USD")
+            $("#price_container").append("<p>" + Math.round(e * mkd_usd_rate) + "</p>");
+        else if(currency_selected=="MKD")
+            $("#price_container").append("<p>" + price_in_mkd + "</p>");
     }
     function hide_price() {
         $("#product_priceContainer").css("display", "none");
         $("#price_container").empty();
     }
-
-    function convert_price(old_cur, new_cur, cur_price) {
-        debugger;
-        var url = 'http://rate-exchange.appspot.com/currency?from=' + old_cur + '&to=' + new_cur;
-        var calc_price = 0;
-        $.get(url, function (data) {
-            debugger;
-            calc_price = cur_price * data.rate;
-            set_new_price(calc_price);
-        }, "jsonp");
-    }
-
-    function project_change_convert_price(old_cur, new_cur, cur_price) {
-        debugger;
-        if (new_cur != "MKD") {
-            var url = 'http://rate-exchange.appspot.com/currency?from=MKD' + '&to=' + new_cur;
-            var calc_price = 0;
-            $.get(url, function (data) {
-                debugger;
-                calc_price = cur_price * data.rate;
-                set_new_price(calc_price);
-            }, "jsonp");
+    function change_dropdown_price(e) {
+        $("#price_container").empty();
+        
+        if (currency_selected == "MKD") {
+            $("#product_priceContainer").css("display", "block");
+            $("#price_container").append("<p>" + price_in_mkd + "</p>");
         }
-        else {
-            set_new_price(cur_price);
+        else if (currency_selected == "EUR") {
+            $("#product_priceContainer").css("display", "block");
+            if (old_currency == currency_selected)
+                $("#price_container").append("<p>" + Math.round(e) + "</p>");
+            else if (old_currency == "MKD")
+                $("#price_container").append("<p>" + Math.round(e * mkd_euro_rate) + "</p>");
+            else if (old_currency == "USD")
+                $("#price_container").append("<p>" + Math.round(e / eur_usd_rate) + "</p>");
         }
-    }
-
-    function set_new_price(price) {
-        debugger;
-        $("#product_priceContainer").css("display", "block");
-        $("#price_container").empty(); 
-        //$("#price_container").append("<p>" + parseFloat(price).toFixed(2) + "</p>");
-        $("#price_container").append("<p>" + Math.round(price) + "</p>");
+        else if (currency_selected == "USD") {
+            $("#product_priceContainer").css("display", "block");
+            if (old_currency == currency_selected)
+                $("#price_container").append("<p>" + Math.round(e) + "</p>");
+            else if (old_currency == "MKD")
+                $("#price_container").append("<p>" + Math.round(e * mkd_usd_rate) + "</p>");
+            else if (old_currency == "EUR")
+                $("#price_container").append("<p>" + Math.round(e * eur_usd_rate) + "</p>");
+        }
     }
 
     window.onload = preloader;

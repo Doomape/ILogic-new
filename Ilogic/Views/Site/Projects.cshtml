@@ -207,22 +207,8 @@ a.disabled {
         user-select: text;
     }
 
-    /*GROW
-.grow img {
-  height: 75px;
-  width: 75px;
- 
-  -webkit-transition: all 1s ease;
-     -moz-transition: all 1s ease;
-       -o-transition: all 1s ease;
-      -ms-transition: all 1s ease;
-          transition: all 1s ease;
-}
- 
-.grow img:hover {
-  width: 80px;
-  height: 80px;
-}*/
+#software_img { -webkit-transition: all .2s ease-in-out; -moz-transition: all .2s ease-in-out; -o-transition: all .2s ease-in-out; transition: all .2s ease-in-out; }
+    #software_img:hover { -webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); -o-transform: scale(1.3); transform: scale(1.3); }
   
 </style>
 
@@ -232,7 +218,7 @@ a.disabled {
    <div id="hidden_content" style="position:absolute;top:150px;left:-250px;
 height:250px;width:250px;background: url('/Content/images/top_bottom_background.gif');z-index:10000;overflow: visible !important;
  font-family: Consolas;font-size: 19px;color: white;">
-       <a  href="/Site/Software" rel="nofollow" target="_blank"><img class="mouse_hover" style="margin-top: 50px;margin-left: 86px;margin-bottom: 13px;" src="/Content/images/software.png" /></a>
+       <a  href="/Site/Software" rel="nofollow" target="_blank"><img id="software_img" style="margin-top: 50px;margin-left: 86px;margin-bottom: 13px;" src="/Content/images/software.png" /></a>
 
        <p style="margin: 0px 0px 0px 8px;">Software Packages only for Macedonian Market</p>
      <a href="javascript:void(0);"><div id="show_hide" style="position:absolute;top:30px;right:-25px;width:25px;height:64px;background-image:url('/Content/images/show-arrow.png');z-index:10000;"></div></a>
@@ -282,7 +268,11 @@ height:250px;width:250px;background: url('/Content/images/top_bottom_background.
         var logo = "<a href='javascript:void(0);'><div id='logo' onclick='redirectAsp()' class='mouse_hover' style='float: left; position: relative; width: 115px; height: 100px; border-right: 1px solid black; text-align: center;'></div></a>";
         var closeDiv = "</div>";
         var projectsDiv = "<div class='div2' style='float: left; width: 900px; height: 100px;'>";
-        var scrollItems = "<div class='scrollable' id='navigator'><a class='prev browse left'></a><div class='items'></div><a class='next browse right'></a></div>";
+        var scrollItems = "<div class='scrollable' id='navigator'>"
+            +""//"<a class='prev browse left'></a>"
+            +"<div class='items'></div>"
+            +""//"<a class='next browse right'></a>"
+            +"</div>";
         $("#top-row-items").append(logo + projectsDiv + scrollItems + closeDiv);
 
         $.ajax({
@@ -298,7 +288,7 @@ height:250px;width:250px;background: url('/Content/images/top_bottom_background.
                 thumb_description = data.thumb_desc;
                 for (b = 0; b < data.id.length; b++) {
                     $(".items").append("<a href='javascript:void(0)'><div onclick='showThumbs(" + data.id[b] + ")'>" +
-                        "<img class='mouse_hover logos' src='" + data.logos[b] + "'/></div></a>");
+                        "<img class='mouse_hover logos' src='" + data.logos[b].replace('\\', '/') + "'/></div></a>");
                     if (b == 0)
                         showThumbs(data.id[b]);
                 }
@@ -369,11 +359,14 @@ height:250px;width:250px;background: url('/Content/images/top_bottom_background.
     }
 
     function ShowBigImage(e) {
+        //debugger;
         $("#img_container img").css('margin-top', '25%');
         $("#img_container img").attr("src", "/Content/images/loader.gif");
-        var image_src = $(e).css("background-image").replace("url(", "").replace(")", "").replace("/thumbs", "");
+        var image_src = $(e).css("background-image").replace("url(", "").replace(")", "").replace("/thumbs", "").replace(/"/g, "");
         var img = new Image();
         img.src = image_src;
+        //alert(image_src);
+        //alert(img.src);
         $(img).load(function () {
             $("#img_container img").attr("src", img.src);
             $("#img_container img").css('margin-top', '50px');
