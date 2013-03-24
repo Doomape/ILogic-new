@@ -352,6 +352,9 @@ font-size: 17px;">
             type: "GET",
             data: { productName: e },
             success: function (result) {
+
+                restart_currency();
+
                 for (var i = 1; i <= result[0]; i++) {
                     var productName = result[i].split('@@')[1];
                     var topRowThumb = result[i].split('@@')[2];
@@ -402,6 +405,12 @@ font-size: 17px;">
     function hide_price() {
         $("#product_priceContainer").css("display", "none");
         $("#price_container").empty();
+    }
+
+    function restart_currency() {
+        currency_selected = "EUR";
+        $("#currency_dropdown").msDropDown().data('dd').set('selectedIndex', 0);
+        $("#currency_dropdown").val(0);
     }
 
     function convert_price(old_cur, new_cur, cur_price) {
