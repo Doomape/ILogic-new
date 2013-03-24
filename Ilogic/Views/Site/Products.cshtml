@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Products";
     Layout = "~/Views/Shared/SiteMaster.cshtml";
 }
@@ -234,12 +235,45 @@ font-size: 17px;">
 </div>
 <script type="text/javascript">
 
+    var old_currency = "EUR";
+
     $(document).ready(function (e) {
         $("#currency_dropdown").msDropDown();
     });
 
     $("#currency_dropdown").change(function () {
-        //alert(1);
+
+        var currency_selected = "EUR";
+        switch ($("#currency_dropdown").val()) {
+            case "0":
+                currency_selected = "EUR";
+                break;
+            case "1":
+                currency_selected = "MKD";
+                break;
+            case "2":
+                currency_selected = "USD";
+                break;
+        }
+
+        convert_price(old_currency, currency_selected, parseFloat(parseFloat($("#price_container").text()).toFixed(2)));
+        
+    });
+
+    //get the latest value before changing the currency
+    $("#currency_dropdown").click(function () {
+        switch ($("#currency_dropdown").val())
+        {
+            case "0":
+                old_currency = "EUR";
+                break;
+            case "1":
+                old_currency = "MKD";
+                break;
+            case "2":
+                old_currency = "USD";
+                break;
+        }
     });
 
     function preloader() {
@@ -362,11 +396,27 @@ font-size: 17px;">
 
     function show_price(e) {
         $("#product_priceContainer").css("display", "block");
-        $("#price_container").append("<p>" + e + "</p>");
+        //$("#price_container").append("<p>" + e + "</p>");
+        convert_price("MKD", "EUR", parseFloat(e).toFixed(2));
     }
     function hide_price() {
         $("#product_priceContainer").css("display", "none");
         $("#price_container").empty();
+    }
+
+    function convert_price(old_cur, new_cur, cur_price) {
+
+        var url = 'http://rate-exchange.appspot.com/currency?from=' + old_cur + '&to=' + new_cur;
+        var calc_price = 0;
+        $.get(url, function (data) {
+            calc_price = cur_price * data.rate;
+            set_new_price(calc_price);
+        }, "jsonp");
+    }
+
+    function set_new_price(price) {
+        $("#price_container").empty();
+        $("#price_container").append("<p>" + parseFloat(price).toFixed(2) + "</p>");
     }
 
     window.onload = preloader;
