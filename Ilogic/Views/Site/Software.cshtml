@@ -245,7 +245,18 @@ a.disabled {
 </div>
 
 <script type="text/javascript">
+    $(window).resize(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#softwares").css("height", height);
+    });
 
+    $(document).ready(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#softwares").css("height", height);
+        if (height < 700) {
+            $("#content").css("padding-bottom", "100px");
+        }
+    });
    
 
     var software_ids = new Array();

@@ -117,7 +117,7 @@
     <div id="consoleSpace" style="float: left; width: 600px; height: 100%">
         <div id="console" title="Create Album" style="overflow: hidden; min-height: 173px !important"></div>
     </div>
-   <div id="logoImages" style="float: left; width: 424px; ">
+   <div id="logoImages" style="float: left; width: 424px;min-height:400px ">
   <table style="margin-top:40px;width:420px;">
             <tr>
                 <td  style="width:200px;height:150px;">
@@ -215,6 +215,9 @@
     $(document).ready(function () {
         var height = parseInt($(window).height() -210);
         $("#aspNet").css("height", height);
+        if (height < 440) {
+            $("#aspNet").css("height", height + 100);
+        }
     });
 
     $(function () {

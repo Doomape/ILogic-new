@@ -112,7 +112,7 @@
                   }
 </style>
 <div id="Php" style="width: 100%">
-        <div id="logoImages" style="float: left; width: 424px;">
+        <div id="logoImages" style="float: left; width: 424px; min-height:400px">
         <table style="margin-top:40px;width:420px;">
             <tr>
                 <td style="width:200px;height:150px">
@@ -194,7 +194,7 @@
             </tr>
         </table>
     </div>
-    <div id="consoleSpace" style="float: left; width: 600px; height: 100%">
+    <div id="consoleSpace" style="float: left; width: 600px;">
         <div id="console" title="Create Album" style="overflow: hidden; min-height: 173px !important"></div>
     </div>
 
@@ -208,13 +208,15 @@
     $(window).resize(function () {
         var height = parseInt($(window).height() -210);
         $("#Php").css("height", height);
-  
+      
     });
 
     $(document).ready(function () {
         var height = parseInt($(window).height() -210);
         $("#Php").css("height", height);
-
+        if (height < 440) {
+            $("#Php").css("height",height + 100);
+        }
         $('#bottom-row').css('background', 'url("/Content/images/php/bottom_top.gif")');
         $('#top-row').css('background', 'url("/Content/images/php/bottom_top.gif")');
         //document.body.style.background = "#182641";

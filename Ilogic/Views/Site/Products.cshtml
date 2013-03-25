@@ -201,7 +201,7 @@ a.disabled {
         width: 97px;
     }
 
-  #currency_container:hover { cursor: progress }
+  /*#currency_container:hover { cursor: progress }*/
 
 </style>
 
@@ -220,8 +220,8 @@ font-size: 17px;">
         </div>
         <div id="product_priceContainer">
 
-            <div id="currency_container">
-                <select id="currency_dropdown" style="cursor:pointer;">
+            <div id="currency_container" style="cursor:pointer !important;">
+                <select id="currency_dropdown" style="cursor:pointer !important;">
                     <option value="0" selected="selected" data-image="/Content/images/currencies/euro.gif">EUR</option>
                     <option value="1" data-image="/Content/images/currencies/mkd.png">MKD</option>
                     <option value="2" data-image="/Content/images/currencies/usd.gif">USD</option>
@@ -235,7 +235,18 @@ font-size: 17px;">
     </div>
 </div>
 <script type="text/javascript">
+    $(window).resize(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#products").css("height", height);
+    });
 
+    $(document).ready(function () {
+        var height = parseInt($(window).height() - 210);
+        $("#products").css("height", height);
+        if (height < 700) {
+            $("#content").css("padding-bottom", "100px");
+        }
+    });
     var currency_selected = "EUR";
     var old_currency = "EUR";
     var price_in_mkd = 0;
