@@ -190,6 +190,7 @@
     <Content Include="Content\images\pause.png" />
     <Content Include="Content\images\bodyBackground.gif" />
     <Content Include="Content\images\contentImage.gif" />
+    <Content Include="Content\images\php\bottom_top.gif" />
     <Content Include="Content\images\php\joomla_logo.png" />
     <Content Include="Content\images\php\netbeans_icon.png" />
     <Content Include="Content\images\php\phpmyadmin_logo.png" />
@@ -245,10 +246,16 @@
     <Content Include="Content\images\products\Razvoen_System_za_Pic\thumbs\Razvoen_System_za_Pic_1.png" />
     <Content Include="Content\images\products\Razvoen_System_za_Pic\thumbs\Razvoen_System_za_Pic_2.png" />
     <Content Include="Content\images\products\Razvoen_System_za_Pic\thumbs\Razvoen_System_za_Pic_3.png" />
+    <Content Include="Content\images\products\Real_Time_Clock\RTC_1.png" />
+    <Content Include="Content\images\products\Real_Time_Clock\RTC_2.png" />
+    <Content Include="Content\images\products\Real_Time_Clock\thumbs\RTC_1.png" />
+    <Content Include="Content\images\products\Real_Time_Clock\thumbs\RTC_2.png" />
     <Content Include="Content\images\products\Real_Time_Clock_PIC\Real_Time_Clock_PIC_1.png" />
     <Content Include="Content\images\products\Real_Time_Clock_PIC\Real_Time_Clock_PIC_2.png" />
     <Content Include="Content\images\products\Real_Time_Clock_PIC\thumbs\Real_Time_Clock_PIC_1.png" />
     <Content Include="Content\images\products\Real_Time_Clock_PIC\thumbs\Real_Time_Clock_PIC_2.png" />
+    <Content Include="Content\images\products\RS232_to_TTL\RS232_to_TTL_1.png" />
+    <Content Include="Content\images\products\RS232_to_TTL\thumbs\RS232_to_TTL_1.png" />
     <Content Include="Content\images\products\Sumo_Robot\Sumo_Robot_1.png" />
     <Content Include="Content\images\products\Sumo_Robot\Sumo_Robot_2.png" />
     <Content Include="Content\images\products\Sumo_Robot\Sumo_Robot_3.png" />
