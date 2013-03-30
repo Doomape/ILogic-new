@@ -51,7 +51,7 @@ namespace Ilogic.Controllers
         {
 
             var fromAddress = new MailAddress("ilogicmk@gmail.com", "iLogic");
-            string fromPassword = "trotinet";
+            string fromPassword = "ilogicmk2013";
 
             try
             {
@@ -70,7 +70,7 @@ namespace Ilogic.Controllers
                 md.IsBodyHtml = false;
                 md.Subject = subject;
                 System.Collections.Specialized.ListDictionary replacements = new System.Collections.Specialized.ListDictionary();
-                MailMessage msg = md.CreateMailMessage("tomi_krama@hotmail.com", replacements, body, new System.Web.UI.Control());
+                MailMessage msg = md.CreateMailMessage("tomikrama@gmail.com,micevski.kosta@gmail.com", replacements, body, new System.Web.UI.Control());
                 smtp.Send(msg);
             }
             catch
